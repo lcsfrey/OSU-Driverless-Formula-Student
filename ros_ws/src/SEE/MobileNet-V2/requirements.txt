@@ -1,0 +1,3 @@
+tqdm==4.15.0
+easydict==1.7
+tensorboardX==1.0

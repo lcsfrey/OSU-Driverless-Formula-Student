@@ -1,0 +1,6 @@
+/_site/
+/node_modules/
+/tmp/
+*.tgz
+*.sublime-project
+*.sublime-workspace

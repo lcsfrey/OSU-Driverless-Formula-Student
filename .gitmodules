@@ -1,0 +1,12 @@
+[submodule "ros_ws/eufs_sim"]
+	path = ros_ws/eufs_sim
+	url = https://github.com/eufsa/eufs_sim.git
+[submodule "ros_ws/src/SEE/ssd.pytorch"]
+	path = ros_ws/src/SEE/ssd.pytorch
+	url = https://github.com/amdegroot/ssd.pytorch.git
+[submodule "ros_ws/src/SEE/MobileNet-V2"]
+	path = ros_ws/src/SEE/MobileNet-V2
+	url = https://github.com/MG2033/MobileNet-V2.git
+[submodule "ros_ws/src/SEE/VoTT"]
+	path = ros_ws//SEEsrc/VoTT
+	url = https://github.com/Microsoft/VoTT.git
