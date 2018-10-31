@@ -1,0 +1,54 @@
+\documentclass[10pt]{article}
+\usepackage[utf8]{inputenc}
+
+\title{Project Description}
+\author{Thomas Korsness }
+\date{October 2018}
+
+\usepackage{natbib}
+\usepackage{graphicx}
+
+\begin{document}
+
+\maketitle
+\centering Senior Capstone
+\linebreak
+
+\centering Fall Term
+
+\raggedright
+\section{Project Abstract}
+Autonomous vehicles are gaining traction in the auto industry and for good reason. Vehicles that drive themselves will cut down accidents caused by human error. It also gives more people the ability to travel more often. In order to advance autonomous technology, we can see how far we can push autonomous vehicles. How quickly can we get it to react? How fast can it corner? How can the vehicles travel though an area its unfamiliar with? One way to measure these questions is with an autonomous race car. The Global Formula Racing driverless team at Oregon State University aims to do this in a competition with teams all around the world. The Oregon State University team aims to not only make a working driverless race car, but win the GFR driverless competition. This document will focus on the computer science aspect of the project.
+
+\clearpage
+
+\section{Problem}
+Transportation is essential in society. People need to commute to work, pick up groceries, go to the doctor, visit friends and family and so much more. The most common form of transportation is a car. This means every morning people get up and commute to work on the same roads. It's not uncommon for people to get tired or frustrated. This can reflect to dangerous driving. This can cause accidents, increase traffic, and put lives in danger. One solution to this is public transportation, but even this is not perfect. Buses and subways are often overcrowded and slow due to the many stops. What if there was a way to remove the human error from transportation?
+
+\section{Solution}
+Autonomous vehicles have many advantages. One large one is the lack of human error involved. An autonomous vehicle can sense the location of any object around it and act accordingly. No more distracted drivers crashing into a stopped car. No errors due to a driver being reckless. One way to accomplish this is with an autonomous race car. Don't worry, this is not meant to be racing around public roads. It's meant to function on a closed track pushing the cars limits to get around a track faster. This may seem somewhat unrelated to the public but the research done while creating the race car can be used to improve autonomous vehicles for the public.
+
+
+The Global Formula Racing driverless team at Oregon State University plans to compete in GFR races with their driverless car. There are many aspects to this project and a large team is working to get it done. The computer science team in particular is working on using data from sensors to calculate the cars position and trajectory. One of the sensors being used are Lidar, which identifies objects by reflecting lasers off of them. Lidar is a common sensor used in autonomous vehicles. Another problem the team will have to tackle is something called SLAM. SLAM stands for simultaneous localization and mapping. This deals with getting sensors to know where the car is in an environment while at the same time mapping that environment  \citep{Kudan}. SLAM is an  issue that is directly related to autonomous vehicles for public use.
+
+
+The main goal for the team is to have the car perform at high speeds. This includes a variety of factors. The car needs to accelerate quickly, corner at high speeds, and brake quickly. These are all applicable to autonomous vehicles available to the public. When any car accelerates, it needs to be careful not to lose traction or suffer from torque steer. When any car brakes, it needs to stop as quickly as possible without locking up the brakes. The technology used in the race car to solve these problems can also be used in public autonomous vehicles.
+
+\section{Solution SLAM}
+A large problem that autonomous cars have is understanding a new environment and knowing where it is located within that environment. This is the problem SLAM solves. SLAM stands for simultaneous localization and mapping. This same idea is used in all autonomous cars and plenty of mobile robots. The goal of our car is to maneuver the track as quick as possible. To do this the car needs to know where the track is and where it is on the track. Without this information the car would never even complete a lap. SLAM takes information from the sensors on the car and recursively calculates the most probable location of track features and car location. There are s few common ways to accomplish this, one of which is the Kalman Filter.
+
+\section{Evaluation SLAM}
+When working with SLAM we need to know exactly what we need to be implemented to consider the project complete. The SLAM system should take in data from lidar processing and camera processing. For localization, the SLAM system should be able to output the location of the car relative to the track map. There are many factors that impact the results of localization. Our system should be able to function properly even if a sensor is not functioning or is producing bad data.
+
+\section{Performance Metrics}
+An important part of a project like this is knowing what needs to be done and what things will look like when the project is complete. There are several indicators that will signify a success for our project. One clear goal is to finish first in a Global Formula Race with the driverless car. If we accomplish this we know that we have outperformed all other teams with the technology we developed. Another goal that comes a step before winning a race, is having a successful run with the driverless car. If we can set down the car and have it successfully navigate a track without incident, we know we have accomplished a large step towards our final goal of winning a race.
+
+
+
+
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+
+\end{document}
