@@ -44,8 +44,8 @@ catkin_make
 ```
 _Note:_ You can use `catkin build` instead of `catkin_make` if you know what you are doing.
 
-To enable ROS to find the EUFS packages you also need to run
-```source /devel/setup.bash```
+To enable ROS to find the EUFS packages you also need to run, standing at the same directory as the `devel` directory in your workspace
+```source ./devel/setup.bash```
 _Note:_ source needs to be run on each new terminal you open. You can also include it in your `.bashrc` file.
 
 Now you can finally run our kickass simulation!!
