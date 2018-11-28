@@ -1,3 +1,5 @@
 #ros build files
 build/
 devel/
+
+**.vscode/
