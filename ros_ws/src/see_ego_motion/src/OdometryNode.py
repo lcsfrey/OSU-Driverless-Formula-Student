@@ -48,8 +48,8 @@ class OdometryNode:
             rospy.Subscriber("vectornav/GPS", NavSatFix, self.sensor_gps_callback)
             rospy.Subscriber("vectornav/Odom", Odometry, self.sensor_odom_callback)
 
-        self.filter = ParticleFilter.ParticleFilter(ctrvModel)
-        self.filter.initParticles(particleMean, particleCov, numParticles=20)
+        self.filter = ParticleFilter.ParticleFilter(ctrvModel, numParticles=20)
+        self.filter.initParticles(particleMean, particleCov)
         self.sensorTimeLast = rospy.Time.now()
         self.publishTimeLast = rospy.Time.now()
         self.lastOdom = see_ego_motion_interface() #for visualization hack
