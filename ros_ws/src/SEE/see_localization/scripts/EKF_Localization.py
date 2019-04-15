@@ -6,6 +6,12 @@ from see_ego_motion.msg import see_ego_motion_interface
 from see_localization.msg import vehicle_pose_msg
 
 
+state = None #initial state subject to change, haven't figure out how to get this one
+
+cov = np.array([[1,0,0],[0,1,0],[0,0,1.5]])
+
+
+
 def motionModel(pre_state,v,w,time):
 	_theta = pre_state[2,0]
 	_delta_x = -v/w * np.sin(_theta) + v/w * np.sin(_theta + (w * time))
@@ -18,7 +24,7 @@ def motionModel(pre_state,v,w,time):
 def Jacobian(stateVector,v,w,time):
 	_theta = stateVector[2,0]
 	_Jacobian = np.array([[1,0,-v/w * np.cos(_theta) + v/w * np.cos(_theta + (w * time))],
-						  [0,1,-v/w + np.sin(_theta) + v/w + np.sin(_theta + (w * time))],
+						  [0,1,-v/w * np.sin(_theta) + v/w * np.sin(_theta + (w * time))],
 						  [0,0,1]])
 	return _Jacobian
 
@@ -28,7 +34,7 @@ def EKF(pre_state,pre_cov,v,w,time,delta_state):
 	F = Jacobian(pre_state,v,w,time)
 	new_cov = np.dot(F,pre_cov).dot(F.T) + np.eye(3)
 
-	Q = np.eye(3)
+	Q = np.eye(3) #Subject to change
 
 	jH = np.eye(3)
 
@@ -61,37 +67,48 @@ def callback(see_ego_motion_interface):
 
 	delta_t = see_ego_motion_interface.delta_time
 
+	delta_t = delta_t.to_sec()
+
 	v = np.sqrt(v_tan ** 2 + v_nor ** 2)
 
-	state = np.array([[0],
-					  [0],
-					  [0]]) #initial state subject to change, haven't figure out how to get this one
-	cov = np.array([1,0,0],
-				   [0,1,0],
-				   [0,0,1])
+	global state
+	global cov
+
+	if(state == None): # might have a better way to set initial value
+		state = np.array([[x_global],[y_global],[theta_global]])
+		rospy.loginfo("Set initial position at:[%s,%s,%s]",state[0,0],state[1,0],state[2,0])
+		return
+
+	else:
+
+		rospy.loginfo("----------------------------------------------")
+		rospy.loginfo("state before:[%s,%s,%s]",state[0,0],state[1,0],state[2,0])
+
+		delta_state = np.array([[x_global],
+								[y_global],
+								[theta_global]])
+		rospy.loginfo("receving :[%s,%s,%s]",delta_state[0,0],delta_state[1,0],delta_state[2,0])
 
 
-	delta_state = np.array([[x_global],
-							[y_global],
-							[theta_global]])
+		state, cov = EKF(state,cov,v,w,delta_t,delta_state)
 
-	state, cov = EKF(state,cov,v,w,delta_t,delta_state)
+		rospy.loginfo("state after:[%s,%s,%s]",state[0,0],state[1,0],state[2,0])
+		rospy.loginfo("----------------------------------------------")
 
-	rospy.loginfo("state:[]".format(state))
 
-	covMsg = [cov[0,0],cov[0,1],cov[0,2],cov[1,0],cov[1,1],cov[1,2],cov[2,0],cov[2,1],cov[2,2]]
+		covMsg = [cov[0,0],cov[0,1],cov[0,2],cov[1,0],cov[1,1],cov[1,2],cov[2,0],cov[2,1],cov[2,2]]
 
-	pub = ros.py.Publisher("/see_localization/Vehicle_pose", vehicle_pose_msg)
-	msg = vehicle_pose_msg
-	msg.x_global = state[0,0]
-	msg.y_global = state[1,0]
-	msg.theta_global = state[2,0]
-	msg.corvariance = covMsg
-	pub.publish(msg)
+		pub = rospy.Publisher("/see_localization/Vehicle_pose", vehicle_pose_msg,queue_size=10)
+		msg = vehicle_pose_msg()
+		msg.x_global = state[0,0]
+		msg.y_global = state[1,0]
+		msg.theta_global = state[2,0]
+		msg.corvariance = covMsg
+		pub.publish(msg)
 
 
 
-	return
+		return
 
 
 def main():
@@ -104,7 +121,7 @@ def main():
 	ts = message_filters.TimeSynchronizer([dynamics_sub,delta_sub,delta_t],10)
 	ts.registerCallback(callback)'''
 
-	rospy.Subscriber("/see_localization/OdomSubscriber", see_ego_motion_interface,callback)
+	rospy.Subscriber("/see_ego_motion_interface/EKF", see_ego_motion_interface,callback)
 
 	rospy.spin()
 
