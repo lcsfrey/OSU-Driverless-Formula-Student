@@ -42,7 +42,7 @@ Note for **each** of these following steps below:
 1. Run ouster ROS node:
 **Open a new terminal**
 ```
-cd ros_ws/src/SEE/see_lidar_ouster_driver/ouster_ros
+cd ros_ws/src/see_lidar_ouster_driver/ouster_ros
 roslaunch ouster_ros os1.launch replay:=true os1_hostname:=localhost
 ```
 
@@ -57,15 +57,15 @@ For a good `.bag` file, we suggest `2019-01-26-16-19-02.bag`
 3. Run our ROS node
 **Open a new terminal**
 ```
-cd ros_ws/src/SEE/see_lidar_processing
+cd ros_ws/src/see_lidar_processing
 roslaunch see_lidar_processing see_lidar_processing.launch | tee log.txt
 ```
-Output on your screen is also written in `log.txt` at the `ros_ws/src/SEE/see_lidar_processing` directory
+Output on your screen is also written in `log.txt` at the `ros_ws/src/see_lidar_processing` directory
 
 4. Visualization
 **Open a new terminal**
 ```
-cd ros_ws/src/SEE/see_lidar_ouster_driver/ouster_ros
+cd ros_ws/src/see_lidar_ouster_driver/ouster_ros
 rviz -d ./viz.rviz
 ```
 
