@@ -1,0 +1,4 @@
+Coordinates coordinates
+CovarianceMatrix covariance_matrix
+ConeColor[] cone_colors
+float32 cone_probability
