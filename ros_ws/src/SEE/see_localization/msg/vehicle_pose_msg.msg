@@ -1,0 +1,3 @@
+float32 x_global
+float32 y_global
+float32 theta_global

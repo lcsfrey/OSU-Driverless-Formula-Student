@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>msg</name>
+  <version>0.1.0</version>
+  <description>GFR driverless see_localization</description>
+  <maintainer email="lukas.wippermann@global-formula-racing.com">Lukas Wippermann</maintainer>
+  <license>todo</license>
+  <author email="lukas.wippermann@global-formula-racing.com">Lukas Wippermann</author>
+  <buildtool_depend>catkin</buildtool_depend>
+  <depend>eigen</depend>
+  <depend>roscpp</depend>
+  <build_depend>message_generation</build_depend>
+
+  <build_depend>std_msgs</build_depend>
+  <exec_depend>message_runtime</exec_depend>
+  <exec_depend>std_msgs</exec_depend>
+  <!--run_depend>message_runtime</run_depend-->
+</package>

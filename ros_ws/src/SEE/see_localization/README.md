@@ -1,0 +1,44 @@
+## Prerequises We require:
+- Ubuntu 16.04 LTS
+- ROS Kinetic
+- Bash shell ROS Kinetic installation link:
+http://wiki.ros.org/kinetic/Installation/Ubuntu
+
+We strongly reccommend install the full version, which is ros-kinetic-desktop-full (please see the link above for more details) 
+
+## Compile 
+Make sure you are standing at top level directory of this project
+
+catkin_make
+
+This command will generate build and devel at the top level directory 
+
+## Setup environment 
+At these two lines into your ~/.bashrc
+
+source /opt/ros/kinetic/setup.bash
+source <absolute path to the top level directory of this project>/ros_ws/devel/setup.bash
+
+Execute source ~/.bashrc for the current terminal. After later newly opened terminal, you don't have to do this.
+
+## How to Run SLAM
+
+Running SLAM:
+-Run “roscore” in a terminal. This will be running the entire time.
+-In new terminal in base workspace: catkin_make
+-To start the SLAM node: rosrun see_localization see_localization
+
+This is how it will be running on the actual car. We will use sample data and a visualizer to show that it is working right now.
+
+Running visualiser:
+-In new terminal in base workspace, run: rosmake rviz
+-to start rviz node: rosrun rviz rviz
+-In the rviz program, in the menu on the left, change the value of fixed frame to “slam”
+-Also on the left menu, at the bottom click “add”. Go to the “by topic” tab. These are all messages that can be visualized. I recommend adding all the topics under see_localization. Saving these changes in rviz will save you the time of adding them again.
+
+Running sample data node:
+-To start sample data node in new terminal: rosrun see_localization sample_data
+-If all nodes are running, you should be able to see markers being added to rviz.
+-To kill nodes it may be necessary to use: killall see_localization sample_data
+
+At this point a track and car location should appear in rviz. This is the information that will be sent to trajectory planning.

@@ -1,0 +1,3 @@
+<launch>
+  <node pkg="see_localization" type="see_localization" name="see_localization" output="screen"></node>
+</launch>
