@@ -1,0 +1,5 @@
+# vscode compatibility
+*.vscode
+
+#python compiled files
+*.pyc
