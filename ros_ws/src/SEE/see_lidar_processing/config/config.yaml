@@ -1,0 +1,58 @@
+# Config file for lidar processing.
+# If you dont know, what to to here, don't edit.
+# if a value is declared as [double], is must contain a dot
+# e.g.: 2.3 is a double, 1 is not a double
+test: "Test"
+lidar:
+    # variables which belong to the lidar, as positioning, pitch, noise_rate
+    # x_offset: [double] the x offset of the lidar regarding the standardized coordinate system (with camera & SLAM) in meter
+    # y_offset: [double] the y offset of the lidar regarding the standardized coordinate system (with camera & SLAM) in meter
+    # pitch: [double] the angle, how much the lidar is pitched (front to top is positiv) at mounting
+    # roll: [double] the angle, how much the lidar is rolled (counterclockwise is positive, look in the same direction like the car) at mounting
+    # yaw: [double] the angle, how much the lidar is yawed (counterclockwise is positive, look in the same direction like the car) at mounting
+    # the pitch, roll and yaw angles are processed according to DIN ISO 8855 (back transformation sequence: roll --> pitch --> yaw). This is important for Cloud transformation and maybe when adjusting the lidar
+    # needs work...
+    x_offset: 0.0
+    y_offset: 0.0
+    pitch: 0.0
+    roll: 0.0
+    yaw: 0.0
+    # find a solution, how to "control" the position of the lidar to trim the field of view
+    # (this depends if the lidar is mounted in the very front or near the camera)
+    # experimental
+    view_angle: 160.0
+    not_usable_view_distance: 1.0
+    # TODO: add LiDAR properties (horizontal angle, vertical angle, noise rate)
+prefilter:
+    # variables fpr Prefilter/RANSAC-algorithm
+    # ground_threshold: [double] the threshold, how many points over the ground are deleted (regarding the distance)
+    # area_size: [double] the size in square_meters, how big one are is (one RANSAC for one area)
+    # needs work...
+    ground_threshold: 0.3
+    area_size: 5.0
+    # multithreading: [boolean] defines, if the nodes can run callback from multiple threads
+    multithreading: true
+
+clusterer:
+    # variables for Clusterer/DBSCAN-algorithm
+    # eps: [double] determine the maximum distance (in meter) between two points to belong to the same cluster
+    # minPts: [unsigned int] the minimum amount of Points to get a valid cluster
+    minPts: 3
+    eps: 0.2
+    # multithreading: [boolean] defines, if the nodes can run callback from multiple threads
+    multithreading: true
+detector:
+    # variables for Detector/Cone identification
+    # maybe a dedicated map for Cones is better. This defines the height of the cones, ...
+    # needs work...
+    small_cone_height: 0.325
+    small_cone_width: 0.228
+    small_cone_depth: 0.228
+    big_cone_height: 0.505
+    big_cone_width: 0.285
+    big_cone_depth: 0.285
+    cone_threshold: 0.0
+    # multithreading: [boolean] defines, if the nodes can run callback from multiple threads
+    multithreading: true
+    # define if pcl algorithms should be used (or use the "manual" code)
+    use_pcl: true
