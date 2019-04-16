@@ -1,0 +1,7 @@
+opencv-python
+matplotlib
+tensorboardX
+torchvision
+pyyaml
+cython
+pycocotools

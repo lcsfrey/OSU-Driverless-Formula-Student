@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<launch>
+
+  	<node name="image_view" pkg="image_view" type="image_view" respawn="false" output="screen">
+        <remap from="image" to="/cone_detector/debug" />
+    </node>
+    
+    <node name="see_camera_processing" pkg="see_camera_processing" type="detector.py" respawn="false" output="screen"
+        args="--cfg ./src/see_camera_processing/model_weights/configs/faster_rcnn_R-50-FPN_conv4_scale-256_freeze-3.yaml 
+              --wts ./src/see_camera_processing/model_weights/faster_rcnn_R-50-FPN_conv4_scale-256_freeze-3/generalized_rcnn/model_final.pkl "/>
+
+</launch>

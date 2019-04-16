@@ -1,0 +1,1480 @@
+/home/gfr_admin/lucas/ssds.pytorch/lib/utils/config_parse.py:274: YAMLLoadWarning: calling yaml.load() without Loader=... is deprecated, as the default Loader is unsafe. Please read https://msg.pyyaml.org/load for full details.
+  yaml_cfg = AttrDict(yaml.load(f))
+/home/gfr_admin/lucas/ssds.pytorch/lib/ssds_validation.py:42: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  self.priors = torch.tensor(self.priorbox.forward())
+===> Loading data
+loading annotations into memory...
+Done (t=0.04s)
+creating index...
+index created!
+loading annotations into memory...
+Done (t=0.09s)
+creating index...
+index created!
+loading annotations into memory...
+Done (t=0.04s)
+creating index...
+index created!
+===> Building model
+==>Feature map size:
+[(38, 38), (19, 19), (10, 10), (5, 5), (3, 3), (1, 1)]
+Utilize GPUs for computation
+Number of GPU available 1
+Model architectures:
+RFB(
+  (base): ModuleList(
+    (0): Conv2d(3, 64, kernel_size=(7, 7), stride=(2, 2), padding=(3, 3), bias=False)
+    (1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (2): ReLU(inplace)
+    (3): MaxPool2d(kernel_size=3, stride=2, padding=1, dilation=1, ceil_mode=False)
+    (4): _bottleneck(
+      (conv1): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv3): Conv2d(64, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (bn3): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace)
+      (downsample): Sequential(
+        (0): Conv2d(64, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (5): _bottleneck(
+      (conv1): Conv2d(256, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv3): Conv2d(64, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (bn3): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace)
+    )
+    (6): _bottleneck(
+      (conv1): Conv2d(256, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv3): Conv2d(64, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (bn3): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace)
+    )
+    (7): _bottleneck(
+      (conv1): Conv2d(256, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv3): Conv2d(128, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (bn3): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace)
+      (downsample): Sequential(
+        (0): Conv2d(256, 512, kernel_size=(1, 1), stride=(2, 2), bias=False)
+        (1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (8): _bottleneck(
+      (conv1): Conv2d(512, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv3): Conv2d(128, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (bn3): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace)
+    )
+    (9): _bottleneck(
+      (conv1): Conv2d(512, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv3): Conv2d(128, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (bn3): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace)
+    )
+    (10): _bottleneck(
+      (conv1): Conv2d(512, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv3): Conv2d(128, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (bn3): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace)
+    )
+    (11): _bottleneck(
+      (conv1): Conv2d(512, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv3): Conv2d(256, 1024, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (bn3): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace)
+      (downsample): Sequential(
+        (0): Conv2d(512, 1024, kernel_size=(1, 1), stride=(2, 2), bias=False)
+        (1): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (12): _bottleneck(
+      (conv1): Conv2d(1024, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv3): Conv2d(256, 1024, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (bn3): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace)
+    )
+    (13): _bottleneck(
+      (conv1): Conv2d(1024, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv3): Conv2d(256, 1024, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (bn3): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace)
+    )
+    (14): _bottleneck(
+      (conv1): Conv2d(1024, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv3): Conv2d(256, 1024, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (bn3): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace)
+    )
+    (15): _bottleneck(
+      (conv1): Conv2d(1024, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv3): Conv2d(256, 1024, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (bn3): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace)
+    )
+    (16): _bottleneck(
+      (conv1): Conv2d(1024, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv3): Conv2d(256, 1024, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (bn3): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace)
+    )
+  )
+  (norm): ModuleList(
+    (0): BasicRFB_a(
+      (branch0): Sequential(
+        (0): BasicConv(
+          (conv): Conv2d(512, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (bn): BatchNorm2d(128, eps=1e-05, momentum=0.01, affine=True, track_running_stats=True)
+          (relu): ReLU(inplace)
+        )
+        (1): BasicConv(
+          (conv): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (bn): BatchNorm2d(128, eps=1e-05, momentum=0.01, affine=True, track_running_stats=True)
+        )
+      )
+      (branch1): Sequential(
+        (0): BasicConv(
+          (conv): Conv2d(512, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (bn): BatchNorm2d(128, eps=1e-05, momentum=0.01, affine=True, track_running_stats=True)
+          (relu): ReLU(inplace)
+        )
+        (1): BasicConv(
+          (conv): Conv2d(128, 128, kernel_size=(3, 1), stride=(1, 1), padding=(1, 0), bias=False)
+          (bn): BatchNorm2d(128, eps=1e-05, momentum=0.01, affine=True, track_running_stats=True)
+          (relu): ReLU(inplace)
+        )
+        (2): BasicConv(
+          (conv): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(3, 3), dilation=(3, 3), bias=False)
+          (bn): BatchNorm2d(128, eps=1e-05, momentum=0.01, affine=True, track_running_stats=True)
+        )
+      )
+      (branch2): Sequential(
+        (0): BasicConv(
+          (conv): Conv2d(512, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (bn): BatchNorm2d(128, eps=1e-05, momentum=0.01, affine=True, track_running_stats=True)
+          (relu): ReLU(inplace)
+        )
+        (1): BasicConv(
+          (conv): Conv2d(128, 128, kernel_size=(1, 3), stride=(1, 1), padding=(0, 1), bias=False)
+          (bn): BatchNorm2d(128, eps=1e-05, momentum=0.01, affine=True, track_running_stats=True)
+          (relu): ReLU(inplace)
+        )
+        (2): BasicConv(
+          (conv): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(3, 3), dilation=(3, 3), bias=False)
+          (bn): BatchNorm2d(128, eps=1e-05, momentum=0.01, affine=True, track_running_stats=True)
+        )
+      )
+      (branch3): Sequential(
+        (0): BasicConv(
+          (conv): Conv2d(512, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (bn): BatchNorm2d(64, eps=1e-05, momentum=0.01, affine=True, track_running_stats=True)
+          (relu): ReLU(inplace)
+        )
+        (1): BasicConv(
+          (conv): Conv2d(64, 96, kernel_size=(1, 3), stride=(1, 1), padding=(0, 1), bias=False)
+          (bn): BatchNorm2d(96, eps=1e-05, momentum=0.01, affine=True, track_running_stats=True)
+          (relu): ReLU(inplace)
+        )
+        (2): BasicConv(
+          (conv): Conv2d(96, 128, kernel_size=(3, 1), stride=(1, 1), padding=(1, 0), bias=False)
+          (bn): BatchNorm2d(128, eps=1e-05, momentum=0.01, affine=True, track_running_stats=True)
+          (relu): ReLU(inplace)
+        )
+        (3): BasicConv(
+          (conv): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(5, 5), dilation=(5, 5), bias=False)
+          (bn): BatchNorm2d(128, eps=1e-05, momentum=0.01, affine=True, track_running_stats=True)
+        )
+      )
+      (ConvLinear): BasicConv(
+        (conv): Conv2d(512, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn): BatchNorm2d(512, eps=1e-05, momentum=0.01, affine=True, track_running_stats=True)
+      )
+      (shortcut): BasicConv(
+        (conv): Conv2d(512, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn): BatchNorm2d(512, eps=1e-05, momentum=0.01, affine=True, track_running_stats=True)
+      )
+      (relu): ReLU()
+    )
+    (1): BasicRFB(
+      (branch0): Sequential(
+        (0): BasicConv(
+          (conv): Conv2d(1024, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (bn): BatchNorm2d(128, eps=1e-05, momentum=0.01, affine=True, track_running_stats=True)
+          (relu): ReLU(inplace)
+        )
+        (1): BasicConv(
+          (conv): Conv2d(128, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (bn): BatchNorm2d(256, eps=1e-05, momentum=0.01, affine=True, track_running_stats=True)
+          (relu): ReLU(inplace)
+        )
+        (2): BasicConv(
+          (conv): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(3, 3), dilation=(3, 3), bias=False)
+          (bn): BatchNorm2d(256, eps=1e-05, momentum=0.01, affine=True, track_running_stats=True)
+        )
+      )
+      (branch1): Sequential(
+        (0): BasicConv(
+          (conv): Conv2d(1024, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (bn): BatchNorm2d(128, eps=1e-05, momentum=0.01, affine=True, track_running_stats=True)
+          (relu): ReLU(inplace)
+        )
+        (1): BasicConv(
+          (conv): Conv2d(128, 192, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (bn): BatchNorm2d(192, eps=1e-05, momentum=0.01, affine=True, track_running_stats=True)
+          (relu): ReLU(inplace)
+        )
+        (2): BasicConv(
+          (conv): Conv2d(192, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (bn): BatchNorm2d(256, eps=1e-05, momentum=0.01, affine=True, track_running_stats=True)
+          (relu): ReLU(inplace)
+        )
+        (3): BasicConv(
+          (conv): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(5, 5), dilation=(5, 5), bias=False)
+          (bn): BatchNorm2d(256, eps=1e-05, momentum=0.01, affine=True, track_running_stats=True)
+        )
+      )
+      (ConvLinear): BasicConv(
+        (conv): Conv2d(512, 1024, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn): BatchNorm2d(1024, eps=1e-05, momentum=0.01, affine=True, track_running_stats=True)
+      )
+      (shortcut): BasicConv(
+        (conv): Conv2d(1024, 1024, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn): BatchNorm2d(1024, eps=1e-05, momentum=0.01, affine=True, track_running_stats=True)
+      )
+      (relu): ReLU()
+    )
+  )
+  (extras): ModuleList(
+    (0): BasicRFB(
+      (branch0): Sequential(
+        (0): BasicConv(
+          (conv): Conv2d(1024, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (bn): BatchNorm2d(128, eps=1e-05, momentum=0.01, affine=True, track_running_stats=True)
+          (relu): ReLU(inplace)
+        )
+        (1): BasicConv(
+          (conv): Conv2d(128, 256, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+          (bn): BatchNorm2d(256, eps=1e-05, momentum=0.01, affine=True, track_running_stats=True)
+          (relu): ReLU(inplace)
+        )
+        (2): BasicConv(
+          (conv): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(3, 3), dilation=(3, 3), bias=False)
+          (bn): BatchNorm2d(256, eps=1e-05, momentum=0.01, affine=True, track_running_stats=True)
+        )
+      )
+      (branch1): Sequential(
+        (0): BasicConv(
+          (conv): Conv2d(1024, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (bn): BatchNorm2d(128, eps=1e-05, momentum=0.01, affine=True, track_running_stats=True)
+          (relu): ReLU(inplace)
+        )
+        (1): BasicConv(
+          (conv): Conv2d(128, 192, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (bn): BatchNorm2d(192, eps=1e-05, momentum=0.01, affine=True, track_running_stats=True)
+          (relu): ReLU(inplace)
+        )
+        (2): BasicConv(
+          (conv): Conv2d(192, 256, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+          (bn): BatchNorm2d(256, eps=1e-05, momentum=0.01, affine=True, track_running_stats=True)
+          (relu): ReLU(inplace)
+        )
+        (3): BasicConv(
+          (conv): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(5, 5), dilation=(5, 5), bias=False)
+          (bn): BatchNorm2d(256, eps=1e-05, momentum=0.01, affine=True, track_running_stats=True)
+        )
+      )
+      (ConvLinear): BasicConv(
+        (conv): Conv2d(512, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn): BatchNorm2d(512, eps=1e-05, momentum=0.01, affine=True, track_running_stats=True)
+      )
+      (shortcut): BasicConv(
+        (conv): Conv2d(1024, 512, kernel_size=(1, 1), stride=(2, 2), bias=False)
+        (bn): BatchNorm2d(512, eps=1e-05, momentum=0.01, affine=True, track_running_stats=True)
+      )
+      (relu): ReLU()
+    )
+    (1): BasicRFB(
+      (branch0): Sequential(
+        (0): BasicConv(
+          (conv): Conv2d(512, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (bn): BatchNorm2d(64, eps=1e-05, momentum=0.01, affine=True, track_running_stats=True)
+          (relu): ReLU(inplace)
+        )
+        (1): BasicConv(
+          (conv): Conv2d(64, 128, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+          (bn): BatchNorm2d(128, eps=1e-05, momentum=0.01, affine=True, track_running_stats=True)
+          (relu): ReLU(inplace)
+        )
+        (2): BasicConv(
+          (conv): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(3, 3), dilation=(3, 3), bias=False)
+          (bn): BatchNorm2d(128, eps=1e-05, momentum=0.01, affine=True, track_running_stats=True)
+        )
+      )
+      (branch1): Sequential(
+        (0): BasicConv(
+          (conv): Conv2d(512, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (bn): BatchNorm2d(64, eps=1e-05, momentum=0.01, affine=True, track_running_stats=True)
+          (relu): ReLU(inplace)
+        )
+        (1): BasicConv(
+          (conv): Conv2d(64, 96, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (bn): BatchNorm2d(96, eps=1e-05, momentum=0.01, affine=True, track_running_stats=True)
+          (relu): ReLU(inplace)
+        )
+        (2): BasicConv(
+          (conv): Conv2d(96, 128, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+          (bn): BatchNorm2d(128, eps=1e-05, momentum=0.01, affine=True, track_running_stats=True)
+          (relu): ReLU(inplace)
+        )
+        (3): BasicConv(
+          (conv): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(5, 5), dilation=(5, 5), bias=False)
+          (bn): BatchNorm2d(128, eps=1e-05, momentum=0.01, affine=True, track_running_stats=True)
+        )
+      )
+      (ConvLinear): BasicConv(
+        (conv): Conv2d(256, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn): BatchNorm2d(256, eps=1e-05, momentum=0.01, affine=True, track_running_stats=True)
+      )
+      (shortcut): BasicConv(
+        (conv): Conv2d(512, 256, kernel_size=(1, 1), stride=(2, 2), bias=False)
+        (bn): BatchNorm2d(256, eps=1e-05, momentum=0.01, affine=True, track_running_stats=True)
+      )
+      (relu): ReLU()
+    )
+    (2): BasicConv(
+      (conv): Conv2d(256, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (bn): BatchNorm2d(128, eps=1e-05, momentum=0.01, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace)
+    )
+    (3): BasicConv(
+      (conv): Conv2d(128, 256, kernel_size=(3, 3), stride=(1, 1), bias=False)
+      (bn): BatchNorm2d(256, eps=1e-05, momentum=0.01, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace)
+    )
+    (4): BasicConv(
+      (conv): Conv2d(256, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (bn): BatchNorm2d(128, eps=1e-05, momentum=0.01, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace)
+    )
+    (5): BasicConv(
+      (conv): Conv2d(128, 256, kernel_size=(3, 3), stride=(1, 1), bias=False/home/gfr_admin/lucas/ssds.pytorch/lib/ssds_validation.py:185: UserWarning: nn.init.kaiming_normal is now deprecated in favor of nn.init.kaiming_normal_.
+  init.kaiming_normal(m.state_dict()[key], mode='fan_out')
+)
+      (bn): BatchNorm2d(256, eps=1e-05, momentum=0.01, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace)
+    )
+  )
+  (loc): ModuleList(
+    (0): Conv2d(512, 24, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (1): Conv2d(1024, 24, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (2): Conv2d(512, 24, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (3): Conv2d(256, 24, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (4): Conv2d(256, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (5): Conv2d(256, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+  )
+  (conf): ModuleList(
+    (0): Conv2d(512, 24, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (1): Conv2d(1024, 24, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (2): Conv2d(512, 24, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (3): Conv2d(256, 24, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (4): Conv2d(256, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (5): Conv2d(256, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+  )
+  (softmax): Softmax()
+)
+
+Trainable scope: base,norm,extras,loc,conf
+Loading initial model weights from ./experiments/models/rfb_resnet50_cones/rfb_resnet_50_cones_epoch_150.pth
+=> no checkpoint found at './experiments/models/rfb_resnet50_cones/rfb_resnet_50_cones_epoch_150.pth'
+[0. 0. 0.]
+FOLD 0
+===> Loading data
+loading annotations into memory...
+Done (t=0.10s)
+creating index...
+index created!
+loading annotations into memory...
+Done (t=0.04s)
+creating index...
+index created!
+Using  [['cones_all', 'cones-2']] as validation set
+=> loading checkpoint './experiments/models/rfb_resnet50_cones/rfb_resnet_50_cones_epoch_10.pth'
+Epoch 11/500:
+/home/gfr_admin/anaconda2/envs/DV/lib/python2.7/site-packages/torch/nn/_reduction.py:49: UserWarning: size_average and reduce args will be deprecated, please use reduction='sum' instead.
+  warnings.warn(warning.format(ret))
+==>Train: || Total_time: 14.728s || loc_loss: 3.9635 conf_loss: 1.0123 || lr: 0.001000
+Epoch 12/500:
+==>Train: || Total_time: 3.329s || loc_loss: 3.7247 conf_loss: 1.0354 || lr: 0.001000
+Epoch 13/500:
+==>Train: || Total_time: 3.314s || loc_loss: 3.5836 conf_loss: 1.0341 || lr: 0.001000
+Epoch 14/500:
+==>Train: || Total_time: 3.323s || loc_loss: 3.5345 conf_loss: 1.0975 || lr: 0.001000
+Epoch 15/500:
+==>Train: || Total_time: 3.326s || loc_loss: 3.6160 conf_loss: 0.7573 || lr: 0.001000
+Epoch 16/500:
+==>Train: || Total_time: 3.319s || loc_loss: 3.5754 conf_loss: 0.7347 || lr: 0.001000
+Epoch 17/500:
+==>Train: || Total_time: 3.322s || loc_loss: 3.2574 conf_loss: 0.5162 || lr: 0.001000
+Epoch 18/500:
+==>Train: || Total_time: 3.306s || loc_loss: 3.0681 conf_loss: 0.5020 || lr: 0.001000
+Epoch 19/500:
+==>Train: || Total_time: 3.295s || loc_loss: 3.1895 conf_loss: 1.4371 || lr: 0.001000
+Epoch 20/500:
+==>Train: || Total_time: 3.316s || loc_loss: 3.1472 conf_loss: 0.6008 || lr: 0.001000
+Wrote snapshot to: ./experiments/models/rfb_resnet50_cones/rfb_resnet_50_cones_epoch_20.pth
+Epoch 21/500:
+==>Train: || Total_time: 3.302s || loc_loss: 3.2975 conf_loss: 0.5545 || lr: 0.001000
+Epoch 22/500:
+==>Train: || Total_time: 3.280s || loc_loss: 3.2664 conf_loss: 0.5297 || lr: 0.001000
+Epoch 23/500:
+==>Train: || Total_time: 3.267s || loc_loss: 3.2824 conf_loss: 0.4628 || lr: 0.001000
+Epoch 24/500:
+==>Train: || Total_time: 3.291s || loc_loss: 2.9123 conf_loss: 0.4582 || lr: 0.001000
+Epoch 25/500:
+==>Train: || Total_time: 3.319s || loc_loss: 2.8793 conf_loss: 0.4278 || lr: 0.001000
+Epoch 26/500:
+==>Train: || Total_time: 3.274s || loc_loss: 2.8641 conf_loss: 0.3804 || lr: 0.001000
+Epoch 27/500:
+==>Train: || Total_time: 3.306s || loc_loss: 2.9296 conf_loss: 0.4049 || lr: 0.001000
+Epoch 28/500:
+==>Train: || Total_time: 3.312s || loc_loss: 2.8696 conf_loss: 0.3951 || lr: 0.001000
+Epoch 29/500:
+==>Train: || Total_time: 3.357s || loc_loss: 2.9627 conf_loss: 0.3278 || lr: 0.001000
+Epoch 30/500:
+==>Train: || Total_time: 3.306s || loc_loss: 2.8572 conf_loss: 0.3548 || lr: 0.001000
+Wrote snapshot to: ./experiments/models/rfb_resnet50_cones/rfb_resnet_50_cones_epoch_30.pth
+Epoch 31/500:
+==>Train: || Total_time: 3.296s || loc_loss: 2.8382 conf_loss: 0.3533 || lr: 0.001000
+Epoch 32/500:
+==>Train: || Total_time: 3.301s || loc_loss: 2.8067 conf_loss: 0.3588 || lr: 0.001000
+Epoch 33/500:
+==>Train: || Total_time: 3.326s || loc_loss: 2.7327 conf_loss: 0.3416 || lr: 0.001000
+Epoch 34/500:
+==>Train: || Total_time: 3.327s || loc_loss: 2.8244 conf_loss: 0.3837 || lr: 0.001000
+Epoch 35/500:
+==>Train: || Total_time: 3.316s || loc_loss: 2.6980 conf_loss: 0.3037 || lr: 0.001000
+Epoch 36/500:
+==>Train: || Total_time: 3.350s || loc_loss: 2.6197 conf_loss: 0.3373 || lr: 0.001000
+Epoch 37/500:
+==>Train: || Total_time: 3.326s || loc_loss: 2.7185 conf_loss: 0.4176 || lr: 0.000999
+Epoch 38/500:
+==>Train: || Total_time: 3.358s || loc_loss: 2.5088 conf_loss: 0.2956 || lr: 0.000999
+Epoch 39/500:
+==>Train: || Total_time: 3.316s || loc_loss: 2.7504 conf_loss: 0.4151 || lr: 0.000999
+Epoch 40/500:
+==>Train: || Total_time: 3.314s || loc_loss: 2.5489 conf_loss: 0.2849 || lr: 0.000999
+Wrote snapshot to: ./experiments/models/rfb_resnet50_cones/rfb_resnet_50_cones_epoch_40.pth
+Epoch 41/500:
+==>Train: || Total_time: 3.324s || loc_loss: 2.5680 conf_loss: 0.2755 || lr: 0.000999
+Epoch 42/500:
+==>Train: || Total_time: 3.324s || loc_loss: 2.7044 conf_loss: 0.3085 || lr: 0.000998
+Epoch 43/500:
+==>Train: || Total_time: 3.319s || loc_loss: 2.5043 conf_loss: 0.2555 || lr: 0.000998
+Epoch 44/500:
+==>Train: || Total_time: 3.300s || loc_loss: 2.4628 conf_loss: 0.7998 || lr: 0.000998
+Epoch 45/500:
+==>Train: || Total_time: 3.341s || loc_loss: 2.5139 conf_loss: 0.2986 || lr: 0.000997
+Epoch 46/500:
+==>Train: || Total_time: 3.320s || loc_loss: 2.7156 conf_loss: 0.2798 || lr: 0.000997
+Epoch 47/500:
+==>Train: || Total_time: 3.314s || loc_loss: 2.4386 conf_loss: 0.2717 || lr: 0.000997
+Epoch 48/500:
+==>Train: || Total_time: 3.311s || loc_loss: 2.4551 conf_loss: 0.3117 || lr: 0.000996
+Epoch 49/500:
+==>Train: || Total_time: 3.299s || loc_loss: 2.4476 conf_loss: 0.2557 || lr: 0.000996
+Epoch 50/500:
+==>Train: || Total_time: 3.319s || loc_loss: 2.4098 conf_loss: 0.2954 || lr: 0.000996
+Wrote snapshot to: ./experiments/models/rfb_resnet50_cones/rfb_resnet_50_cones_epoch_50.pth
+Epoch 51/500:
+==>Train: || Total_time: 3.310s || loc_loss: 2.3310 conf_loss: 0.2695 || lr: 0.000995
+Epoch 52/500:
+==>Train: || Total_time: 3.301s || loc_loss: 2.2999 conf_loss: 4.7843 || lr: 0.000995
+Epoch 53/500:
+==>Train: || Total_time: 3.310s || loc_loss: 2.7664 conf_loss: 1.6412 || lr: 0.000994
+Epoch 54/500:
+==>Train: || Total_time: 3.304s || loc_loss: 2.7410 conf_loss: 1.1746 || lr: 0.000994
+Epoch 55/500:
+==>Train: || Total_time: 3.304s || loc_loss: 2.6542 conf_loss: 0.4569 || lr: 0.000993
+Epoch 56/500:
+==>Train: || Total_time: 3.319s || loc_loss: 2.4586 conf_loss: 0.3419 || lr: 0.000992
+Epoch 57/500:
+==>Train: || Total_time: 3.322s || loc_loss: 2.4836 conf_loss: 3.6560 || lr: 0.000992
+Epoch 58/500:
+==>Train: || Total_time: 3.333s || loc_loss: 2.3902 conf_loss: 0.7913 || lr: 0.000991
+Epoch 59/500:
+==>Train: || Total_time: 3.336s || loc_loss: 2.5193 conf_loss: 0.9010 || lr: 0.000991
+Epoch 60/500:
+==>Train: || Total_time: 3.334s || loc_loss: 2.3389 conf_loss: 0.4916 || lr: 0.000990
+Wrote snapshot to: ./experiments/models/rfb_resnet50_cones/rfb_resnet_50_cones_epoch_60.pth
+Epoch 61/500:
+==>Train: || Total_time: 3.355s || loc_loss: 2.2156 conf_loss: 0.4149 || lr: 0.000989
+Epoch 62/500:
+==>Train: || Total_time: 3.330s || loc_loss: 2.2745 conf_loss: 0.3740 || lr: 0.000989
+Epoch 63/500:
+==>Train: || Total_time: 3.297s || loc_loss: 2.3382 conf_loss: 0.4156 || lr: 0.000988
+Epoch 64/500:
+==>Train: || Total_time: 3.322s || loc_loss: 2.2975 conf_loss: 0.3068 || lr: 0.000987
+Epoch 65/500:
+==>Train: || Total_time: 3.319s || loc_loss: 2.2633 conf_loss: 0.3444 || lr: 0.000986
+Epoch 66/500:
+==>Train: || Total_time: 3.300s || loc_loss: 2.2908 conf_loss: 0.2692 || lr: 0.000986
+Epoch 67/500:
+==>Train: || Total_time: 3.302s || loc_loss: 2.2601 conf_loss: 0.3371 || lr: 0.000985
+Epoch 68/500:
+==>Train: || Total_time: 3.307s || loc_loss: 2.2085 conf_loss: 0.2758 || lr: 0.000984
+Epoch 69/500:
+==>Train: || Total_time: 3.305s || loc_loss: 2.2233 conf_loss: 0.7165 || lr: 0.000983
+Epoch 70/500:
+==>Train: || Total_time: 3.311s || loc_loss: 2.4114 conf_loss: 0.2732 || lr: 0.000982
+Wrote snapshot to: ./experiments/models/rfb_resnet50_cones/rfb_resnet_50_cones_epoch_70.pth
+Epoch 71/500:
+==>Train: || Total_time: 3.316s || loc_loss: 2.3676 conf_loss: 0.3914 || lr: 0.000981
+Epoch 72/500:
+==>Train: || Total_time: 3.316s || loc_loss: 2.2571 conf_loss: 0.3760 || lr: 0.000980
+Epoch 73/500:
+==>Train: || Total_time: 3.347s || loc_loss: 2.2474 conf_loss: 0.2504 || lr: 0.000979
+Epoch 74/500:
+==>Train: || Total_time: 3.309s || loc_loss: 2.1702 conf_loss: 0.2529 || lr: 0.000979
+Epoch 75/500:
+==>Train: || Total_time: 3.326s || loc_loss: 2.1277 conf_loss: 0.2710 || lr: 0.000978
+Epoch 76/500:
+==>Train: || Total_time: 3.300s || loc_loss: 2.1760 conf_loss: 0.2077 || lr: 0.000977
+Epoch 77/500:
+==>Train: || Total_time: 3.276s || loc_loss: 2.1270 conf_loss: 0.2180 || lr: 0.000976
+Epoch 78/500:
+==>Train: || Total_time: 3.282s || loc_loss: 2.1108 conf_loss: 0.2157 || lr: 0.000974
+Epoch 79/500:
+==>Train: || Total_time: 3.331s || loc_loss: 1.9987 conf_loss: 0.2300 || lr: 0.000973
+Epoch 80/500:
+==>Train: || Total_time: 3.312s || loc_loss: 2.1416 conf_loss: 0.2114 || lr: 0.000972
+Wrote snapshot to: ./experiments/models/rfb_resnet50_cones/rfb_resnet_50_cones_epoch_80.pth
+Epoch 81/500:
+==>Train: || Total_time: 3.297s || loc_loss: 2.1932 conf_loss: 0.2116 || lr: 0.000971
+Epoch 82/500:
+==>Train: || Total_time: 3.315s || loc_loss: 2.1239 conf_loss: 0.2102 || lr: 0.000970
+Epoch 83/500:
+==>Train: || Total_time: 3.331s || loc_loss: 2.2202 conf_loss: 0.2259 || lr: 0.000969
+Epoch 84/500:
+==>Train: || Total_time: 3.329s || loc_loss: 2.0804 conf_loss: 0.1820 || lr: 0.000968
+Epoch 85/500:
+==>Train: || Total_time: 3.298s || loc_loss: 2.0686 conf_loss: 0.1865 || lr: 0.000967
+Epoch 86/500:
+==>Train: || Total_time: 3.316s || loc_loss: 2.1252 conf_loss: 0.2269 || lr: 0.000965
+Epoch 87/500:
+==>Train: || Total_time: 3.318s || loc_loss: 2.1511 conf_loss: 0.2670 || lr: 0.000964
+Epoch 88/500:
+==>Train: || Total_time: 3.315s || loc_loss: 2.0479 conf_loss: 0.1869 || lr: 0.000963
+Epoch 89/500:
+==>Train: || Total_time: 3.323s || loc_loss: 2.0009 conf_loss: 0.1926 || lr: 0.000962
+Epoch 90/500:
+==>Train: || Total_time: 3.333s || loc_loss: 1.9669 conf_loss: 0.1725 || lr: 0.000960
+Wrote snapshot to: ./experiments/models/rfb_resnet50_cones/rfb_resnet_50_cones_epoch_90.pth
+Epoch 91/500:
+==>Train: || Total_time: 3.312s || loc_loss: 2.0588 conf_loss: 0.1685 || lr: 0.000959
+Epoch 92/500:
+==>Train: || Total_time: 3.324s || loc_loss: 1.9942 conf_loss: 0.2052 || lr: 0.000958
+Epoch 93/500:
+==>Train: || Total_time: 3.306s || loc_loss: 2.0098 conf_loss: 0.1677 || lr: 0.000956
+Epoch 94/500:
+==>Train: || Total_time: 3.307s || loc_loss: 2.0546 conf_loss: 0.2494 || lr: 0.000955
+Epoch 95/500:
+==>Train: || Total_time: 3.330s || loc_loss: 2.2303 conf_loss: 0.2683 || lr: 0.000954
+Epoch 96/500:
+==>Train: || Total_time: 3.315s || loc_loss: 2.0573 conf_loss: 0.2089 || lr: 0.000952
+Epoch 97/500:
+==>Train: || Total_time: 3.347s || loc_loss: 1.9963 conf_loss: 0.1827 || lr: 0.000951
+Epoch 98/500:
+==>Train: || Total_time: 3.294s || loc_loss: 1.8609 conf_loss: 0.1744 || lr: 0.000949
+Epoch 99/500:
+==>Train: || Total_time: 3.339s || loc_loss: 2.0093 conf_loss: 0.1850 || lr: 0.000948
+Epoch 100/500:
+==>Train: || Total_time: 3.322s || loc_loss: 2.0637 conf_loss: 0.1807 || lr: 0.000946
+Wrote snapshot to: ./experiments/models/rfb_resnet50_cones/rfb_resnet_50_cones_epoch_100.pth
+Epoch 101/500:
+==>Train: || Total_time: 3.340s || loc_loss: 1.9431 conf_loss: 0.1705 || lr: 0.000945
+Epoch 102/500:
+==>Train: || Total_time: 3.318s || loc_loss: 2.0145 conf_loss: 0.1941 || lr: 0.000943
+Epoch 103/500:
+==>Train: || Total_time: 3.343s || loc_loss: 1.9272 conf_loss: 0.1787 || lr: 0.000942
+Epoch 104/500:
+==>Train: || Total_time: 3.296s || loc_loss: 1.8889 conf_loss: 0.1743 || lr: 0.000940
+Epoch 105/500:
+==>Train: || Total_time: 3.318s || loc_loss: 1.9600 conf_loss: 0.1559 || lr: 0.000938
+Epoch 106/500:
+==>Train: || Total_time: 3.332s || loc_loss: 2.0096 conf_loss: 0.1870 || lr: 0.000937
+Epoch 107/500:
+==>Train: || Total_time: 3.327s || loc_loss: 2.0905 conf_loss: 0.1745 || lr: 0.000935
+Epoch 108/500:
+==>Train: || Total_time: 3.331s || loc_loss: 1.9578 conf_loss: 0.1792 || lr: 0.000934
+Epoch 109/500:
+==>Train: || Total_time: 3.331s || loc_loss: 1.9918 conf_loss: 0.1607 || lr: 0.000932
+Epoch 110/500:
+==>Train: || Total_time: 3.313s || loc_loss: 1.7695 conf_loss: 0.1741 || lr: 0.000930
+Wrote snapshot to: ./experiments/models/rfb_resnet50_cones/rfb_resnet_50_cones_epoch_110.pth
+Epoch 111/500:
+==>Train: || Total_time: 3.326s || loc_loss: 1.9614 conf_loss: 0.1716 || lr: 0.000928
+Epoch 112/500:
+==>Train: || Total_time: 3.316s || loc_loss: 1.7694 conf_loss: 0.1479 || lr: 0.000927
+Epoch 113/500:
+==>Train: || Total_time: 3.353s || loc_loss: 1.9326 conf_loss: 0.1745 || lr: 0.000925
+Epoch 114/500:
+==>Train: || Total_time: 3.305s || loc_loss: 2.0014 conf_loss: 0.1878 || lr: 0.000923
+Epoch 115/500:
+==>Train: || Total_time: 3.304s || loc_loss: 1.9109 conf_loss: 0.1834 || lr: 0.000921
+Epoch 116/500:
+==>Train: || Total_time: 3.319s || loc_loss: 1.7323 conf_loss: 0.1600 || lr: 0.000920
+Epoch 117/500:
+==>Train: || Total_time: 3.325s || loc_loss: 1.7849 conf_loss: 0.1644 || lr: 0.000918
+Epoch 118/500:
+==>Train: || Total_time: 3.310s || loc_loss: 1.7570 conf_loss: 0.1322 || lr: 0.000916
+Epoch 119/500:
+==>Train: || Total_time: 3.316s || loc_loss: 1.7382 conf_loss: 0.1532 || lr: 0.000914
+Epoch 120/500:
+==>Train: || Total_time: 3.296s || loc_loss: 1.7620 conf_loss: 0.1440 || lr: 0.000912
+Wrote snapshot to: ./experiments/models/rfb_resnet50_cones/rfb_resnet_50_cones_epoch_120.pth
+Epoch 121/500:
+==>Train: || Total_time: 3.304s || loc_loss: 1.7824 conf_loss: 0.1374 || lr: 0.000910
+Epoch 122/500:
+==>Train: || Total_time: 3.298s || loc_loss: 1.9193 conf_loss: 0.1978 || lr: 0.000908
+Epoch 123/500:
+==>Train: || Total_time: 3.303s || loc_loss: 1.8306 conf_loss: 0.1603 || lr: 0.000906
+Epoch 124/500:
+==>Train: || Total_time: 3.279s || loc_loss: 1.8246 conf_loss: 0.1330 || lr: 0.000905
+Epoch 125/500:
+==>Train: || Total_time: 3.285s || loc_loss: 1.9813 conf_loss: 0.1957 || lr: 0.000903
+Epoch 126/500:
+==>Train: || Total_time: 3.280s || loc_loss: 1.8256 conf_loss: 0.1426 || lr: 0.000901
+Epoch 127/500:
+==>Train: || Total_time: 3.287s || loc_loss: 1.9684 conf_loss: 0.1573 || lr: 0.000899
+Epoch 128/500:
+==>Train: || Total_time: 3.286s || loc_loss: 1.7831 conf_loss: 0.1757 || lr: 0.000897
+Epoch 129/500:
+==>Train: || Total_time: 3.316s || loc_loss: 1.8594 conf_loss: 0.1835 || lr: 0.000894
+Epoch 130/500:
+==>Train: || Total_time: 3.307s || loc_loss: 1.8204 conf_loss: 0.1568 || lr: 0.000892
+Wrote snapshot to: ./experiments/models/rfb_resnet50_cones/rfb_resnet_50_cones_epoch_130.pth
+Epoch 131/500:
+==>Train: || Total_time: 3.276s || loc_loss: 1.7327 conf_loss: 0.1305 || lr: 0.000890
+Epoch 132/500:
+==>Train: || Total_time: 3.291s || loc_loss: 1.6143 conf_loss: 0.1280 || lr: 0.000888
+Epoch 133/500:
+==>Train: || Total_time: 3.305s || loc_loss: 1.8139 conf_loss: 0.1403 || lr: 0.000886
+Epoch 134/500:
+==>Train: || Total_time: 3.346s || loc_loss: 1.7629 conf_loss: 0.1750 || lr: 0.000884
+Epoch 135/500:
+==>Train: || Total_time: 3.312s || loc_loss: 1.9175 conf_loss: 0.1310 || lr: 0.000882
+Epoch 136/500:
+==>Train: || Total_time: 3.319s || loc_loss: 1.7882 conf_loss: 0.1517 || lr: 0.000880
+Epoch 137/500:
+==>Train: || Total_time: 3.323s || loc_loss: 1.6568 conf_loss: 0.1270 || lr: 0.000877
+Epoch 138/500:
+==>Train: || Total_time: 3.295s || loc_loss: 1.7693 conf_loss: 0.1628 || lr: 0.000875
+Epoch 139/500:
+==>Train: || Total_time: 3.316s || loc_loss: 1.8479 conf_loss: 0.1337 || lr: 0.000873
+Epoch 140/500:
+==>Train: || Total_time: 3.324s || loc_loss: 1.8642 conf_loss: 0.1408 || lr: 0.000871
+Wrote snapshot to: ./experiments/models/rfb_resnet50_cones/rfb_resnet_50_cones_epoch_140.pth
+Epoch 141/500:
+==>Train: || Total_time: 3.327s || loc_loss: 1.7253 conf_loss: 0.1417 || lr: 0.000869
+Epoch 142/500:
+==>Train: || Total_time: 3.302s || loc_loss: 1.7849 conf_loss: 0.1272 || lr: 0.000866
+Epoch 143/500:
+==>Train: || Total_time: 3.320s || loc_loss: 1.7408 conf_loss: 0.1322 || lr: 0.000864
+Epoch 144/500:
+==>Train: || Total_time: 3.339s || loc_loss: 1.6372 conf_loss: 0.1394 || lr: 0.000862
+Epoch 145/500:
+==>Train: || Total_time: 3.320s || loc_loss: 1.6345 conf_loss: 0.1309 || lr: 0.000859
+Epoch 146/500:
+==>Train: || Total_time: 3.311s || loc_loss: 1.7753 conf_loss: 0.1333 || lr: 0.000857
+Epoch 147/500:
+==>Train: || Total_time: 3.327s || loc_loss: 1.7735 conf_loss: 0.1160 || lr: 0.000855
+Epoch 148/500:
+==>Train: || Total_time: 3.303s || loc_loss: 1.6409 conf_loss: 0.1455 || lr: 0.000852
+Epoch 149/500:
+==>Train: || Total_time: 3.324s || loc_loss: 1.7254 conf_loss: 0.1217 || lr: 0.000850
+Epoch 150/500:
+==>Train: || Total_time: 3.315s || loc_loss: 1.7044 conf_loss: 0.1931 || lr: 0.000848
+Wrote snapshot to: ./experiments/models/rfb_resnet50_cones/rfb_resnet_50_cones_epoch_150.pth
+Epoch 151/500:
+==>Train: || Total_time: 3.312s || loc_loss: 1.6566 conf_loss: 0.1211 || lr: 0.000845
+Epoch 152/500:
+==>Train: || Total_time: 3.326s || loc_loss: 1.6567 conf_loss: 0.1221 || lr: 0.000843
+Epoch 153/500:
+==>Train: || Total_time: 3.309s || loc_loss: 1.7933 conf_loss: 0.1354 || lr: 0.000840
+Epoch 154/500:
+==>Train: || Total_time: 3.325s || loc_loss: 1.6164 conf_loss: 0.1216 || lr: 0.000838
+Epoch 155/500:
+==>Train: || Total_time: 3.301s || loc_loss: 1.9511 conf_loss: 0.1309 || lr: 0.000835
+Epoch 156/500:
+==>Train: || Total_time: 3.305s || loc_loss: 1.6726 conf_loss: 0.1583 || lr: 0.000833
+Epoch 157/500:
+==>Train: || Total_time: 3.326s || loc_loss: 1.7446 conf_loss: 0.1299 || lr: 0.000830
+Epoch 158/500:
+==>Train: || Total_time: 3.321s || loc_loss: 1.8948 conf_loss: 0.1572 || lr: 0.000828
+Epoch 159/500:
+==>Train: || Total_time: 3.350s || loc_loss: 1.6964 conf_loss: 0.1534 || lr: 0.000825
+Epoch 160/500:
+==>Train: || Total_time: 3.314s || loc_loss: 1.6793 conf_loss: 0.1428 || lr: 0.000823
+Wrote snapshot to: ./experiments/models/rfb_resnet50_cones/rfb_resnet_50_cones_epoch_160.pth
+Epoch 161/500:
+==>Train: || Total_time: 3.318s || loc_loss: 1.8616 conf_loss: 0.1537 || lr: 0.000820
+Epoch 162/500:
+==>Train: || Total_time: 3.324s || loc_loss: 1.7974 conf_loss: 0.1309 || lr: 0.000818
+Epoch 163/500:
+==>Train: || Total_time: 3.311s || loc_loss: 1.6456 conf_loss: 0.1138 || lr: 0.000815
+Epoch 164/500:
+==>Train: || Total_time: 3.318s || loc_loss: 1.6418 conf_loss: 0.1144 || lr: 0.000812
+Epoch 165/500:
+==>Train: || Total_time: 3.323s || loc_loss: 1.7605 conf_loss: 0.1295 || lr: 0.000810
+Epoch 166/500:
+==>Train: || Total_time: 3.306s || loc_loss: 1.6258 conf_loss: 0.1389 || lr: 0.000807
+Epoch 167/500:
+==>Train: || Total_time: 3.338s || loc_loss: 1.6653 conf_loss: 0.1331 || lr: 0.000805
+Epoch 168/500:
+==>Train: || Total_time: 3.315s || loc_loss: 1.5830 conf_loss: 0.1125 || lr: 0.000802
+Epoch 169/500:
+==>Train: || Total_time: 3.293s || loc_loss: 1.7494 conf_loss: 0.1284 || lr: 0.000799
+Epoch 170/500:
+==>Train: || Total_time: 3.307s || loc_loss: 1.6322 conf_loss: 0.1325 || lr: 0.000797
+Wrote snapshot to: ./experiments/models/rfb_resnet50_cones/rfb_resnet_50_cones_epoch_170.pth
+Epoch 171/500:
+==>Train: || Total_time: 3.307s || loc_loss: 1.5832 conf_loss: 0.1208 || lr: 0.000794
+Epoch 172/500:
+==>Train: || Total_time: 3.290s || loc_loss: 1.6186 conf_loss: 0.1599 || lr: 0.000791
+Epoch 173/500:
+==>Train: || Total_time: 3.296s || loc_loss: 1.5657 conf_loss: 0.1084 || lr: 0.000788
+Epoch 174/500:
+==>Train: || Total_time: 3.294s || loc_loss: 1.6983 conf_loss: 0.1300 || lr: 0.000786
+Epoch 175/500:
+==>Train: || Total_time: 3.307s || loc_loss: 1.7281 conf_loss: 0.1294 || lr: 0.000783
+Epoch 176/500:
+==>Train: || Total_time: 3.319s || loc_loss: 1.6635 conf_loss: 0.1396 || lr: 0.000780
+Epoch 177/500:
+==>Train: || Total_time: 3.296s || loc_loss: 1.6505 conf_loss: 0.1365 || lr: 0.000777
+Epoch 178/500:
+==>Train: || Total_time: 3.265s || loc_loss: 1.6262 conf_loss: 0.1320 || lr: 0.000775
+Epoch 179/500:
+==>Train: || Total_time: 3.289s || loc_loss: 1.6941 conf_loss: 0.1476 || lr: 0.000772
+Epoch 180/500:
+==>Train: || Total_time: 3.279s || loc_loss: 1.6848 conf_loss: 0.1001 || lr: 0.000769
+Wrote snapshot to: ./experiments/models/rfb_resnet50_cones/rfb_resnet_50_cones_epoch_180.pth
+Epoch 181/500:
+==>Train: || Total_time: 3.301s || loc_loss: 1.5826 conf_loss: 0.1159 || lr: 0.000766
+Epoch 182/500:
+==>Train: || Total_time: 3.336s || loc_loss: 1.6085 conf_loss: 0.1536 || lr: 0.000763
+Epoch 183/500:
+==>Train: || Total_time: 3.315s || loc_loss: 1.8005 conf_loss: 0.3667 || lr: 0.000761
+Epoch 184/500:
+==>Train: || Total_time: 3.310s || loc_loss: 1.6995 conf_loss: 0.1454 || lr: 0.000758
+Epoch 185/500:
+==>Train: || Total_time: 3.284s || loc_loss: 1.6548 conf_loss: 0.1139 || lr: 0.000755
+Epoch 186/500:
+==>Train: || Total_time: 3.303s || loc_loss: 1.7202 conf_loss: 0.1342 || lr: 0.000752
+Epoch 187/500:
+==>Train: || Total_time: 3.301s || loc_loss: 1.7391 conf_loss: 0.1071 || lr: 0.000749
+Epoch 188/500:
+==>Train: || Total_time: 3.302s || loc_loss: 1.7258 conf_loss: 0.1758 || lr: 0.000746
+Epoch 189/500:
+==>Train: || Total_time: 3.292s || loc_loss: 1.6584 conf_loss: 0.1302 || lr: 0.000743
+Epoch 190/500:
+==>Train: || Total_time: 3.271s || loc_loss: 1.6064 conf_loss: 0.1020 || lr: 0.000740
+Wrote snapshot to: ./experiments/models/rfb_resnet50_cones/rfb_resnet_50_cones_epoch_190.pth
+Epoch 191/500:
+==>Train: || Total_time: 3.274s || loc_loss: 1.6034 conf_loss: 0.1050 || lr: 0.000737
+Epoch 192/500:
+==>Train: || Total_time: 3.272s || loc_loss: 1.7214 conf_loss: 0.1045 || lr: 0.000734
+Epoch 193/500:
+==>Train: || Total_time: 3.280s || loc_loss: 1.4630 conf_loss: 0.0988 || lr: 0.000731
+Epoch 194/500:
+==>Train: || Total_time: 3.283s || loc_loss: 1.6854 conf_loss: 0.1255 || lr: 0.000728
+Epoch 195/500:
+==>Train: || Total_time: 3.284s || loc_loss: 1.5581 conf_loss: 0.1079 || lr: 0.000726
+Epoch 196/500:
+==>Train: || Total_time: 3.297s || loc_loss: 1.5556 conf_loss: 0.1284 || lr: 0.000723
+Epoch 197/500:
+==>Train: || Total_time: 3.278s || loc_loss: 1.8106 conf_loss: 0.1398 || lr: 0.000720
+Epoch 198/500:
+==>Train: || Total_time: 3.308s || loc_loss: 1.6330 conf_loss: 0.1611 || lr: 0.000717
+Epoch 199/500:
+==>Train: || Total_time: 3.344s || loc_loss: 1.6070 conf_loss: 0.1086 || lr: 0.000713
+Epoch 200/500:
+==>Train: || Total_time: 3.305s || loc_loss: 1.5708 conf_loss: 0.1102 || lr: 0.000710
+Wrote snapshot to: ./experiments/models/rfb_resnet50_cones/rfb_resnet_50_cones_epoch_200.pth
+Epoch 201/500:
+==>Train: || Total_time: 3.354s || loc_loss: 1.5651 conf_loss: 0.1324 || lr: 0.000707
+Epoch 202/500:
+==>Train: || Total_time: 3.311s || loc_loss: 1.6163 conf_loss: 0.1296 || lr: 0.000704
+Epoch 203/500:
+==>Train: || Total_time: 3.317s || loc_loss: 1.7082 conf_loss: 0.1696 || lr: 0.000701
+Epoch 204/500:
+==>Train: || Total_time: 3.314s || loc_loss: 1.4881 conf_loss: 0.1059 || lr: 0.000698
+Epoch 205/500:
+==>Train: || Total_time: 3.338s || loc_loss: 1.4871 conf_loss: 0.1310 || lr: 0.000695
+Epoch 206/500:
+==>Train: || Total_time: 3.311s || loc_loss: 1.4346 conf_loss: 0.1333 || lr: 0.000692
+Epoch 207/500:
+==>Train: || Total_time: 3.307s || loc_loss: 1.6427 conf_loss: 0.1314 || lr: 0.000689
+Epoch 208/500:
+==>Train: || Total_time: 3.299s || loc_loss: 1.5075 conf_loss: 0.1072 || lr: 0.000686
+Epoch 209/500:
+==>Train: || Total_time: 3.298s || loc_loss: 1.7006 conf_loss: 0.1105 || lr: 0.000683
+Epoch 210/500:
+==>Train: || Total_time: 3.288s || loc_loss: 1.5589 conf_loss: 0.1316 || lr: 0.000680
+Wrote snapshot to: ./experiments/models/rfb_resnet50_cones/rfb_resnet_50_cones_epoch_210.pth
+Epoch 211/500:
+==>Train: || Total_time: 3.322s || loc_loss: 1.6032 conf_loss: 0.1416 || lr: 0.000677
+Epoch 212/500:
+==>Train: || Total_time: 3.295s || loc_loss: 1.4863 conf_loss: 0.1055 || lr: 0.000673
+Epoch 213/500:
+==>Train: || Total_time: 3.311s || loc_loss: 1.6495 conf_loss: 0.1283 || lr: 0.000670
+Epoch 214/500:
+==>Train: || Total_time: 3.297s || loc_loss: 1.6157 conf_loss: 0.1360 || lr: 0.000667
+Epoch 215/500:
+==>Train: || Total_time: 3.321s || loc_loss: 1.5356 conf_loss: 0.1187 || lr: 0.000664
+Epoch 216/500:
+==>Train: || Total_time: 3.299s || loc_loss: 1.5500 conf_loss: 0.1215 || lr: 0.000661
+Epoch 217/500:
+==>Train: || Total_time: 3.304s || loc_loss: 1.4975 conf_loss: 0.0913 || lr: 0.000658
+Epoch 218/500:
+==>Train: || Total_time: 3.302s || loc_loss: 1.5008 conf_loss: 0.1000 || lr: 0.000655
+Epoch 219/500:
+==>Train: || Total_time: 3.299s || loc_loss: 1.4824 conf_loss: 0.1319 || lr: 0.000651
+Epoch 220/500:
+==>Train: || Total_time: 3.300s || loc_loss: 1.5493 conf_loss: 0.1073 || lr: 0.000648
+Wrote snapshot to: ./experiments/models/rfb_resnet50_cones/rfb_resnet_50_cones_epoch_220.pth
+Epoch 221/500:
+==>Train: || Total_time: 3.306s || loc_loss: 1.3719 conf_loss: 0.0988 || lr: 0.000645
+Epoch 222/500:
+==>Train: || Total_time: 3.300s || loc_loss: 1.5398 conf_loss: 0.1131 || lr: 0.000642
+Epoch 223/500:
+==>Train: || Total_time: 3.318s || loc_loss: 1.5118 conf_loss: 0.1025 || lr: 0.000639
+Epoch 224/500:
+==>Train: || Total_time: 3.324s || loc_loss: 1.6410 conf_loss: 0.1022 || lr: 0.000635
+Epoch 225/500:
+==>Train: || Total_time: 3.324s || loc_loss: 1.6000 conf_loss: 0.1202 || lr: 0.000632
+Epoch 226/500:
+==>Train: || Total_time: 3.296s || loc_loss: 1.5703 conf_loss: 0.1685 || lr: 0.000629
+Epoch 227/500:
+==>Train: || Total_time: 3.299s || loc_loss: 1.4860 conf_loss: 0.1091 || lr: 0.000626
+Epoch 228/500:
+==>Train: || Total_time: 3.320s || loc_loss: 1.5513 conf_loss: 0.1055 || lr: 0.000622
+Epoch 229/500:
+==>Train: || Total_time: 3.307s || loc_loss: 1.5492 conf_loss: 0.1474 || lr: 0.000619
+Epoch 230/500:
+==>Train: || Total_time: 3.305s || loc_loss: 1.5458 conf_loss: 0.1152 || lr: 0.000616
+Wrote snapshot to: ./experiments/models/rfb_resnet50_cones/rfb_resnet_50_cones_epoch_230.pth
+Epoch 231/500:
+==>Train: || Total_time: 3.316s || loc_loss: 1.5423 conf_loss: 0.1002 || lr: 0.000613
+Epoch 232/500:
+==>Train: || Total_time: 3.333s || loc_loss: 1.3949 conf_loss: 0.1111 || lr: 0.000609
+Epoch 233/500:
+==>Train: || Total_time: 3.338s || loc_loss: 1.3924 conf_loss: 0.0953 || lr: 0.000606
+Epoch 234/500:
+==>Train: || Total_time: 3.310s || loc_loss: 1.3700 conf_loss: 0.1079 || lr: 0.000603
+Epoch 235/500:
+==>Train: || Total_time: 3.328s || loc_loss: 1.4734 conf_loss: 0.1252 || lr: 0.000600
+Epoch 236/500:
+==>Train: || Total_time: 3.312s || loc_loss: 1.4689 conf_loss: 0.1026 || lr: 0.000596
+Epoch 237/500:
+==>Train: || Total_time: 3.304s || loc_loss: 1.4234 conf_loss: 0.0772 || lr: 0.000593
+Epoch 238/500:
+==>Train: || Total_time: 3.306s || loc_loss: 1.5612 conf_loss: 0.1023 || lr: 0.000590
+Epoch 239/500:
+==>Train: || Total_time: 3.322s || loc_loss: 1.5681 conf_loss: 0.1451 || lr: 0.000586
+Epoch 240/500:
+==>Train: || Total_time: 3.337s || loc_loss: 1.4820 conf_loss: 0.1180 || lr: 0.000583
+Wrote snapshot to: ./experiments/models/rfb_resnet50_cones/rfb_resnet_50_cones_epoch_240.pth
+Epoch 241/500:
+==>Train: || Total_time: 3.330s || loc_loss: 1.4887 conf_loss: 0.1244 || lr: 0.000580
+Epoch 242/500:
+==>Train: || Total_time: 3.305s || loc_loss: 1.5426 conf_loss: 0.1207 || lr: 0.000577
+Epoch 243/500:
+==>Train: || Total_time: 3.348s || loc_loss: 1.3712 conf_loss: 0.0877 || lr: 0.000573
+Epoch 244/500:
+==>Train: || Total_time: 3.314s || loc_loss: 1.4035 conf_loss: 0.1109 || lr: 0.000570
+Epoch 245/500:
+==>Train: || Total_time: 3.305s || loc_loss: 1.5446 conf_loss: 0.1168 || lr: 0.000567
+Epoch 246/500:
+==>Train: || Total_time: 3.323s || loc_loss: 1.4535 conf_loss: 0.1274 || lr: 0.000563
+Epoch 247/500:
+==>Train: || Total_time: 3.322s || loc_loss: 1.5307 conf_loss: 0.0973 || lr: 0.000560
+Epoch 248/500:
+==>Train: || Total_time: 3.302s || loc_loss: 1.4218 conf_loss: 0.0982 || lr: 0.000557
+Epoch 249/500:
+==>Train: || Total_time: 3.297s || loc_loss: 1.5039 conf_loss: 0.1014 || lr: 0.000553
+Epoch 250/500:
+==>Train: || Total_time: 3.347s || loc_loss: 1.4033 conf_loss: 0.0806 || lr: 0.000550
+Wrote snapshot to: ./experiments/models/rfb_resnet50_cones/rfb_resnet_50_cones_epoch_250.pth
+Epoch 251/500:
+==>Train: || Total_time: 3.342s || loc_loss: 1.3937 conf_loss: 0.0966 || lr: 0.000547
+Epoch 252/500:
+==>Train: || Total_time: 3.301s || loc_loss: 1.4392 conf_loss: 0.0990 || lr: 0.000543
+Epoch 253/500:
+==>Train: || Total_time: 3.309s || loc_loss: 1.4589 conf_loss: 0.1038 || lr: 0.000540
+Epoch 254/500:
+==>Train: || Total_time: 3.286s || loc_loss: 1.4881 conf_loss: 0.1024 || lr: 0.000537
+Epoch 255/500:
+==>Train: || Total_time: 3.293s || loc_loss: 1.5040 conf_loss: 0.1362 || lr: 0.000533
+Epoch 256/500:
+==>Train: || Total_time: 3.277s || loc_loss: 1.4693 conf_loss: 0.1007 || lr: 0.000530
+Epoch 257/500:
+==>Train: || Total_time: 3.284s || loc_loss: 1.4468 conf_loss: 0.1130 || lr: 0.000527
+Epoch 258/500:
+==>Train: || Total_time: 3.285s || loc_loss: 1.3814 conf_loss: 0.0899 || lr: 0.000523
+Epoch 259/500:
+==>Train: || Total_time: 3.305s || loc_loss: 1.4085 conf_loss: 0.0920 || lr: 0.000520
+Epoch 260/500:
+==>Train: || Total_time: 3.290s || loc_loss: 1.4722 conf_loss: 0.1004 || lr: 0.000517
+Wrote snapshot to: ./experiments/models/rfb_resnet50_cones/rfb_resnet_50_cones_epoch_260.pth
+Epoch 261/500:
+==>Train: || Total_time: 3.281s || loc_loss: 1.4636 conf_loss: 0.1090 || lr: 0.000513
+Epoch 262/500:
+==>Train: || Total_time: 3.292s || loc_loss: 1.4642 conf_loss: 0.1081 || lr: 0.000510
+Epoch 263/500:
+==>Train: || Total_time: 3.300s || loc_loss: 1.5149 conf_loss: 0.1123 || lr: 0.000507
+Epoch 264/500:
+==>Train: || Total_time: 3.309s || loc_loss: 1.4400 conf_loss: 0.0724 || lr: 0.000503
+Epoch 265/500:
+==>Train: || Total_time: 3.322s || loc_loss: 1.3933 conf_loss: 0.0905 || lr: 0.000500
+Epoch 266/500:
+==>Train: || Total_time: 3.323s || loc_loss: 1.4878 conf_loss: 0.0963 || lr: 0.000497
+Epoch 267/500:
+==>Train: || Total_time: 3.316s || loc_loss: 1.4219 conf_loss: 0.1001 || lr: 0.000493
+Epoch 268/500:
+==>Train: || Total_time: 3.309s || loc_loss: 1.3741 conf_loss: 0.0783 || lr: 0.000490
+Epoch 269/500:
+==>Train: || Total_time: 3.365s || loc_loss: 1.4058 conf_loss: 0.0977 || lr: 0.000487
+Epoch 270/500:
+==>Train: || Total_time: 3.307s || loc_loss: 1.3469 conf_loss: 0.0830 || lr: 0.000483
+Wrote snapshot to: ./experiments/models/rfb_resnet50_cones/rfb_resnet_50_cones_epoch_270.pth
+Epoch 271/500:
+==>Train: || Total_time: 3.308s || loc_loss: 1.4414 conf_loss: 0.0845 || lr: 0.000480
+Epoch 272/500:
+==>Train: || Total_time: 3.318s || loc_loss: 1.4549 conf_loss: 0.0882 || lr: 0.000477
+Epoch 273/500:
+==>Train: || Total_time: 3.327s || loc_loss: 1.4677 conf_loss: 0.1093 || lr: 0.000473
+Epoch 274/500:
+==>Train: || Total_time: 3.348s || loc_loss: 1.5130 conf_loss: 0.1065 || lr: 0.000470
+Epoch 275/500:
+==>Train: || Total_time: 3.302s || loc_loss: 1.4894 conf_loss: 0.0943 || lr: 0.000467
+Epoch 276/500:
+==>Train: || Total_time: 3.312s || loc_loss: 1.4073 conf_loss: 0.0865 || lr: 0.000463
+Epoch 277/500:
+==>Train: || Total_time: 3.315s || loc_loss: 1.4453 conf_loss: 0.0904 || lr: 0.000460
+Epoch 278/500:
+==>Train: || Total_time: 3.323s || loc_loss: 1.4370 conf_loss: 0.1032 || lr: 0.000457
+Epoch 279/500:
+==>Train: || Total_time: 3.321s || loc_loss: 1.4133 conf_loss: 0.0892 || lr: 0.000453
+Epoch 280/500:
+==>Train: || Total_time: 3.321s || loc_loss: 1.3684 conf_loss: 0.1048 || lr: 0.000450
+Wrote snapshot to: ./experiments/models/rfb_resnet50_cones/rfb_resnet_50_cones_epoch_280.pth
+Epoch 281/500:
+==>Train: || Total_time: 3.331s || loc_loss: 1.3763 conf_loss: 0.0988 || lr: 0.000447
+Epoch 282/500:
+==>Train: || Total_time: 3.317s || loc_loss: 1.5145 conf_loss: 0.1335 || lr: 0.000443
+Epoch 283/500:
+==>Train: || Total_time: 3.343s || loc_loss: 1.4464 conf_loss: 0.0986 || lr: 0.000440
+Epoch 284/500:
+==>Train: || Total_time: 3.347s || loc_loss: 1.3700 conf_loss: 0.1051 || lr: 0.000437
+Epoch 285/500:
+==>Train: || Total_time: 3.293s || loc_loss: 1.3149 conf_loss: 0.0810 || lr: 0.000433
+Epoch 286/500:
+==>Train: || Total_time: 3.313s || loc_loss: 1.4891 conf_loss: 0.1133 || lr: 0.000430
+Epoch 287/500:
+==>Train: || Total_time: 3.313s || loc_loss: 1.5085 conf_loss: 0.1246 || lr: 0.000427
+Epoch 288/500:
+==>Train: || Total_time: 3.311s || loc_loss: 1.4451 conf_loss: 0.1182 || lr: 0.000423
+Epoch 289/500:
+==>Train: || Total_time: 3.303s || loc_loss: 1.3962 conf_loss: 0.0957 || lr: 0.000420
+Epoch 290/500:
+==>Train: || Total_time: 3.283s || loc_loss: 1.4723 conf_loss: 0.1078 || lr: 0.000417
+Wrote snapshot to: ./experiments/models/rfb_resnet50_cones/rfb_resnet_50_cones_epoch_290.pth
+Epoch 291/500:
+==>Train: || Total_time: 3.299s || loc_loss: 1.5665 conf_loss: 0.0936 || lr: 0.000414
+Epoch 292/500:
+==>Train: || Total_time: 3.302s || loc_loss: 1.4573 conf_loss: 0.0926 || lr: 0.000410
+Epoch 293/500:
+==>Train: || Total_time: 3.295s || loc_loss: 1.4151 conf_loss: 0.1156 || lr: 0.000407
+Epoch 294/500:
+==>Train: || Total_time: 3.303s || loc_loss: 1.3879 conf_loss: 0.0974 || lr: 0.000404
+Epoch 295/500:
+==>Train: || Total_time: 3.286s || loc_loss: 1.3526 conf_loss: 0.1171 || lr: 0.000400
+Epoch 296/500:
+==>Train: || Total_time: 3.292s || loc_loss: 1.4125 conf_loss: 0.1093 || lr: 0.000397
+Epoch 297/500:
+==>Train: || Total_time: 3.294s || loc_loss: 1.5370 conf_loss: 0.0978 || lr: 0.000394
+Epoch 298/500:
+==>Train: || Total_time: 3.297s || loc_loss: 1.3177 conf_loss: 0.1084 || lr: 0.000391
+Epoch 299/500:
+==>Train: || Total_time: 3.292s || loc_loss: 1.3940 conf_loss: 0.0928 || lr: 0.000387
+Epoch 300/500:
+==>Train: || Total_time: 3.266s || loc_loss: 1.3361 conf_loss: 0.0960 || lr: 0.000384
+Wrote snapshot to: ./experiments/models/rfb_resnet50_cones/rfb_resnet_50_cones_epoch_300.pth
+Epoch 301/500:
+==>Train: || Total_time: 3.267s || loc_loss: 1.4478 conf_loss: 0.1027 || lr: 0.000381
+Epoch 302/500:
+==>Train: || Total_time: 3.252s || loc_loss: 1.3750 conf_loss: 0.0915 || lr: 0.000378
+Epoch 303/500:
+==>Train: || Total_time: 3.290s || loc_loss: 1.3238 conf_loss: 0.0862 || lr: 0.000374
+Epoch 304/500:
+==>Train: || Total_time: 3.267s || loc_loss: 1.4635 conf_loss: 0.0970 || lr: 0.000371
+Epoch 305/500:
+==>Train: || Total_time: 3.266s || loc_loss: 1.3860 conf_loss: 0.1024 || lr: 0.000368
+Epoch 306/500:
+==>Train: || Total_time: 3.299s || loc_loss: 1.3557 conf_loss: 0.0830 || lr: 0.000365
+Epoch 307/500:
+==>Train: || Total_time: 3.297s || loc_loss: 1.2540 conf_loss: 0.1029 || lr: 0.000361
+Epoch 308/500:
+==>Train: || Total_time: 3.277s || loc_loss: 1.2046 conf_loss: 0.0773 || lr: 0.000358
+Epoch 309/500:
+==>Train: || Total_time: 3.264s || loc_loss: 1.2245 conf_loss: 0.0888 || lr: 0.000355
+Epoch 310/500:
+==>Train: || Total_time: 3.282s || loc_loss: 1.3591 conf_loss: 0.0881 || lr: 0.000352
+Wrote snapshot to: ./experiments/models/rfb_resnet50_cones/rfb_resnet_50_cones_epoch_310.pth
+Epoch 311/500:
+==>Train: || Total_time: 3.277s || loc_loss: 1.2952 conf_loss: 0.0898 || lr: 0.000349
+Epoch 312/500:
+==>Train: || Total_time: 3.315s || loc_loss: 1.4042 conf_loss: 0.0981 || lr: 0.000345
+Epoch 313/500:
+==>Train: || Total_time: 3.297s || loc_loss: 1.3251 conf_loss: 0.0733 || lr: 0.000342
+Epoch 314/500:
+==>Train: || Total_time: 3.325s || loc_loss: 1.3125 conf_loss: 0.1099 || lr: 0.000339
+Epoch 315/500:
+==>Train: || Total_time: 3.318s || loc_loss: 1.3966 conf_loss: 0.0920 || lr: 0.000336
+Epoch 316/500:
+==>Train: || Total_time: 3.318s || loc_loss: 1.2483 conf_loss: 0.0872 || lr: 0.000333
+Epoch 317/500:
+==>Train: || Total_time: 3.326s || loc_loss: 1.3935 conf_loss: 0.0927 || lr: 0.000330
+Epoch 318/500:
+==>Train: || Total_time: 3.297s || loc_loss: 1.3711 conf_loss: 0.0848 || lr: 0.000327
+Epoch 319/500:
+==>Train: || Total_time: 3.322s || loc_loss: 1.3137 conf_loss: 0.0787 || lr: 0.000323
+Epoch 320/500:
+==>Train: || Total_time: 3.296s || loc_loss: 1.4437 conf_loss: 0.0910 || lr: 0.000320
+Wrote snapshot to: ./experiments/models/rfb_resnet50_cones/rfb_resnet_50_cones_epoch_320.pth
+Epoch 321/500:
+==>Train: || Total_time: 3.323s || loc_loss: 1.3807 conf_loss: 0.0935 || lr: 0.000317
+Epoch 322/500:
+==>Train: || Total_time: 3.319s || loc_loss: 1.3130 conf_loss: 0.1441 || lr: 0.000314
+Epoch 323/500:
+==>Train: || Total_time: 3.295s || loc_loss: 1.3355 conf_loss: 0.0867 || lr: 0.000311
+Epoch 324/500:
+==>Train: || Total_time: 3.297s || loc_loss: 1.4225 conf_loss: 0.0901 || lr: 0.000308
+Epoch 325/500:
+==>Train: || Total_time: 3.293s || loc_loss: 1.2707 conf_loss: 0.0842 || lr: 0.000305
+Epoch 326/500:
+==>Train: || Total_time: 3.315s || loc_loss: 1.2840 conf_loss: 0.0896 || lr: 0.000302
+Epoch 327/500:
+==>Train: || Total_time: 3.352s || loc_loss: 1.3713 conf_loss: 0.0908 || lr: 0.000299
+Epoch 328/500:
+==>Train: || Total_time: 3.310s || loc_loss: 1.2799 conf_loss: 0.0798 || lr: 0.000296
+Epoch 329/500:
+==>Train: || Total_time: 3.302s || loc_loss: 1.3749 conf_loss: 0.1037 || lr: 0.000293
+Epoch 330/500:
+==>Train: || Total_time: 3.299s || loc_loss: 1.2955 conf_loss: 0.1009 || lr: 0.000290
+Wrote snapshot to: ./experiments/models/rfb_resnet50_cones/rfb_resnet_50_cones_epoch_330.pth
+Epoch 331/500:
+==>Train: || Total_time: 3.298s || loc_loss: 1.3258 conf_loss: 0.1045 || lr: 0.000287
+Epoch 332/500:
+==>Train: || Total_time: 3.310s || loc_loss: 1.3314 conf_loss: 0.0933 || lr: 0.000283
+Epoch 333/500:
+==>Train: || Total_time: 3.323s || loc_loss: 1.5025 conf_loss: 0.0978 || lr: 0.000280
+Epoch 334/500:
+==>Train: || Total_time: 3.325s || loc_loss: 1.2907 conf_loss: 0.0834 || lr: 0.000277
+Epoch 335/500:
+==>Train: || Total_time: 3.328s || loc_loss: 1.2344 conf_loss: 0.0905 || lr: 0.000274
+Epoch 336/500:
+==>Train: || Total_time: 3.296s || loc_loss: 1.3160 conf_loss: 0.0852 || lr: 0.000272
+Epoch 337/500:
+==>Train: || Total_time: 3.303s || loc_loss: 1.2975 conf_loss: 0.0973 || lr: 0.000269
+Epoch 338/500:
+==>Train: || Total_time: 3.316s || loc_loss: 1.1776 conf_loss: 0.1120 || lr: 0.000266
+Epoch 339/500:
+==>Train: || Total_time: 3.332s || loc_loss: 1.3646 conf_loss: 0.0921 || lr: 0.000263
+Epoch 340/500:
+==>Train: || Total_time: 3.311s || loc_loss: 1.4148 conf_loss: 0.0949 || lr: 0.000260
+Wrote snapshot to: ./experiments/models/rfb_resnet50_cones/rfb_resnet_50_cones_epoch_340.pth
+Epoch 341/500:
+==>Train: || Total_time: 3.303s || loc_loss: 1.2864 conf_loss: 0.1082 || lr: 0.000257
+Epoch 342/500:
+==>Train: || Total_time: 3.300s || loc_loss: 1.3711 conf_loss: 0.1065 || lr: 0.000254
+Epoch 343/500:
+==>Train: || Total_time: 3.326s || loc_loss: 1.3121 conf_loss: 0.0946 || lr: 0.000251
+Epoch 344/500:
+==>Train: || Total_time: 3.306s || loc_loss: 1.2881 conf_loss: 0.0860 || lr: 0.000248
+Epoch 345/500:
+==>Train: || Total_time: 3.284s || loc_loss: 1.3648 conf_loss: 0.0775 || lr: 0.000245
+Epoch 346/500:
+==>Train: || Total_time: 3.309s || loc_loss: 1.3173 conf_loss: 0.0733 || lr: 0.000242
+Epoch 347/500:
+==>Train: || Total_time: 3.280s || loc_loss: 1.2998 conf_loss: 0.0919 || lr: 0.000239
+Epoch 348/500:
+==>Train: || Total_time: 3.312s || loc_loss: 1.2174 conf_loss: 0.0924 || lr: 0.000237
+Epoch 349/500:
+==>Train: || Total_time: 3.303s || loc_loss: 1.4458 conf_loss: 0.0994 || lr: 0.000234
+Epoch 350/500:
+==>Train: || Total_time: 3.319s || loc_loss: 1.2478 conf_loss: 0.0726 || lr: 0.000231
+Wrote snapshot to: ./experiments/models/rfb_resnet50_cones/rfb_resnet_50_cones_epoch_350.pth
+Epoch 351/500:
+==>Train: || Total_time: 3.308s || loc_loss: 1.2818 conf_loss: 0.0847 || lr: 0.000228
+Epoch 352/500:
+==>Train: || Total_time: 3.306s || loc_loss: 1.2971 conf_loss: 0.1062 || lr: 0.000225
+Epoch 353/500:
+==>Train: || Total_time: 3.288s || loc_loss: 1.4747 conf_loss: 0.0654 || lr: 0.000223
+Epoch 354/500:
+==>Train: || Total_time: 3.323s || loc_loss: 1.4149 conf_loss: 0.0776 || lr: 0.000220
+Epoch 355/500:
+==>Train: || Total_time: 3.322s || loc_loss: 1.3230 conf_loss: 0.0907 || lr: 0.000217
+Epoch 356/500:
+==>Train: || Total_time: 3.322s || loc_loss: 1.4435 conf_loss: 0.0904 || lr: 0.000214
+Epoch 357/500:
+==>Train: || Total_time: 3.300s || loc_loss: 1.3626 conf_loss: 0.0937 || lr: 0.000212
+Epoch 358/500:
+==>Train: || Total_time: 3.332s || loc_loss: 1.3585 conf_loss: 0.1379 || lr: 0.000209
+Epoch 359/500:
+==>Train: || Total_time: 3.292s || loc_loss: 1.4382 conf_loss: 0.0994 || lr: 0.000206
+Epoch 360/500:
+==>Train: || Total_time: 3.334s || loc_loss: 1.3544 conf_loss: 0.1213 || lr: 0.000203
+Wrote snapshot to: ./experiments/models/rfb_resnet50_cones/rfb_resnet_50_cones_epoch_360.pth
+Epoch 361/500:
+==>Train: || Total_time: 3.305s || loc_loss: 1.3237 conf_loss: 0.0935 || lr: 0.000201
+Epoch 362/500:
+==>Train: || Total_time: 3.307s || loc_loss: 1.2729 conf_loss: 0.0891 || lr: 0.000198
+Epoch 363/500:
+==>Train: || Total_time: 3.308s || loc_loss: 1.3302 conf_loss: 0.1055 || lr: 0.000195
+Epoch 364/500:
+==>Train: || Total_time: 3.291s || loc_loss: 1.4340 conf_loss: 0.0793 || lr: 0.000193
+Epoch 365/500:
+==>Train: || Total_time: 3.318s || loc_loss: 1.4026 conf_loss: 0.0944 || lr: 0.000190
+Epoch 366/500:
+==>Train: || Total_time: 3.308s || loc_loss: 1.3781 conf_loss: 0.0910 || lr: 0.000188
+Epoch 367/500:
+==>Train: || Total_time: 3.306s || loc_loss: 1.1986 conf_loss: 0.0613 || lr: 0.000185
+Epoch 368/500:
+==>Train: || Total_time: 3.312s || loc_loss: 1.3246 conf_loss: 0.0693 || lr: 0.000182
+Epoch 369/500:
+==>Train: || Total_time: 3.309s || loc_loss: 1.2823 conf_loss: 0.0761 || lr: 0.000180
+Epoch 370/500:
+==>Train: || Total_time: 3.287s || loc_loss: 1.2892 conf_loss: 0.0971 || lr: 0.000177
+Wrote snapshot to: ./experiments/models/rfb_resnet50_cones/rfb_resnet_50_cones_epoch_370.pth
+Epoch 371/500:
+==>Train: || Total_time: 3.323s || loc_loss: 1.3372 conf_loss: 0.0890 || lr: 0.000175
+Epoch 372/500:
+==>Train: || Total_time: 3.321s || loc_loss: 1.2639 conf_loss: 0.0830 || lr: 0.000172
+Epoch 373/500:
+==>Train: || Total_time: 3.368s || loc_loss: 1.2634 conf_loss: 0.0770 || lr: 0.000170
+Epoch 374/500:
+==>Train: || Total_time: 3.323s || loc_loss: 1.2655 conf_loss: 0.1084 || lr: 0.000167
+Epoch 375/500:
+==>Train: || Total_time: 3.309s || loc_loss: 1.3035 conf_loss: 0.0844 || lr: 0.000165
+Epoch 376/500:
+==>Train: || Total_time: 3.333s || loc_loss: 1.2437 conf_loss: 0.0867 || lr: 0.000162
+Epoch 377/500:
+==>Train: || Total_time: 3.328s || loc_loss: 1.3346 conf_loss: 0.0881 || lr: 0.000160
+Epoch 378/500:
+==>Train: || Total_time: 3.303s || loc_loss: 1.3837 conf_loss: 0.0917 || lr: 0.000157
+Epoch 379/500:
+==>Train: || Total_time: 3.330s || loc_loss: 1.2399 conf_loss: 0.1085 || lr: 0.000155
+Epoch 380/500:
+==>Train: || Total_time: 3.312s || loc_loss: 1.3758 conf_loss: 0.1455 || lr: 0.000152
+Wrote snapshot to: ./experiments/models/rfb_resnet50_cones/rfb_resnet_50_cones_epoch_380.pth
+Epoch 381/500:
+==>Train: || Total_time: 3.305s || loc_loss: 1.4715 conf_loss: 0.0954 || lr: 0.000150
+Epoch 382/500:
+==>Train: || Total_time: 3.282s || loc_loss: 1.4755 conf_loss: 0.1015 || lr: 0.000148
+Epoch 383/500:
+==>Train: || Total_time: 3.296s || loc_loss: 1.5164 conf_loss: 0.1169 || lr: 0.000145
+Epoch 384/500:
+==>Train: || Total_time: 3.291s || loc_loss: 1.3390 conf_loss: 0.0944 || lr: 0.000143
+Epoch 385/500:
+==>Train: || Total_time: 3.326s || loc_loss: 1.2843 conf_loss: 0.0814 || lr: 0.000141
+Epoch 386/500:
+==>Train: || Total_time: 3.299s || loc_loss: 1.2062 conf_loss: 0.0737 || lr: 0.000138
+Epoch 387/500:
+==>Train: || Total_time: 3.322s || loc_loss: 1.3520 conf_loss: 0.0783 || lr: 0.000136
+Epoch 388/500:
+==>Train: || Total_time: 3.343s || loc_loss: 1.4934 conf_loss: 0.1145 || lr: 0.000134
+Epoch 389/500:
+==>Train: || Total_time: 3.292s || loc_loss: 1.3321 conf_loss: 0.0869 || lr: 0.000131
+Epoch 390/500:
+==>Train: || Total_time: 3.284s || loc_loss: 1.2841 conf_loss: 0.0728 || lr: 0.000129
+Wrote snapshot to: ./experiments/models/rfb_resnet50_cones/rfb_resnet_50_cones_epoch_390.pth
+Epoch 391/500:
+==>Train: || Total_time: 3.270s || loc_loss: 1.2184 conf_loss: 0.0819 || lr: 0.000127
+Epoch 392/500:
+==>Train: || Total_time: 3.300s || loc_loss: 1.2853 conf_loss: 0.0772 || lr: 0.000125
+Epoch 393/500:
+==>Train: || Total_time: 3.292s || loc_loss: 1.2782 conf_loss: 0.0992 || lr: 0.000123
+Epoch 394/500:
+==>Train: || Total_time: 3.268s || loc_loss: 1.3500 conf_loss: 0.0774 || lr: 0.000120
+Epoch 395/500:
+==>Train: || Total_time: 3.300s || loc_loss: 1.3537 conf_loss: 0.0791 || lr: 0.000118
+Epoch 396/500:
+==>Train: || Total_time: 3.301s || loc_loss: 1.2588 conf_loss: 0.0961 || lr: 0.000116
+Epoch 397/500:
+==>Train: || Total_time: 3.279s || loc_loss: 1.3067 conf_loss: 0.0898 || lr: 0.000114
+Epoch 398/500:
+==>Train: || Total_time: 3.286s || loc_loss: 1.2521 conf_loss: 0.1086 || lr: 0.000112
+Epoch 399/500:
+==>Train: || Total_time: 3.290s || loc_loss: 1.3003 conf_loss: 0.0997 || lr: 0.000110
+Epoch 400/500:
+==>Train: || Total_time: 3.299s || loc_loss: 1.3458 conf_loss: 0.1002 || lr: 0.000108
+Wrote snapshot to: ./experiments/models/rfb_resnet50_cones/rfb_resnet_50_cones_epoch_400.pth
+Epoch 401/500:
+==>Train: || Total_time: 3.313s || loc_loss: 1.1811 conf_loss: 0.0786 || lr: 0.000106
+Epoch 402/500:
+==>Train: || Total_time: 3.283s || loc_loss: 1.1823 conf_loss: 0.0936 || lr: 0.000103
+Epoch 403/500:
+==>Train: || Total_time: 3.299s || loc_loss: 1.2363 conf_loss: 0.0788 || lr: 0.000101
+Epoch 404/500:
+==>Train: || Total_time: 3.299s || loc_loss: 1.2172 conf_loss: 0.0766 || lr: 0.000099
+Epoch 405/500:
+==>Train: || Total_time: 3.290s || loc_loss: 1.3243 conf_loss: 0.0878 || lr: 0.000097
+Epoch 406/500:
+==>Train: || Total_time: 3.298s || loc_loss: 1.3493 conf_loss: 0.0747 || lr: 0.000095
+Epoch 407/500:
+==>Train: || Total_time: 3.301s || loc_loss: 1.2155 conf_loss: 0.0966 || lr: 0.000094
+Epoch 408/500:
+==>Train: || Total_time: 3.312s || loc_loss: 1.2577 conf_loss: 0.1061 || lr: 0.000092
+Epoch 409/500:
+==>Train: || Total_time: 3.310s || loc_loss: 1.2446 conf_loss: 0.0801 || lr: 0.000090
+Epoch 410/500:
+==>Train: || Total_time: 3.307s || loc_loss: 1.3464 conf_loss: 0.0982 || lr: 0.000088
+Wrote snapshot to: ./experiments/models/rfb_resnet50_cones/rfb_resnet_50_cones_epoch_410.pth
+Epoch 411/500:
+==>Train: || Total_time: 3.309s || loc_loss: 1.3431 conf_loss: 0.0877 || lr: 0.000086
+Epoch 412/500:
+==>Train: || Total_time: 3.295s || loc_loss: 1.2230 conf_loss: 0.0841 || lr: 0.000084
+Epoch 413/500:
+==>Train: || Total_time: 3.300s || loc_loss: 1.2707 conf_loss: 0.0991 || lr: 0.000082
+Epoch 414/500:
+==>Train: || Total_time: 3.299s || loc_loss: 1.3471 conf_loss: 0.0884 || lr: 0.000080
+Epoch 415/500:
+==>Train: || Total_time: 3.296s || loc_loss: 1.2164 conf_loss: 0.0759 || lr: 0.000079
+Epoch 416/500:
+==>Train: || Total_time: 3.349s || loc_loss: 1.3691 conf_loss: 0.1377 || lr: 0.000077
+Epoch 417/500:
+==>Train: || Total_time: 3.338s || loc_loss: 1.2875 conf_loss: 0.1049 || lr: 0.000075
+Epoch 418/500:
+==>Train: || Total_time: 3.330s || loc_loss: 1.2879 conf_loss: 0.0887 || lr: 0.000073
+Epoch 419/500:
+==>Train: || Total_time: 3.334s || loc_loss: 1.2439 conf_loss: 0.0708 || lr: 0.000072
+Epoch 420/500:
+==>Train: || Total_time: 3.337s || loc_loss: 1.3024 conf_loss: 0.1002 || lr: 0.000070
+Wrote snapshot to: ./experiments/models/rfb_resnet50_cones/rfb_resnet_50_cones_epoch_420.pth
+Epoch 421/500:
+==>Train: || Total_time: 3.324s || loc_loss: 1.3700 conf_loss: 0.1120 || lr: 0.000068
+Epoch 422/500:
+==>Train: || Total_time: 3.302s || loc_loss: 1.2533 conf_loss: 0.0994 || lr: 0.000066
+Epoch 423/500:
+==>Train: || Total_time: 3.291s || loc_loss: 1.2988 conf_loss: 0.0956 || lr: 0.000065
+Epoch 424/500:
+==>Train: || Total_time: 3.326s || loc_loss: 1.1587 conf_loss: 0.0789 || lr: 0.000063
+Epoch 425/500:
+==>Train: || Total_time: 3.315s || loc_loss: 1.3408 conf_loss: 0.1222 || lr: 0.000062
+Epoch 426/500:
+==>Train: || Total_time: 3.314s || loc_loss: 1.2139 conf_loss: 0.0751 || lr: 0.000060
+Epoch 427/500:
+==>Train: || Total_time: 3.301s || loc_loss: 1.1597 conf_loss: 0.0702 || lr: 0.000058
+Epoch 428/500:
+==>Train: || Total_time: 3.335s || loc_loss: 1.3067 conf_loss: 0.0925 || lr: 0.000057
+Epoch 429/500:
+==>Train: || Total_time: 3.292s || loc_loss: 1.2697 conf_loss: 0.0945 || lr: 0.000055
+Epoch 430/500:
+==>Train: || Total_time: 3.300s || loc_loss: 1.2947 conf_loss: 0.1003 || lr: 0.000054
+Wrote snapshot to: ./experiments/models/rfb_resnet50_cones/rfb_resnet_50_cones_epoch_430.pth
+Epoch 431/500:
+==>Train: || Total_time: 3.310s || loc_loss: 1.3165 conf_loss: 0.0825 || lr: 0.000052
+Epoch 432/500:
+==>Train: || Total_time: 3.338s || loc_loss: 1.3798 conf_loss: 0.0830 || lr: 0.000051
+Epoch 433/500:
+==>Train: || Total_time: 3.303s || loc_loss: 1.3162 conf_loss: 0.0926 || lr: 0.000049
+Epoch 434/500:
+==>Train: || Total_time: 3.323s || loc_loss: 1.3275 conf_loss: 0.0751 || lr: 0.000048
+Epoch 435/500:
+==>Train: || Total_time: 3.310s || loc_loss: 1.4329 conf_loss: 0.1255 || lr: 0.000046
+Epoch 436/500:
+==>Train: || Total_time: 3.306s || loc_loss: 1.2851 conf_loss: 0.1355 || lr: 0.000045
+Epoch 437/500:
+==>Train: || Total_time: 3.314s || loc_loss: 1.1398 conf_loss: 0.0762 || lr: 0.000044
+Epoch 438/500:
+==>Train: || Total_time: 3.333s || loc_loss: 1.1941 conf_loss: 0.0823 || lr: 0.000042
+Epoch 439/500:
+==>Train: || Total_time: 3.323s || loc_loss: 1.2762 conf_loss: 0.0805 || lr: 0.000041
+Epoch 440/500:
+==>Train: || Total_time: 3.302s || loc_loss: 1.3045 conf_loss: 0.1053 || lr: 0.000040
+Wrote snapshot to: ./experiments/models/rfb_resnet50_cones/rfb_resnet_50_cones_epoch_440.pth
+Epoch 441/500:
+==>Train: || Total_time: 3.276s || loc_loss: 1.2050 conf_loss: 0.0743 || lr: 0.000038
+Epoch 442/500:
+==>Train: || Total_time: 3.323s || loc_loss: 1.1915 conf_loss: 0.0848 || lr: 0.000037
+Epoch 443/500:
+==>Train: || Total_time: 3.281s || loc_loss: 1.4693 conf_loss: 0.1184 || lr: 0.000036
+Epoch 444/500:
+==>Train: || Total_time: 3.299s || loc_loss: 1.3873 conf_loss: 0.1052 || lr: 0.000035
+Epoch 445/500:
+==>Train: || Total_time: 3.301s || loc_loss: 1.2750 conf_loss: 0.0772 || lr: 0.000033
+Epoch 446/500:
+==>Train: || Total_time: 3.309s || loc_loss: 1.2314 conf_loss: 0.0793 || lr: 0.000032
+Epoch 447/500:
+==>Train: || Total_time: 3.299s || loc_loss: 1.2348 conf_loss: 0.0932 || lr: 0.000031
+Epoch 448/500:
+==>Train: || Total_time: 3.303s || loc_loss: 1.2667 conf_loss: 0.0936 || lr: 0.000030
+Epoch 449/500:
+==>Train: || Total_time: 3.302s || loc_loss: 1.3592 conf_loss: 0.0865 || lr: 0.000029
+Epoch 450/500:
+==>Train: || Total_time: 3.324s || loc_loss: 1.3413 conf_loss: 0.0657 || lr: 0.000028
+Wrote snapshot to: ./experiments/models/rfb_resnet50_cones/rfb_resnet_50_cones_epoch_450.pth
+Epoch 451/500:
+==>Train: || Total_time: 3.321s || loc_loss: 1.4170 conf_loss: 0.0775 || lr: 0.000027
+Epoch 452/500:
+==>Train: || Total_time: 3.295s || loc_loss: 1.2026 conf_loss: 0.0869 || lr: 0.000026
+Epoch 453/500:
+==>Train: || Total_time: 3.307s || loc_loss: 1.2644 conf_loss: 0.0656 || lr: 0.000024
+Epoch 454/500:
+==>Train: || Total_time: 3.340s || loc_loss: 1.3099 conf_loss: 0.0848 || lr: 0.000023
+Epoch 455/500:
+==>Train: || Total_time: 3.330s || loc_loss: 1.3167 conf_loss: 0.1002 || lr: 0.000022
+Epoch 456/500:
+==>Train: || Total_time: 3.327s || loc_loss: 1.2524 conf_loss: 0.0878 || lr: 0.000021
+Epoch 457/500:
+==>Train: || Total_time: 3.291s || loc_loss: 1.3143 conf_loss: 0.0964 || lr: 0.000021
+Epoch 458/500:
+==>Train: || Total_time: 3.287s || loc_loss: 1.3122 conf_loss: 0.0706 || lr: 0.000020
+Epoch 459/500:
+==>Train: || Total_time: 3.276s || loc_loss: 1.2330 conf_loss: 0.0928 || lr: 0.000019
+Epoch 460/500:
+==>Train: || Total_time: 3.279s || loc_loss: 1.3046 conf_loss: 0.1009 || lr: 0.000018
+Wrote snapshot to: ./experiments/models/rfb_resnet50_cones/rfb_resnet_50_cones_epoch_460.pth
+Epoch 461/500:
+==>Train: || Total_time: 3.292s || loc_loss: 1.2121 conf_loss: 0.0863 || lr: 0.000017
+Epoch 462/500:
+==>Train: || Total_time: 3.292s || loc_loss: 1.1651 conf_loss: 0.0688 || lr: 0.000016
+Epoch 463/500:
+==>Train: || Total_time: 3.276s || loc_loss: 1.2067 conf_loss: 0.0760 || lr: 0.000015
+Epoch 464/500:
+==>Train: || Total_time: 3.288s || loc_loss: 1.2844 conf_loss: 0.0796 || lr: 0.000014
+Epoch 465/500:
+==>Train: || Total_time: 3.293s || loc_loss: 1.3534 conf_loss: 0.0712 || lr: 0.000014
+Epoch 466/500:
+==>Train: || Total_time: 3.292s || loc_loss: 1.4285 conf_loss: 0.0884 || lr: 0.000013
+Epoch 467/500:
+==>Train: || Total_time: 3.307s || loc_loss: 1.2782 conf_loss: 0.0804 || lr: 0.000012
+Epoch 468/500:
+==>Train: || Total_time: 3.316s || loc_loss: 1.2856 conf_loss: 0.0858 || lr: 0.000011
+Epoch 469/500:
+==>Train: || Total_time: 3.301s || loc_loss: 1.2066 conf_loss: 0.0608 || lr: 0.000011
+Epoch 470/500:
+==>Train: || Total_time: 3.306s || loc_loss: 1.1936 conf_loss: 0.0785 || lr: 0.000010
+Wrote snapshot to: ./experiments/models/rfb_resnet50_cones/rfb_resnet_50_cones_epoch_470.pth
+Epoch 471/500:
+==>Train: || Total_time: 3.301s || loc_loss: 1.2757 conf_loss: 0.0890 || lr: 0.000009
+Epoch 472/500:
+==>Train: || Total_time: 3.304s || loc_loss: 1.3319 conf_loss: 0.0688 || lr: 0.000009
+Epoch 473/500:
+==>Train: || Total_time: 3.293s || loc_loss: 1.2375 conf_loss: 0.0870 || lr: 0.000008
+Epoch 474/500:
+==>Train: || Total_time: 3.296s || loc_loss: 1.2954 conf_loss: 0.0757 || lr: 0.000008
+Epoch 475/500:
+==>Train: || Total_time: 3.290s || loc_loss: 1.2611 conf_loss: 0.0932 || lr: 0.000007
+Epoch 476/500:
+==>Train: || Total_time: 3.322s || loc_loss: 1.3304 conf_loss: 0.0934 || lr: 0.000006
+Epoch 477/500:
+==>Train: || Total_time: 3.300s || loc_loss: 1.3083 conf_loss: 0.0773 || lr: 0.000006
+Epoch 478/500:
+==>Train: || Total_time: 3.311s || loc_loss: 1.2471 conf_loss: 0.0797 || lr: 0.000005
+Epoch 479/500:
+==>Train: || Total_time: 3.293s || loc_loss: 1.2841 conf_loss: 0.1026 || lr: 0.000005
+Epoch 480/500:
+==>Train: || Total_time: 3.302s || loc_loss: 1.4460 conf_loss: 0.0798 || lr: 0.000004
+Wrote snapshot to: ./experiments/models/rfb_resnet50_cones/rfb_resnet_50_cones_epoch_480.pth
+Epoch 481/500:
+==>Train: || Total_time: 3.288s || loc_loss: 1.2647 conf_loss: 0.0686 || lr: 0.000004
+Epoch 482/500:
+==>Train: || Total_time: 3.298s || loc_loss: 1.3523 conf_loss: 0.0759 || lr: 0.000004
+Epoch 483/500:
+==>Train: || Total_time: 3.309s || loc_loss: 1.2162 conf_loss: 0.1020 || lr: 0.000003
+Epoch 484/500:
+==>Train: || Total_time: 3.280s || loc_loss: 1.2913 conf_loss: 0.0884 || lr: 0.000003
+Epoch 485/500:
+==>Train: || Total_time: 3.297s || loc_loss: 1.2544 conf_loss: 0.1004 || lr: 0.000003
+Epoch 486/500:
+==>Train: || Total_time: 3.304s || loc_loss: 1.3122 conf_loss: 0.0830 || lr: 0.000002
+Epoch 487/500:
+==>Train: || Total_time: 3.290s || loc_loss: 1.2381 conf_loss: 0.0711 || lr: 0.000002
+Epoch 488/500:
+==>Train: || Total_time: 3.290s || loc_loss: 1.3278 conf_loss: 0.0888 || lr: 0.000002
+Epoch 489/500:
+==>Train: || Total_time: 3.311s || loc_loss: 1.2953 conf_loss: 0.0942 || lr: 0.000001
+Epoch 490/500:
+==>Train: || Total_time: 3.285s || loc_loss: 1.2479 conf_loss: 0.0839 || lr: 0.000001
+Wrote snapshot to: ./experiments/models/rfb_resnet50_cones/rfb_resnet_50_cones_epoch_490.pth
+Epoch 491/500:
+==>Train: || Total_time: 3.330s || loc_loss: 1.2123 conf_loss: 0.0876 || lr: 0.000001
+Epoch 492/500:
+==>Train: || Total_time: 3.312s || loc_loss: 1.2846 conf_loss: 0.0934 || lr: 0.000001
+Epoch 493/500:
+==>Train: || Total_time: 3.304s || loc_loss: 1.2649 conf_loss: 0.0869 || lr: 0.000001
+Epoch 494/500:
+==>Train: || Total_time: 3.334s || loc_loss: 1.3011 conf_loss: 0.1083 || lr: 0.000000
+Epoch 495/500:
+==>Train: || Total_time: 3.314s || loc_loss: 1.1884 conf_loss: 0.0719 || lr: 0.000000
+Epoch 496/500:
+==>Train: || Total_time: 3.334s || loc_loss: 1.2694 conf_loss: 0.0923 || lr: 0.000000
+Epoch 497/500:
+==>Train: || Total_time: 3.291s || loc_loss: 1.2405 conf_loss: 0.0775 || lr: 0.000000
+Epoch 498/500:
+==>Train: || Total_time: 3.288s || loc_loss: 1.3118 conf_loss: 0.0734 || lr: 0.000000
+Epoch 499/500:
+==>Train: || Total_time: 3.305s || loc_loss: 1.4721 conf_loss: 0.0827 || lr: 0.000000
+Epoch 500/500:
+==>Train: || Total_time: 3.320s || loc_loss: 1.2388 conf_loss: 0.0784 || lr: 0.000000
+Wrote snapshot to: ./experiments/models/rfb_resnet50_cones/rfb_resnet_50_cones_epoch_500.pth
+Traceback (most recent call last):
+  File "validate.py", line 46, in <module>
+    validate()
+  File "validate.py", line 43, in validate
+    validate_model()
+  File "/home/gfr_admin/lucas/ssds.pytorch/lib/ssds_validation.py", line 677, in validate_model
+    s.validate_model()
+  File "/home/gfr_admin/lucas/ssds.pytorch/lib/ssds_validation.py", line 290, in validate_model
+    prec, rec, ap = self.eval_epoch(self.model, self.eval_loader, self.detector, self.criterion, self.writer, epoch, self.use_gpu)
+NameError: global name 'epoch' is not defined

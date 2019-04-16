@@ -1,0 +1,3 @@
+<launch>
+  <node pkg="see_camera_processing" type="synthetic_output_generator_node" name="synthetic_output_generator_node" output="screen"></node>
+</launch>

@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<launch>
+
+  	<node name="image_view" pkg="image_view" type="image_view" respawn="false" output="screen">
+        <remap from="image" to="/see_camera_processing/debug" />
+    </node>
+    
+  <node pkg="see_camera_processing" type="image_generator" name="see_camera_processing_image_generator" output="screen" cwd="node"></node>
+  <node pkg="see_camera_processing" type="image_correction" name="see_camera_processing_image_correction" output="screen"></node>
+  
+  <node pkg="see_camera_processing" type="detector_ssd.py" name="see_camera_processing_cone_detection" respawn="True" output="screen"
+        args="--cfg $(find see_camera_processing)/src/ssds/experiments/cfgs/cones_fssd_se_tiny_resnet50.yml 
+              --camera-topic see_camera_processing/see_camera_processing_subscription
+              --debug"
+              />
+
+  <node pkg="see_camera_processing" type="coordinate_extraction" name="see_camera_processing_coordinate_extraction" output="screen"></node>
+
+</launch>

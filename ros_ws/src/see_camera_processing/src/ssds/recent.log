@@ -1,0 +1,634 @@
+lib.utils.visualize_utils - INFO - Loading data
+loading annotations into memory...
+Done (t=0.04s)
+creating index...
+index created!
+loading annotations into memory...
+Done (t=0.02s)
+creating index...
+index created!
+
+
+
+
+
+
+
+
+
+
+ NUM CLASSES: 4
+loading annotations into memory...
+Done (t=0.02s)
+creating index...
+index created!
+
+
+
+
+
+
+
+
+
+
+ NUM CLASSES: 4
+loading annotations into memory...
+Done (t=0.05s)
+creating index...
+index created!
+
+
+
+
+
+
+
+
+
+
+ NUM CLASSES: 4
+lib.utils.visualize_utils - INFO - Building model...
+lib.modeling.ssds.fssd - DEBUG - adding extra layer: 10 512
+lib.modeling.ssds.fssd - DEBUG - adding extra layer: 14 1024
+lib.modeling.ssds.fssd - DEBUG - adding extra layer: S 512
+lib.modeling.ssds.fssd - DEBUG - Done adding extras. Total extras: 2
+lib.modeling.ssds.fssd - DEBUG - Num extras: 2
+lib.modeling.ssds.fssd - DEBUG - Extras: ModuleList(
+  (0): Conv2d(1024, 256, kernel_size=(1, 1), stride=(1, 1))
+  (1): Conv2d(256, 512, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+)
+lib.modeling.ssds.fssd - DEBUG - Num pyramid_transforms: 3
+lib.modeling.ssds.fssd - DEBUG - Transforms: ModuleList(
+  (0): BasicConv(
+    (conv): Conv2d(512, 256, kernel_size=(1, 1), stride=(1, 1))
+    (relu): ReLU(inplace)
+  )
+  (1): BasicConv(
+    (conv): Conv2d(1024, 256, kernel_size=(1, 1), stride=(1, 1))
+    (relu): ReLU(inplace)
+  )
+  (2): BasicConv(
+    (conv): Conv2d(512, 256, kernel_size=(1, 1), stride=(1, 1))
+    (relu): ReLU(inplace)
+  )
+)
+lib.modeling.ssds.fssd - DEBUG - Num pyramid layers: 3
+lib.modeling.ssds.fssd - DEBUG - Pyramids: ModuleList(
+  (0): BasicConv(
+    (conv): Conv2d(768, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (relu): ReLU(inplace)
+  )
+  (1): BasicConv(
+    (conv): Conv2d(512, 512, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+    (relu): ReLU(inplace)
+  )
+  (2): BasicConv(
+    (conv): Conv2d(512, 256, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+    (relu): ReLU(inplace)
+  )
+)
+==>Model blocks:
+FSSD(
+  (base): ModuleList(
+    (0): Conv2d(3, 64, kernel_size=(7, 7), stride=(2, 2), padding=(3, 3), bias=False)
+    (1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (2): ReLU(inplace)
+    (3): MaxPool2d(kernel_size=3, stride=2, padding=1, dilation=1, ceil_mode=False)
+    (4): _bottleneck(
+      (conv1): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv3): Conv2d(64, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (bn3): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU()
+      (downsample): Sequential(
+        (0): Conv2d(64, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (5): _bottleneck(
+      (conv1): Conv2d(256, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv3): Conv2d(64, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (bn3): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU()
+    )
+    (6): _spatial_expansion(
+      (upsample): Sequential(
+        (0): Conv2d(256, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): LeakyReLU(negative_slope=0.2)
+        (3): ConvTranspose2d(32, 32, kernel_size=(3, 3), stride=(2, 2), bias=False)
+        (4): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (5): LeakyReLU(negative_slope=0.2)
+      )
+      (downsample): Sequential(
+        (0): Conv2d(32, 256, kernel_size=(3, 3), stride=(2, 2), bias=False)
+        (1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): LeakyReLU(negative_slope=0.2)
+      )
+      (activation): LeakyReLU(negative_slope=0.2)
+    )
+    (7): _bottleneck(
+      (conv1): Conv2d(256, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv3): Conv2d(128, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (bn3): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU()
+      (downsample): Sequential(
+        (0): Conv2d(256, 512, kernel_size=(1, 1), stride=(2, 2), bias=False)
+        (1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (8): _bottleneck(
+      (conv1): Conv2d(512, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv3): Conv2d(128, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (bn3): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU()
+    )
+    (9): _bottleneck(
+      (conv1): Conv2d(512, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv3): Conv2d(128, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (bn3): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU()
+    )
+    (10): _spatial_expansion(
+      (upsample): Sequential(
+        (0): Conv2d(512, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): LeakyReLU(negative_slope=0.2)
+        (3): ConvTranspose2d(64, 64, kernel_size=(3, 3), stride=(2, 2), bias=False)
+        (4): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (5): LeakyReLU(negative_slope=0.2)
+      )
+      (downsample): Sequential(
+        (0): Conv2d(64, 512, kernel_size=(3, 3), stride=(2, 2), bias=False)
+        (1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): LeakyReLU(negative_slope=0.2)
+      )
+      (activation): LeakyReLU(negative_slope=0.2)
+    )
+    (11): _bottleneck(
+      (conv1): Conv2d(512, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv3): Conv2d(256, 1024, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (bn3): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU()
+      (downsample): Sequential(
+        (0): Conv2d(512, 1024, kernel_size=(1, 1), stride=(2, 2), bias=False)
+        (1): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (12): _bottleneck(
+      (conv1): Conv2d(1024, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv3): Conv2d(256, 1024, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (bn3): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU()
+    )
+    (13): _spatial_expansion(
+      (upsample): Sequential(
+        (0): Conv2d(1024, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): LeakyReLU(negative_slope=0.2)
+        (3): ConvTranspose2d(128, 128, kernel_size=(3, 3), stride=(2, 2), bias=False)
+        (4): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (5): LeakyReLU(negative_slope=0.2)
+      )
+      (downsample): Sequential(
+        (0): Conv2d(128, 1024, kernel_size=(3, 3), stride=(2, 2), bias=False)
+        (1): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): LeakyReLU(negative_slope=0.2)
+      )
+      (activation): LeakyReLU(negative_slope=0.2)
+    )
+    (14): _spatial_expansion(
+      (upsample): Sequential(
+        (0): Conv2d(1024, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): LeakyReLU(negative_slope=0.2)
+        (3): ConvTranspose2d(128, 128, kernel_size=(3, 3), stride=(1, 1), bias=False)
+        (4): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (5): LeakyReLU(negative_slope=0.2)
+      )
+      (downsample): Sequential(
+        (0): Conv2d(128, 1024, kernel_size=(3, 3), stride=(1, 1), bias=False)
+        (1): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): LeakyReLU(negative_slope=0.2)
+      )
+      (activation): LeakyReLU(negative_slope=0.2)
+    )
+  )
+  (extras): ModuleList(
+    (0): Conv2d(1024, 256, kernel_size=(1, 1), stride=(1, 1))
+    (1): Conv2d(256, 512, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+  )
+  (transforms): ModuleList(
+    (0): BasicConv(
+      (conv): Conv2d(512, 256, kernel_size=(1, 1), stride=(1, 1))
+      (relu): ReLU(inplace)
+    )
+    (1): BasicConv(
+      (conv): Conv2d(1024, 256, kernel_size=(1, 1), stride=(1, 1))
+      (relu): ReLU(inplace)
+    )
+    (2): BasicConv(
+      (conv): Conv2d(512, 256, kernel_size=(1, 1), stride=(1, 1))
+      (relu): ReLU(inplace)
+    )
+  )
+  (pyramids): ModuleList(
+    (0): BasicConv(
+      (conv): Conv2d(768, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (relu): ReLU(inplace)
+    )
+    (1): BasicConv(
+      (conv): Conv2d(512, 512, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+      (relu): ReLU(inplace)
+    )
+    (2): BasicConv(
+      (conv): Conv2d(512, 256, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+      (relu): ReLU(inplace)
+    )
+  )
+  (norm): BatchNorm2d(768, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  (loc): ModuleList(
+    (0): Conv2d(512, 24, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (1): Conv2d(512, 24, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (2): Conv2d(256, 24, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+  )
+  (conf): ModuleList(
+    (0): Conv2d(512, 18, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (1): Conv2d(512, 18, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (2): Conv2d(256, 18, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+  )
+  (softmax): Softmax()
+)
+==>Feature map size:
+[(64, 64), (32, 32), (16, 16)]
+lib.utils.visualize_utils - INFO - Utilize GPUs for computation
+lib.utils.visualize_utils - INFO - Number of GPU available: 2
+lib.utils.visualize_utils - INFO - Model architectures:
+FSSD(
+  (base): ModuleList(
+    (0): Conv2d(3, 64, kernel_size=(7, 7), stride=(2, 2), padding=(3, 3), bias=False)
+    (1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (2): ReLU(inplace)
+    (3): MaxPool2d(kernel_size=3, stride=2, padding=1, dilation=1, ceil_mode=False)
+    (4): _bottleneck(
+      (conv1): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv3): Conv2d(64, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (bn3): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU()
+      (downsample): Sequential(
+        (0): Conv2d(64, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (5): _bottleneck(
+      (conv1): Conv2d(256, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv3): Conv2d(64, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (bn3): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU()
+    )
+    (6): _spatial_expansion(
+      (upsample): Sequential(
+        (0): Conv2d(256, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): LeakyReLU(negative_slope=0.2)
+        (3): ConvTranspose2d(32, 32, kernel_size=(3, 3), stride=(2, 2), bias=False)
+        (4): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (5): LeakyReLU(negative_slope=0.2)
+      )
+      (downsample): Sequential(
+        (0): Conv2d(32, 256, kernel_size=(3, 3), stride=(2, 2), bias=False)
+        (1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): LeakyReLU(negative_slope=0.2)
+      )
+      (activation): LeakyReLU(negative_slope=0.2)
+    )
+    (7): _bottleneck(
+      (conv1): Conv2d(256, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv3): Conv2d(128, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (bn3): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU()
+      (downsample): Sequential(
+        (0): Conv2d(256, 512, kernel_size=(1, 1), stride=(2, 2), bias=False)
+        (1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (8): _bottleneck(
+      (conv1): Conv2d(512, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv3): Conv2d(128, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (bn3): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU()
+    )
+    (9): _bottleneck(
+      (conv1): Conv2d(512, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv3): Conv2d(128, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (bn3): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU()
+    )
+    (10): _spatial_expansion(
+      (upsample): Sequential(
+        (0): Conv2d(512, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): LeakyReLU(negative_slope=0.2)
+        (3): ConvTranspose2d(64, 64, kernel_size=(3, 3), stride=(2, 2), bias=False)
+        (4): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (5): LeakyReLU(negative_slope=0.2)
+      )
+      (downsample): Sequential(
+        (0): Conv2d(64, 512, kernel_size=(3, 3), stride=(2, 2), bias=False)
+        (1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): LeakyReLU(negative_slope=0.2)
+      )
+      (activation): LeakyReLU(negative_slope=0.2)
+    )
+    (11): _bottleneck(
+      (conv1): Conv2d(512, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv3): Conv2d(256, 1024, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (bn3): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU()
+      (downsample): Sequential(
+        (0): Conv2d(512, 1024, kernel_size=(1, 1), stride=(2, 2), bias=False)
+        (1): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (12): _bottleneck(
+      (conv1): Conv2d(1024, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv3): Conv2d(256, 1024, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (bn3): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU()
+    )
+    (13): _spatial_expansion(
+      (upsample): Sequential(
+        (0): Conv2d(1024, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): LeakyReLU(negative_slope=0.2)
+        (3): ConvTranspose2d(128, 128, kernel_size=(3, 3), stride=(2, 2), bias=False)
+        (4): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (5): LeakyReLU(negative_slope=0.2)
+      )
+      (downsample): Sequential(
+        (0): Conv2d(128, 1024, kernel_size=(3, 3), stride=(2, 2), bias=False)
+        (1): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): LeakyReLU(negative_slope=0.2)
+      )
+      (activation): LeakyReLU(negative_slope=0.2)
+    )
+    (14): _spatial_expansion(
+      (upsample): Sequential(
+        (0): Conv2d(1024, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): LeakyReLU(negative_slope=0.2)
+        (3): ConvTranspose2d(128, 128, kernel_size=(3, 3), stride=(1, 1), bias=False)
+        (4): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (5): LeakyReLU(negative_slope=0.2)
+      )
+      (downsample): Sequential(
+        (0): Conv2d(128, 1024, kernel_size=(3, 3), stride=(1, 1), bias=False)
+        (1): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): LeakyReLU(negative_slope=0.2)
+      )
+      (activation): LeakyReLU(negative_slope=0.2)
+    )
+  )
+  (extras): ModuleList(
+    (0): Conv2d(1024, 256, kernel_size=(1, 1), stride=(1, 1))
+    (1): Conv2d(256, 512, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+  )
+  (transforms): ModuleList(
+    (0): BasicConv(
+      (conv): Conv2d(512, 256, kernel_size=(1, 1), stride=(1, 1))
+      (relu): ReLU(inplace)
+    )
+    (1): BasicConv(
+      (conv): Conv2d(1024, 256, kernel_size=(1, 1), stride=(1, 1))
+      (relu): ReLU(inplace)
+    )
+    (2): BasicConv(
+      (conv): Conv2d(512, 256, kernel_size=(1, 1), stride=(1, 1))
+      (relu): ReLU(inplace)
+    )
+  )
+  (pyramids): ModuleList(
+    (0): BasicConv(
+      (conv): Conv2d(768, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (relu): ReLU(inplace)
+    )
+    (1): BasicConv(
+      (conv): Conv2d(512, 512, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+      (relu): ReLU(inplace)
+    )
+    (2): BasicConv(
+      (conv): Conv2d(512, 256, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+      (relu): ReLU(inplace)
+    )
+  )
+  (norm): BatchNorm2d(768, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  (loc): ModuleList(
+    (0): Conv2d(512, 24, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (1): Conv2d(512, 24, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (2): Conv2d(256, 24, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+  )
+  (conf): ModuleList(
+    (0): Conv2d(512, 18, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (1): Conv2d(512, 18, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (2): Conv2d(256, 18, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+  )
+  (softmax): Softmax()
+)
+
+lib.utils.visualize_utils - DEBUG - Parameters and size:
+lib.utils.visualize_utils - DEBUG - base.0.weight: [64, 3, 7, 7]
+lib.utils.visualize_utils - DEBUG - base.1.weight: [64]
+lib.utils.visualize_utils - DEBUG - base.1.bias: [64]
+lib.utils.visualize_utils - DEBUG - base.4.conv1.weight: [64, 64, 1, 1]
+lib.utils.visualize_utils - DEBUG - base.4.bn1.weight: [64]
+lib.utils.visualize_utils - DEBUG - base.4.bn1.bias: [64]
+lib.utils.visualize_utils - DEBUG - base.4.conv2.weight: [64, 64, 3, 3]
+lib.utils.visualize_utils - DEBUG - base.4.bn2.weight: [64]
+lib.utils.visualize_utils - DEBUG - base.4.bn2.bias: [64]
+lib.utils.visualize_utils - DEBUG - base.4.conv3.weight: [256, 64, 1, 1]
+lib.utils.visualize_utils - DEBUG - base.4.bn3.weight: [256]
+lib.utils.visualize_utils - DEBUG - base.4.bn3.bias: [256]
+lib.utils.visualize_utils - DEBUG - base.4.downsample.0.weight: [256, 64, 1, 1]
+lib.utils.visualize_utils - DEBUG - base.4.downsample.1.weight: [256]
+lib.utils.visualize_utils - DEBUG - base.4.downsample.1.bias: [256]
+lib.utils.visualize_utils - DEBUG - base.5.conv1.weight: [64, 256, 1, 1]
+lib.utils.visualize_utils - DEBUG - base.5.bn1.weight: [64]
+lib.utils.visualize_utils - DEBUG - base.5.bn1.bias: [64]
+lib.utils.visualize_utils - DEBUG - base.5.conv2.weight: [64, 64, 3, 3]
+lib.utils.visualize_utils - DEBUG - base.5.bn2.weight: [64]
+lib.utils.visualize_utils - DEBUG - base.5.bn2.bias: [64]
+lib.utils.visualize_utils - DEBUG - base.5.conv3.weight: [256, 64, 1, 1]
+lib.utils.visualize_utils - DEBUG - base.5.bn3.weight: [256]
+lib.utils.visualize_utils - DEBUG - base.5.bn3.bias: [256]
+lib.utils.visualize_utils - DEBUG - base.6.upsample.0.weight: [32, 256, 1, 1]
+lib.utils.visualize_utils - DEBUG - base.6.upsample.1.weight: [32]
+lib.utils.visualize_utils - DEBUG - base.6.upsample.1.bias: [32]
+lib.utils.visualize_utils - DEBUG - base.6.upsample.3.weight: [32, 32, 3, 3]
+lib.utils.visualize_utils - DEBUG - base.6.upsample.4.weight: [32]
+lib.utils.visualize_utils - DEBUG - base.6.upsample.4.bias: [32]
+lib.utils.visualize_utils - DEBUG - base.6.downsample.0.weight: [256, 32, 3, 3]
+lib.utils.visualize_utils - DEBUG - base.6.downsample.1.weight: [256]
+lib.utils.visualize_utils - DEBUG - base.6.downsample.1.bias: [256]
+lib.utils.visualize_utils - DEBUG - base.7.conv1.weight: [128, 256, 1, 1]
+lib.utils.visualize_utils - DEBUG - base.7.bn1.weight: [128]
+lib.utils.visualize_utils - DEBUG - base.7.bn1.bias: [128]
+lib.utils.visualize_utils - DEBUG - base.7.conv2.weight: [128, 128, 3, 3]
+lib.utils.visualize_utils - DEBUG - base.7.bn2.weight: [128]
+lib.utils.visualize_utils - DEBUG - base.7.bn2.bias: [128]
+lib.utils.visualize_utils - DEBUG - base.7.conv3.weight: [512, 128, 1, 1]
+lib.utils.visualize_utils - DEBUG - base.7.bn3.weight: [512]
+lib.utils.visualize_utils - DEBUG - base.7.bn3.bias: [512]
+lib.utils.visualize_utils - DEBUG - base.7.downsample.0.weight: [512, 256, 1, 1]
+lib.utils.visualize_utils - DEBUG - base.7.downsample.1.weight: [512]
+lib.utils.visualize_utils - DEBUG - base.7.downsample.1.bias: [512]
+lib.utils.visualize_utils - DEBUG - base.8.conv1.weight: [128, 512, 1, 1]
+lib.utils.visualize_utils - DEBUG - base.8.bn1.weight: [128]
+lib.utils.visualize_utils - DEBUG - base.8.bn1.bias: [128]
+lib.utils.visualize_utils - DEBUG - base.8.conv2.weight: [128, 128, 3, 3]
+lib.utils.visualize_utils - DEBUG - base.8.bn2.weight: [128]
+lib.utils.visualize_utils - DEBUG - base.8.bn2.bias: [128]
+lib.utils.visualize_utils - DEBUG - base.8.conv3.weight: [512, 128, 1, 1]
+lib.utils.visualize_utils - DEBUG - base.8.bn3.weight: [512]
+lib.utils.visualize_utils - DEBUG - base.8.bn3.bias: [512]
+lib.utils.visualize_utils - DEBUG - base.9.conv1.weight: [128, 512, 1, 1]
+lib.utils.visualize_utils - DEBUG - base.9.bn1.weight: [128]
+lib.utils.visualize_utils - DEBUG - base.9.bn1.bias: [128]
+lib.utils.visualize_utils - DEBUG - base.9.conv2.weight: [128, 128, 3, 3]
+lib.utils.visualize_utils - DEBUG - base.9.bn2.weight: [128]
+lib.utils.visualize_utils - DEBUG - base.9.bn2.bias: [128]
+lib.utils.visualize_utils - DEBUG - base.9.conv3.weight: [512, 128, 1, 1]
+lib.utils.visualize_utils - DEBUG - base.9.bn3.weight: [512]
+lib.utils.visualize_utils - DEBUG - base.9.bn3.bias: [512]
+lib.utils.visualize_utils - DEBUG - base.10.upsample.0.weight: [64, 512, 1, 1]
+lib.utils.visualize_utils - DEBUG - base.10.upsample.1.weight: [64]
+lib.utils.visualize_utils - DEBUG - base.10.upsample.1.bias: [64]
+lib.utils.visualize_utils - DEBUG - base.10.upsample.3.weight: [64, 64, 3, 3]
+lib.utils.visualize_utils - DEBUG - base.10.upsample.4.weight: [64]
+lib.utils.visualize_utils - DEBUG - base.10.upsample.4.bias: [64]
+lib.utils.visualize_utils - DEBUG - base.10.downsample.0.weight: [512, 64, 3, 3]
+lib.utils.visualize_utils - DEBUG - base.10.downsample.1.weight: [512]
+lib.utils.visualize_utils - DEBUG - base.10.downsample.1.bias: [512]
+lib.utils.visualize_utils - DEBUG - base.11.conv1.weight: [256, 512, 1, 1]
+lib.utils.visualize_utils - DEBUG - base.11.bn1.weight: [256]
+lib.utils.visualize_utils - DEBUG - base.11.bn1.bias: [256]
+lib.utils.visualize_utils - DEBUG - base.11.conv2.weight: [256, 256, 3, 3]
+lib.utils.visualize_utils - DEBUG - base.11.bn2.weight: [256]
+lib.utils.visualize_utils - DEBUG - base.11.bn2.bias: [256]
+lib.utils.visualize_utils - DEBUG - base.11.conv3.weight: [1024, 256, 1, 1]
+lib.utils.visualize_utils - DEBUG - base.11.bn3.weight: [1024]
+lib.utils.visualize_utils - DEBUG - base.11.bn3.bias: [1024]
+lib.utils.visualize_utils - DEBUG - base.11.downsample.0.weight: [1024, 512, 1, 1]
+lib.utils.visualize_utils - DEBUG - base.11.downsample.1.weight: [1024]
+lib.utils.visualize_utils - DEBUG - base.11.downsample.1.bias: [1024]
+lib.utils.visualize_utils - DEBUG - base.12.conv1.weight: [256, 1024, 1, 1]
+lib.utils.visualize_utils - DEBUG - base.12.bn1.weight: [256]
+lib.utils.visualize_utils - DEBUG - base.12.bn1.bias: [256]
+lib.utils.visualize_utils - DEBUG - base.12.conv2.weight: [256, 256, 3, 3]
+lib.utils.visualize_utils - DEBUG - base.12.bn2.weight: [256]
+lib.utils.visualize_utils - DEBUG - base.12.bn2.bias: [256]
+lib.utils.visualize_utils - DEBUG - base.12.conv3.weight: [1024, 256, 1, 1]
+lib.utils.visualize_utils - DEBUG - base.12.bn3.weight: [1024]
+lib.utils.visualize_utils - DEBUG - base.12.bn3.bias: [1024]
+lib.utils.visualize_utils - DEBUG - base.13.upsample.0.weight: [128, 1024, 1, 1]
+lib.utils.visualize_utils - DEBUG - base.13.upsample.1.weight: [128]
+lib.utils.visualize_utils - DEBUG - base.13.upsample.1.bias: [128]
+lib.utils.visualize_utils - DEBUG - base.13.upsample.3.weight: [128, 128, 3, 3]
+lib.utils.visualize_utils - DEBUG - base.13.upsample.4.weight: [128]
+lib.utils.visualize_utils - DEBUG - base.13.upsample.4.bias: [128]
+lib.utils.visualize_utils - DEBUG - base.13.downsample.0.weight: [1024, 128, 3, 3]
+lib.utils.visualize_utils - DEBUG - base.13.downsample.1.weight: [1024]
+lib.utils.visualize_utils - DEBUG - base.13.downsample.1.bias: [1024]
+lib.utils.visualize_utils - DEBUG - base.14.upsample.0.weight: [128, 1024, 1, 1]
+lib.utils.visualize_utils - DEBUG - base.14.upsample.1.weight: [128]
+lib.utils.visualize_utils - DEBUG - base.14.upsample.1.bias: [128]
+lib.utils.visualize_utils - DEBUG - base.14.upsample.3.weight: [128, 128, 3, 3]
+lib.utils.visualize_utils - DEBUG - base.14.upsample.4.weight: [128]
+lib.utils.visualize_utils - DEBUG - base.14.upsample.4.bias: [128]
+lib.utils.visualize_utils - DEBUG - base.14.downsample.0.weight: [1024, 128, 3, 3]
+lib.utils.visualize_utils - DEBUG - base.14.downsample.1.weight: [1024]
+lib.utils.visualize_utils - DEBUG - base.14.downsample.1.bias: [1024]
+lib.utils.visualize_utils - DEBUG - extras.0.weight: [256, 1024, 1, 1]
+lib.utils.visualize_utils - DEBUG - extras.0.bias: [256]
+lib.utils.visualize_utils - DEBUG - extras.1.weight: [512, 256, 3, 3]
+lib.utils.visualize_utils - DEBUG - extras.1.bias: [512]
+lib.utils.visualize_utils - DEBUG - transforms.0.conv.weight: [256, 512, 1, 1]
+lib.utils.visualize_utils - DEBUG - transforms.0.conv.bias: [256]
+lib.utils.visualize_utils - DEBUG - transforms.1.conv.weight: [256, 1024, 1, 1]
+lib.utils.visualize_utils - DEBUG - transforms.1.conv.bias: [256]
+lib.utils.visualize_utils - DEBUG - transforms.2.conv.weight: [256, 512, 1, 1]
+lib.utils.visualize_utils - DEBUG - transforms.2.conv.bias: [256]
+lib.utils.visualize_utils - DEBUG - pyramids.0.conv.weight: [512, 768, 3, 3]
+lib.utils.visualize_utils - DEBUG - pyramids.0.conv.bias: [512]
+lib.utils.visualize_utils - DEBUG - pyramids.1.conv.weight: [512, 512, 3, 3]
+lib.utils.visualize_utils - DEBUG - pyramids.1.conv.bias: [512]
+lib.utils.visualize_utils - DEBUG - pyramids.2.conv.weight: [256, 512, 3, 3]
+lib.utils.visualize_utils - DEBUG - pyramids.2.conv.bias: [256]
+lib.utils.visualize_utils - DEBUG - norm.weight: [768]
+lib.utils.visualize_utils - DEBUG - norm.bias: [768]
+lib.utils.visualize_utils - DEBUG - loc.0.weight: [24, 512, 3, 3]
+lib.utils.visualize_utils - DEBUG - loc.0.bias: [24]
+lib.utils.visualize_utils - DEBUG - loc.1.weight: [24, 512, 3, 3]
+lib.utils.visualize_utils - DEBUG - loc.1.bias: [24]
+lib.utils.visualize_utils - DEBUG - loc.2.weight: [24, 256, 3, 3]
+lib.utils.visualize_utils - DEBUG - loc.2.bias: [24]
+lib.utils.visualize_utils - DEBUG - conf.0.weight: [18, 512, 3, 3]
+lib.utils.visualize_utils - DEBUG - conf.0.bias: [18]
+lib.utils.visualize_utils - DEBUG - conf.1.weight: [18, 512, 3, 3]
+lib.utils.visualize_utils - DEBUG - conf.1.bias: [18]
+lib.utils.visualize_utils - DEBUG - conf.2.weight: [18, 256, 3, 3]
+lib.utils.visualize_utils - DEBUG - conf.2.bias: [18]
+lib.utils.visualize_utils - DEBUG - Trainable scope: base,norm,extras,transforms,pyramids,loc,conf
+lib.utils.visualize_utils - INFO - Loading initial model weights from latest
+lib.utils.visualize_utils - INFO - no checkpoint found at 'latest'
+lib.utils.visualize_utils - INFO - Current phase: train
+lib.utils.visualize_utils - INFO - || train || 0/97 in 5.355s [----------] || loc_loss: 4.2108 cls_loss: 6.4571
+lib.utils.visualize_utils - INFO - || train || 1/97 in 0.148s [----------] || loc_loss: 3.9388 cls_loss: 5.9008
+lib.utils.visualize_utils - ERROR - ERROR
+lib.utils.visualize_utils - ERROR - copy_if failed to synchronize: device-side assert triggered
+lib.utils.visualize_utils - ERROR - MODEL OUTPUT:
+lib.utils.visualize_utils - ERROR - [torch.Size([32256, 4]), torch.Size([32256, 4]), torch.Size([32256, 4]), torch.Size([32256, 4])]
+lib.utils.visualize_utils - ERROR - [torch.Size([32256, 3]), torch.Size([32256, 3]), torch.Size([32256, 3]), torch.Size([32256, 3])]
+lib.utils.visualize_utils - ERROR - TARGET
+lib.utils.visualize_utils - ERROR - [torch.Size([8, 5]), torch.Size([1, 5]), torch.Size([11, 5]), torch.Size([8, 5])]

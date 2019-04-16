@@ -1,0 +1,4 @@
+ImageCoordinates coordinatesTopLeft
+ConeColor coneType
+uint16 boxWidth
+uint16 boxHeight
