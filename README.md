@@ -8,6 +8,8 @@ We require:
 - ROS Kinetic
 - Bash shell
 - Python 2.7
+- Git (at least version 2.7)
+- Git LFS (latest version). Download it [here](https://git-lfs.github.com/) and follow [this instruction](https://help.github.com/en/articles/installing-git-large-file-storage) to install it **before cloning this repository**
 
 ROS Kinetic installation link:
 ```
