@@ -7,9 +7,13 @@ We require:
 - Ubuntu 16.04 LTS
 - ROS Kinetic
 - Bash shell
-- Python 2.7
+- Python 2.7.15
 - Git (at least version 2.7)
 - Git LFS (latest version). Download it [here](https://git-lfs.github.com/) and follow [this instruction](https://help.github.com/en/articles/installing-git-large-file-storage) to install it **before cloning this repository**
+- CUDA 9.0 compatible Nvidia GPU with at least 4GB of VRAM (tested on GTX 1080) (Note: You do not need to install cuda yourself. This will be handled by package that needs it.)
+- Anaconda (conda 4.6.12)
+- pip (18.1)
+
 
 ROS Kinetic installation link:
 ```
@@ -29,7 +33,21 @@ This command will generate `build` and `devel` directories under the `ros_ws` di
 
 ## Setup environment
 
-At these two lines into your `~/.bashrc` 
+1. Install an anaconda environement and activate it
+
+```
+conda create -n DV python=2.7.15
+conda activate DV
+```
+
+2. Install shared python dependences. 
+At the top level directory, run:
+
+```
+pip install -r requirements.txt
+```
+
+3. At these two lines into your `~/.bashrc` 
 ```
 source /opt/ros/kinetic/setup.bash
 source <absolute path to the top level directory of this project>/ros_ws/devel/setup.bash

@@ -1,0 +1,289 @@
+# -*- coding: utf-8 -*-
+import torch.nn as nn
+
+from collections import namedtuple
+import functools
+
+import logging
+logger = logging.getLogger(__name__)
+
+BasicBlock = namedtuple('BasicBlock', ['stride', 'depth', 'num', 't'])
+Bottleneck = namedtuple('Bottleneck', ['stride', 'depth', 'num', 't'])
+# t is the expension factor
+
+V18_CONV_DEFS = [
+    BasicBlock(stride=1, depth=64, num=2, t=1),
+    BasicBlock(stride=2, depth=128, num=2, t=1),
+    BasicBlock(stride=2, depth=256, num=2, t=1),
+    # BasicBlock(stride=2, depth=512, num=2, t=1),
+]
+
+V34_CONV_DEFS = [
+    BasicBlock(stride=1, depth=64, num=3, t=1),
+    BasicBlock(stride=2, depth=128, num=4, t=1),
+    BasicBlock(stride=2, depth=256, num=6, t=1),
+    # BasicBlock(stride=2, depth=512, num=3, t=1),
+]
+
+V50_CONV_DEFS = [
+    Bottleneck(stride=1, depth=64, num=3, t=4),
+    Bottleneck(stride=2, depth=128, num=4, t=4),
+    Bottleneck(stride=2, depth=256, num=6, t=4),
+    # Bottleneck(stride=2, depth=512, num=3, t=4),
+]
+
+V101_CONV_DEFS = [
+    Bottleneck(stride=1, depth=64, num=3, t=4),
+    Bottleneck(stride=2, depth=128, num=4, t=4),
+    Bottleneck(stride=2, depth=256, num=23, t=4),
+    # Bottleneck(stride=2, depth=512, num=3, t=4),
+]
+
+# ------------------
+# My implementation
+# ------------------
+
+Stem = namedtuple('StemBlock', ['depth'])
+SpatialExpansion = namedtuple('SpatialExpansionBlock', ['stride', 'depth', 'num', 't'])
+
+
+EXPANSION_B_CONV_DEFS = [
+    Bottleneck(stride=1, depth=64, num=3, t=1),
+    SpatialExpansion(stride=2, depth=64, num=1, t=.5),
+
+    Bottleneck(stride=2, depth=128, num=3, t=1),
+    SpatialExpansion(stride=2, depth=128, num=1, t=.5),
+
+#    SpatialExpansion(stride=2, depth=128, num=2, t=4),
+
+    Bottleneck(stride=2, depth=256, num=5, t=1),
+#    SpatialExpansion(stride=2, depth=256, num=1, t=4),
+
+    # Bottleneck(stride=2, depth=512, num=3, t=4),
+]
+
+class _stem(nn.Module):
+    def __init__(self, base_filters=64):
+        super(_stem, self).__init__()
+        self.stem = nn.Sequential(
+            nn.Conv2d(3, base_filters, kernel_size=7, stride=2, padding=3, bias=False),
+            nn.BatchNorm2d(base_filters),
+            nn.ReLU(inplace=False),
+            nn.MaxPool2d(kernel_size=3, stride=2, padding=1)
+        )
+
+    def forward(self, x):
+        return self.stem(x)
+
+class _basicblock(nn.Module):
+    def __init__(self, inplanes, planes, stride=1, expansion=1, downsample=None):
+        super(_basicblock, self).__init__()
+        self.conv1 = nn.Conv2d(inplanes, planes, kernel_size=3, stride=stride,
+                     padding=1, bias=False)
+        self.bn1 = nn.BatchNorm2d(planes)
+        self.relu = nn.ReLU(inplace=False)
+        self.conv2 = nn.Conv2d(planes, planes * expansion, kernel_size=3, stride=1,
+                     padding=1, bias=False)
+        self.bn2 = nn.BatchNorm2d(planes * expansion)
+        self.downsample = downsample
+        self.stride = stride
+
+    def forward(self, x):
+        residual = x
+
+        out = self.conv1(x)
+        out = self.bn1(out)
+        out = self.relu(out)
+
+        out = self.conv2(out)
+        out = self.bn2(out)
+
+        if self.downsample is not None:
+            residual = self.downsample(x)
+
+        out += residual
+        out = self.relu(out)
+
+        return out
+
+
+class _bottleneck(nn.Module):
+    def __init__(self, inplanes, planes, stride=1, expansion=4, downsample=None):
+        super(_bottleneck, self).__init__()
+        self.conv1 = nn.Conv2d(inplanes, planes, kernel_size=1, bias=False)
+        self.bn1 = nn.BatchNorm2d(planes)
+        self.conv2 = nn.Conv2d(planes, planes, kernel_size=3, stride=stride,
+                               padding=1, bias=False)
+        self.bn2 = nn.BatchNorm2d(planes)
+        self.conv3 = nn.Conv2d(planes, planes * expansion, kernel_size=1, bias=False)
+        self.bn3 = nn.BatchNorm2d(planes * expansion)
+        self.relu = nn.ReLU(inplace=False)
+        self.downsample = downsample
+        self.stride = stride
+
+    def forward(self, x):
+        residual = x
+
+        out = self.conv1(x)
+        out = self.bn1(out)
+        out = self.relu(out)
+
+        out = self.conv2(out)
+        out = self.bn2(out)
+        out = self.relu(out)
+
+        out = self.conv3(out)
+        out = self.bn3(out)
+
+        if self.downsample is not None:
+            residual = self.downsample(x)
+
+        out += residual
+        out = self.relu(out)
+
+        return out
+    
+
+class _spatial_expansion(nn.Module):
+    def __init__(self, inplanes, planes, stride=2, expansion=4, residual=True):
+        super(_spatial_expansion, self).__init__()
+        self.upsample = nn.Sequential(
+            nn.Conv2d(inplanes, planes, kernel_size=1, bias=False),
+            nn.BatchNorm2d(planes),
+            nn.LeakyReLU(0.2, inplace=False),
+
+            nn.ConvTranspose2d(planes, planes, kernel_size=3, stride=stride,
+                                   padding=int(round((stride-1)/2)), bias=False),
+            nn.BatchNorm2d(planes),
+            nn.LeakyReLU(0.2, inplace=False)
+        )
+
+        self.downsample = nn.Sequential(
+            nn.Conv2d(planes, inplanes, kernel_size=3, stride=stride, bias=False,
+                      padding=int(round((stride-1)/2))),
+            nn.BatchNorm2d(inplanes),
+            nn.LeakyReLU(0.2, inplace=False)
+        )
+
+        self.residual = residual
+
+    def forward(self, x):
+        residual = x if self.residual else 0
+
+        out = self.upsample(x)
+        out = self.downsample(out)
+
+        return out + residual
+
+def resnet(conv_defs, depth_multiplier=1.0, min_depth=8, base_filters=64):
+    def depth(d):
+        return max(int(d * depth_multiplier), min_depth)
+    layers = [
+            nn.Conv2d(3, base_filters, kernel_size=7, stride=2, padding=3, bias=False),
+            nn.BatchNorm2d(base_filters),
+            nn.ReLU(inplace=True),
+            nn.MaxPool2d(kernel_size=3, stride=2, padding=1)
+    ]
+    in_channels = base_filters
+    for conv_def in conv_defs:
+        if conv_def.stride != 1 or in_channels != depth(conv_def.depth * conv_def.t):
+            _downsample = nn.Sequential(
+                nn.Conv2d(in_channels, depth(conv_def.depth * conv_def.t),
+                          kernel_size=1, stride=conv_def.stride, bias=False),
+                nn.BatchNorm2d(depth(conv_def.depth * conv_def.t)),
+            )
+        else:
+            _downsample = None
+        if isinstance(conv_def, BasicBlock):
+            for n in range(conv_def.num):
+                (stride, downsample) = (conv_def.stride, _downsample) if n == 0 else (1, None)
+                layers += [_basicblock(in_channels, depth(conv_def.depth), stride, conv_def.t, downsample)]
+                in_channels = depth(conv_def.depth * conv_def.t)
+        elif isinstance(conv_def, Bottleneck):
+            for n in range(conv_def.num):
+                (stride, downsample) = (conv_def.stride, _downsample) if n == 0 else (1, None)
+                layers += [_bottleneck(in_channels, depth(conv_def.depth), stride, 
+                                       conv_def.t, downsample)]
+                in_channels = depth(conv_def.depth * conv_def.t)
+        elif isinstance(conv_def, SpatialExpansion):
+            for n in range(conv_def.num):
+                (stride, downsample) = (conv_def.stride, _downsample) if n == 0 else (1, None)
+                layers += [_spatial_expansion(in_channels, depth(conv_def.depth), 
+                                              stride, conv_def.t)]
+
+    return layers
+
+
+EXPANSION_A_CONV_DEFS = [
+    #Stem(depth=64)
+    Bottleneck(stride=1, depth=64, num=2, t=4),
+    SpatialExpansion(stride=2, depth=32, num=1, t=1),
+    #Bottleneck(stride=1, depth=64*4, num=1, t=1),
+
+    Bottleneck(stride=2, depth=128, num=3, t=4),
+    SpatialExpansion(stride=2, depth=64, num=1, t=1),
+    #Bottleneck(stride=1, depth=128*4, num=1, t=1),
+
+    #SpatialExpansion(stride=2, depth=128, num=2, t=4),
+
+    Bottleneck(stride=2, depth=256, num=2, t=4),
+    SpatialExpansion(stride=2, depth=128, num=2, t=1),
+    #Bottleneck(stride=1, depth=256*4, num=2, t=1),
+
+    # Bottleneck(stride=2, depth=512, num=3, t=4),
+]
+
+def my_resnet(conv_defs, depth_multiplier=1.0, min_depth=8, base_filters=64):
+    def depth(d): return max(int(d * depth_multiplier), min_depth)
+
+    layers = [_stem(base_filters)]
+    in_channels = base_filters
+    for conv_def in conv_defs:
+        if conv_def.stride != 1 or in_channels != depth(conv_def.depth * conv_def.t):
+            _downsample = nn.Sequential(
+                nn.Conv2d(in_channels, depth(conv_def.depth * conv_def.t),
+                          kernel_size=1, stride=conv_def.stride, bias=False),
+                nn.BatchNorm2d(depth(conv_def.depth * conv_def.t)),
+            )
+        else:
+            _downsample = None
+        for n in range(conv_def.num):
+            stride = conv_def.stride if n == 0 else 1
+            downsample = _downsample if n == 0 else None
+            if isinstance(conv_def, BasicBlock):
+                conv = _basicblock(in_channels, depth(conv_def.depth),
+                                   stride, conv_def.t, downsample)
+                in_channels = depth(conv_def.depth * conv_def.t)
+
+            elif isinstance(conv_def, Bottleneck):
+                conv = _bottleneck(in_channels, depth(conv_def.depth),
+                                   stride, conv_def.t, downsample)
+                in_channels = depth(conv_def.depth * conv_def.t) 
+            elif isinstance(conv_def, SpatialExpansion):
+                conv = _spatial_expansion(in_channels, depth(conv_def.depth),
+                                          conv_def.stride)
+            else:
+                raise ValueError("Resnet block [{}] not recognized."
+                                 .format(str(conv_def)))
+            layers += [conv]
+            
+    return layers
+
+
+def wrapped_partial(func, *args, **kwargs):
+    partial_func = functools.partial(func, *args, **kwargs)
+    functools.update_wrapper(partial_func, func)
+    return partial_func
+
+resnet_18 = wrapped_partial(resnet, conv_defs=V18_CONV_DEFS, depth_multiplier=1.0)
+resnet_34 = wrapped_partial(resnet, conv_defs=V34_CONV_DEFS, depth_multiplier=1.0)
+
+resnet_50 = wrapped_partial(resnet, conv_defs=V50_CONV_DEFS, depth_multiplier=1.0)
+resnet_101 = wrapped_partial(resnet, conv_defs=V101_CONV_DEFS, depth_multiplier=1.0)
+
+
+resnet_spatial_expansion_a = wrapped_partial(
+    my_resnet, conv_defs=EXPANSION_A_CONV_DEFS, depth_multiplier=1.0)
+
+resnet_spatial_expansion_b = wrapped_partial(
+    resnet, conv_defs=EXPANSION_B_CONV_DEFS, depth_multiplier=1.0)

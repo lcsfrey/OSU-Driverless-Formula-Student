@@ -1,0 +1,4226 @@
+name: "generalized_rcnn_init"
+op {
+  output: "gpu_0/conv1_w"
+  name: ""
+  type: "XavierFill"
+  arg {
+    name: "shape"
+    ints: 64
+    ints: 3
+    ints: 7
+    ints: 7
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res_conv1_bn_s"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "shape"
+    ints: 64
+  }
+  arg {
+    name: "value"
+    f: 1.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res_conv1_bn_b"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "shape"
+    ints: 64
+  }
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res2_0_branch2a_w"
+  name: ""
+  type: "XavierFill"
+  arg {
+    name: "shape"
+    ints: 64
+    ints: 64
+    ints: 1
+    ints: 1
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res2_0_branch2a_bn_s"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "shape"
+    ints: 64
+  }
+  arg {
+    name: "value"
+    f: 1.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res2_0_branch2a_bn_b"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "shape"
+    ints: 64
+  }
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res2_0_branch2b_w"
+  name: ""
+  type: "XavierFill"
+  arg {
+    name: "shape"
+    ints: 64
+    ints: 64
+    ints: 3
+    ints: 3
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res2_0_branch2b_bn_s"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "shape"
+    ints: 64
+  }
+  arg {
+    name: "value"
+    f: 1.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res2_0_branch2b_bn_b"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "shape"
+    ints: 64
+  }
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res2_0_branch2c_w"
+  name: ""
+  type: "XavierFill"
+  arg {
+    name: "shape"
+    ints: 256
+    ints: 64
+    ints: 1
+    ints: 1
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res2_0_branch2c_bn_s"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "shape"
+    ints: 256
+  }
+  arg {
+    name: "value"
+    f: 1.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res2_0_branch2c_bn_b"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "shape"
+    ints: 256
+  }
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res2_0_branch1_w"
+  name: ""
+  type: "XavierFill"
+  arg {
+    name: "shape"
+    ints: 256
+    ints: 64
+    ints: 1
+    ints: 1
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res2_0_branch1_bn_s"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "shape"
+    ints: 256
+  }
+  arg {
+    name: "value"
+    f: 1.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res2_0_branch1_bn_b"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "shape"
+    ints: 256
+  }
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res2_1_branch2a_w"
+  name: ""
+  type: "XavierFill"
+  arg {
+    name: "shape"
+    ints: 64
+    ints: 256
+    ints: 1
+    ints: 1
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res2_1_branch2a_bn_s"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "shape"
+    ints: 64
+  }
+  arg {
+    name: "value"
+    f: 1.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res2_1_branch2a_bn_b"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "shape"
+    ints: 64
+  }
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res2_1_branch2b_w"
+  name: ""
+  type: "XavierFill"
+  arg {
+    name: "shape"
+    ints: 64
+    ints: 64
+    ints: 3
+    ints: 3
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res2_1_branch2b_bn_s"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "shape"
+    ints: 64
+  }
+  arg {
+    name: "value"
+    f: 1.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res2_1_branch2b_bn_b"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "shape"
+    ints: 64
+  }
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res2_1_branch2c_w"
+  name: ""
+  type: "XavierFill"
+  arg {
+    name: "shape"
+    ints: 256
+    ints: 64
+    ints: 1
+    ints: 1
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res2_1_branch2c_bn_s"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "shape"
+    ints: 256
+  }
+  arg {
+    name: "value"
+    f: 1.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res2_1_branch2c_bn_b"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "shape"
+    ints: 256
+  }
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res2_2_branch2a_w"
+  name: ""
+  type: "XavierFill"
+  arg {
+    name: "shape"
+    ints: 64
+    ints: 256
+    ints: 1
+    ints: 1
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res2_2_branch2a_bn_s"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "shape"
+    ints: 64
+  }
+  arg {
+    name: "value"
+    f: 1.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res2_2_branch2a_bn_b"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "shape"
+    ints: 64
+  }
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res2_2_branch2b_w"
+  name: ""
+  type: "XavierFill"
+  arg {
+    name: "shape"
+    ints: 64
+    ints: 64
+    ints: 3
+    ints: 3
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res2_2_branch2b_bn_s"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "shape"
+    ints: 64
+  }
+  arg {
+    name: "value"
+    f: 1.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res2_2_branch2b_bn_b"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "shape"
+    ints: 64
+  }
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res2_2_branch2c_w"
+  name: ""
+  type: "XavierFill"
+  arg {
+    name: "shape"
+    ints: 256
+    ints: 64
+    ints: 1
+    ints: 1
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res2_2_branch2c_bn_s"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "shape"
+    ints: 256
+  }
+  arg {
+    name: "value"
+    f: 1.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res2_2_branch2c_bn_b"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "shape"
+    ints: 256
+  }
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res3_0_branch2a_w"
+  name: ""
+  type: "XavierFill"
+  arg {
+    name: "shape"
+    ints: 128
+    ints: 256
+    ints: 1
+    ints: 1
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res3_0_branch2a_bn_s"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "shape"
+    ints: 128
+  }
+  arg {
+    name: "value"
+    f: 1.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res3_0_branch2a_bn_b"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "shape"
+    ints: 128
+  }
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res3_0_branch2b_w"
+  name: ""
+  type: "XavierFill"
+  arg {
+    name: "shape"
+    ints: 128
+    ints: 128
+    ints: 3
+    ints: 3
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res3_0_branch2b_bn_s"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "shape"
+    ints: 128
+  }
+  arg {
+    name: "value"
+    f: 1.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res3_0_branch2b_bn_b"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "shape"
+    ints: 128
+  }
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res3_0_branch2c_w"
+  name: ""
+  type: "XavierFill"
+  arg {
+    name: "shape"
+    ints: 512
+    ints: 128
+    ints: 1
+    ints: 1
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res3_0_branch2c_bn_s"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "shape"
+    ints: 512
+  }
+  arg {
+    name: "value"
+    f: 1.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res3_0_branch2c_bn_b"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "shape"
+    ints: 512
+  }
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res3_0_branch1_w"
+  name: ""
+  type: "XavierFill"
+  arg {
+    name: "shape"
+    ints: 512
+    ints: 256
+    ints: 1
+    ints: 1
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res3_0_branch1_bn_s"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "shape"
+    ints: 512
+  }
+  arg {
+    name: "value"
+    f: 1.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res3_0_branch1_bn_b"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "shape"
+    ints: 512
+  }
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res3_1_branch2a_w"
+  name: ""
+  type: "XavierFill"
+  arg {
+    name: "shape"
+    ints: 128
+    ints: 512
+    ints: 1
+    ints: 1
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res3_1_branch2a_bn_s"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "shape"
+    ints: 128
+  }
+  arg {
+    name: "value"
+    f: 1.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res3_1_branch2a_bn_b"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "shape"
+    ints: 128
+  }
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res3_1_branch2b_w"
+  name: ""
+  type: "XavierFill"
+  arg {
+    name: "shape"
+    ints: 128
+    ints: 128
+    ints: 3
+    ints: 3
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res3_1_branch2b_bn_s"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "shape"
+    ints: 128
+  }
+  arg {
+    name: "value"
+    f: 1.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res3_1_branch2b_bn_b"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "shape"
+    ints: 128
+  }
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res3_1_branch2c_w"
+  name: ""
+  type: "XavierFill"
+  arg {
+    name: "shape"
+    ints: 512
+    ints: 128
+    ints: 1
+    ints: 1
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res3_1_branch2c_bn_s"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "shape"
+    ints: 512
+  }
+  arg {
+    name: "value"
+    f: 1.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res3_1_branch2c_bn_b"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "shape"
+    ints: 512
+  }
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res3_2_branch2a_w"
+  name: ""
+  type: "XavierFill"
+  arg {
+    name: "shape"
+    ints: 128
+    ints: 512
+    ints: 1
+    ints: 1
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res3_2_branch2a_bn_s"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "shape"
+    ints: 128
+  }
+  arg {
+    name: "value"
+    f: 1.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res3_2_branch2a_bn_b"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "shape"
+    ints: 128
+  }
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res3_2_branch2b_w"
+  name: ""
+  type: "XavierFill"
+  arg {
+    name: "shape"
+    ints: 128
+    ints: 128
+    ints: 3
+    ints: 3
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res3_2_branch2b_bn_s"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "shape"
+    ints: 128
+  }
+  arg {
+    name: "value"
+    f: 1.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res3_2_branch2b_bn_b"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "shape"
+    ints: 128
+  }
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res3_2_branch2c_w"
+  name: ""
+  type: "XavierFill"
+  arg {
+    name: "shape"
+    ints: 512
+    ints: 128
+    ints: 1
+    ints: 1
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res3_2_branch2c_bn_s"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "shape"
+    ints: 512
+  }
+  arg {
+    name: "value"
+    f: 1.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res3_2_branch2c_bn_b"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "shape"
+    ints: 512
+  }
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res3_3_branch2a_w"
+  name: ""
+  type: "XavierFill"
+  arg {
+    name: "shape"
+    ints: 128
+    ints: 512
+    ints: 1
+    ints: 1
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res3_3_branch2a_bn_s"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "shape"
+    ints: 128
+  }
+  arg {
+    name: "value"
+    f: 1.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res3_3_branch2a_bn_b"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "shape"
+    ints: 128
+  }
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res3_3_branch2b_w"
+  name: ""
+  type: "XavierFill"
+  arg {
+    name: "shape"
+    ints: 128
+    ints: 128
+    ints: 3
+    ints: 3
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res3_3_branch2b_bn_s"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "shape"
+    ints: 128
+  }
+  arg {
+    name: "value"
+    f: 1.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res3_3_branch2b_bn_b"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "shape"
+    ints: 128
+  }
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res3_3_branch2c_w"
+  name: ""
+  type: "XavierFill"
+  arg {
+    name: "shape"
+    ints: 512
+    ints: 128
+    ints: 1
+    ints: 1
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res3_3_branch2c_bn_s"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "shape"
+    ints: 512
+  }
+  arg {
+    name: "value"
+    f: 1.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res3_3_branch2c_bn_b"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "shape"
+    ints: 512
+  }
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res4_0_branch2a_w"
+  name: ""
+  type: "XavierFill"
+  arg {
+    name: "shape"
+    ints: 256
+    ints: 512
+    ints: 1
+    ints: 1
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res4_0_branch2a_bn_s"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "shape"
+    ints: 256
+  }
+  arg {
+    name: "value"
+    f: 1.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res4_0_branch2a_bn_b"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "shape"
+    ints: 256
+  }
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res4_0_branch2b_w"
+  name: ""
+  type: "XavierFill"
+  arg {
+    name: "shape"
+    ints: 256
+    ints: 256
+    ints: 3
+    ints: 3
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res4_0_branch2b_bn_s"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "shape"
+    ints: 256
+  }
+  arg {
+    name: "value"
+    f: 1.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res4_0_branch2b_bn_b"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "shape"
+    ints: 256
+  }
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res4_0_branch2c_w"
+  name: ""
+  type: "XavierFill"
+  arg {
+    name: "shape"
+    ints: 1024
+    ints: 256
+    ints: 1
+    ints: 1
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res4_0_branch2c_bn_s"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "shape"
+    ints: 1024
+  }
+  arg {
+    name: "value"
+    f: 1.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res4_0_branch2c_bn_b"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "shape"
+    ints: 1024
+  }
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res4_0_branch1_w"
+  name: ""
+  type: "XavierFill"
+  arg {
+    name: "shape"
+    ints: 1024
+    ints: 512
+    ints: 1
+    ints: 1
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res4_0_branch1_bn_s"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "shape"
+    ints: 1024
+  }
+  arg {
+    name: "value"
+    f: 1.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res4_0_branch1_bn_b"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "shape"
+    ints: 1024
+  }
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res4_1_branch2a_w"
+  name: ""
+  type: "XavierFill"
+  arg {
+    name: "shape"
+    ints: 256
+    ints: 1024
+    ints: 1
+    ints: 1
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res4_1_branch2a_bn_s"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "shape"
+    ints: 256
+  }
+  arg {
+    name: "value"
+    f: 1.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res4_1_branch2a_bn_b"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "shape"
+    ints: 256
+  }
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res4_1_branch2b_w"
+  name: ""
+  type: "XavierFill"
+  arg {
+    name: "shape"
+    ints: 256
+    ints: 256
+    ints: 3
+    ints: 3
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res4_1_branch2b_bn_s"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "shape"
+    ints: 256
+  }
+  arg {
+    name: "value"
+    f: 1.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res4_1_branch2b_bn_b"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "shape"
+    ints: 256
+  }
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res4_1_branch2c_w"
+  name: ""
+  type: "XavierFill"
+  arg {
+    name: "shape"
+    ints: 1024
+    ints: 256
+    ints: 1
+    ints: 1
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res4_1_branch2c_bn_s"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "shape"
+    ints: 1024
+  }
+  arg {
+    name: "value"
+    f: 1.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res4_1_branch2c_bn_b"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "shape"
+    ints: 1024
+  }
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res4_2_branch2a_w"
+  name: ""
+  type: "XavierFill"
+  arg {
+    name: "shape"
+    ints: 256
+    ints: 1024
+    ints: 1
+    ints: 1
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res4_2_branch2a_bn_s"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "shape"
+    ints: 256
+  }
+  arg {
+    name: "value"
+    f: 1.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res4_2_branch2a_bn_b"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "shape"
+    ints: 256
+  }
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res4_2_branch2b_w"
+  name: ""
+  type: "XavierFill"
+  arg {
+    name: "shape"
+    ints: 256
+    ints: 256
+    ints: 3
+    ints: 3
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res4_2_branch2b_bn_s"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "shape"
+    ints: 256
+  }
+  arg {
+    name: "value"
+    f: 1.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res4_2_branch2b_bn_b"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "shape"
+    ints: 256
+  }
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res4_2_branch2c_w"
+  name: ""
+  type: "XavierFill"
+  arg {
+    name: "shape"
+    ints: 1024
+    ints: 256
+    ints: 1
+    ints: 1
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res4_2_branch2c_bn_s"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "shape"
+    ints: 1024
+  }
+  arg {
+    name: "value"
+    f: 1.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res4_2_branch2c_bn_b"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "shape"
+    ints: 1024
+  }
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res4_3_branch2a_w"
+  name: ""
+  type: "XavierFill"
+  arg {
+    name: "shape"
+    ints: 256
+    ints: 1024
+    ints: 1
+    ints: 1
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res4_3_branch2a_bn_s"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "shape"
+    ints: 256
+  }
+  arg {
+    name: "value"
+    f: 1.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res4_3_branch2a_bn_b"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "shape"
+    ints: 256
+  }
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res4_3_branch2b_w"
+  name: ""
+  type: "XavierFill"
+  arg {
+    name: "shape"
+    ints: 256
+    ints: 256
+    ints: 3
+    ints: 3
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res4_3_branch2b_bn_s"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "shape"
+    ints: 256
+  }
+  arg {
+    name: "value"
+    f: 1.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res4_3_branch2b_bn_b"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "shape"
+    ints: 256
+  }
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res4_3_branch2c_w"
+  name: ""
+  type: "XavierFill"
+  arg {
+    name: "shape"
+    ints: 1024
+    ints: 256
+    ints: 1
+    ints: 1
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res4_3_branch2c_bn_s"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "shape"
+    ints: 1024
+  }
+  arg {
+    name: "value"
+    f: 1.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res4_3_branch2c_bn_b"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "shape"
+    ints: 1024
+  }
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res4_4_branch2a_w"
+  name: ""
+  type: "XavierFill"
+  arg {
+    name: "shape"
+    ints: 256
+    ints: 1024
+    ints: 1
+    ints: 1
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res4_4_branch2a_bn_s"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "shape"
+    ints: 256
+  }
+  arg {
+    name: "value"
+    f: 1.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res4_4_branch2a_bn_b"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "shape"
+    ints: 256
+  }
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res4_4_branch2b_w"
+  name: ""
+  type: "XavierFill"
+  arg {
+    name: "shape"
+    ints: 256
+    ints: 256
+    ints: 3
+    ints: 3
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res4_4_branch2b_bn_s"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "shape"
+    ints: 256
+  }
+  arg {
+    name: "value"
+    f: 1.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res4_4_branch2b_bn_b"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "shape"
+    ints: 256
+  }
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res4_4_branch2c_w"
+  name: ""
+  type: "XavierFill"
+  arg {
+    name: "shape"
+    ints: 1024
+    ints: 256
+    ints: 1
+    ints: 1
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res4_4_branch2c_bn_s"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "shape"
+    ints: 1024
+  }
+  arg {
+    name: "value"
+    f: 1.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res4_4_branch2c_bn_b"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "shape"
+    ints: 1024
+  }
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res4_5_branch2a_w"
+  name: ""
+  type: "XavierFill"
+  arg {
+    name: "shape"
+    ints: 256
+    ints: 1024
+    ints: 1
+    ints: 1
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res4_5_branch2a_bn_s"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "shape"
+    ints: 256
+  }
+  arg {
+    name: "value"
+    f: 1.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res4_5_branch2a_bn_b"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "shape"
+    ints: 256
+  }
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res4_5_branch2b_w"
+  name: ""
+  type: "XavierFill"
+  arg {
+    name: "shape"
+    ints: 256
+    ints: 256
+    ints: 3
+    ints: 3
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res4_5_branch2b_bn_s"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "shape"
+    ints: 256
+  }
+  arg {
+    name: "value"
+    f: 1.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res4_5_branch2b_bn_b"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "shape"
+    ints: 256
+  }
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res4_5_branch2c_w"
+  name: ""
+  type: "XavierFill"
+  arg {
+    name: "shape"
+    ints: 1024
+    ints: 256
+    ints: 1
+    ints: 1
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res4_5_branch2c_bn_s"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "shape"
+    ints: 1024
+  }
+  arg {
+    name: "value"
+    f: 1.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res4_5_branch2c_bn_b"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "shape"
+    ints: 1024
+  }
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res5_0_branch2a_w"
+  name: ""
+  type: "XavierFill"
+  arg {
+    name: "shape"
+    ints: 512
+    ints: 1024
+    ints: 1
+    ints: 1
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res5_0_branch2a_bn_s"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "shape"
+    ints: 512
+  }
+  arg {
+    name: "value"
+    f: 1.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res5_0_branch2a_bn_b"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "shape"
+    ints: 512
+  }
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res5_0_branch2b_w"
+  name: ""
+  type: "XavierFill"
+  arg {
+    name: "shape"
+    ints: 512
+    ints: 512
+    ints: 3
+    ints: 3
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res5_0_branch2b_bn_s"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "shape"
+    ints: 512
+  }
+  arg {
+    name: "value"
+    f: 1.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res5_0_branch2b_bn_b"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "shape"
+    ints: 512
+  }
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res5_0_branch2c_w"
+  name: ""
+  type: "XavierFill"
+  arg {
+    name: "shape"
+    ints: 2048
+    ints: 512
+    ints: 1
+    ints: 1
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res5_0_branch2c_bn_s"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "shape"
+    ints: 2048
+  }
+  arg {
+    name: "value"
+    f: 1.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res5_0_branch2c_bn_b"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "shape"
+    ints: 2048
+  }
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res5_0_branch1_w"
+  name: ""
+  type: "XavierFill"
+  arg {
+    name: "shape"
+    ints: 2048
+    ints: 1024
+    ints: 1
+    ints: 1
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res5_0_branch1_bn_s"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "shape"
+    ints: 2048
+  }
+  arg {
+    name: "value"
+    f: 1.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res5_0_branch1_bn_b"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "shape"
+    ints: 2048
+  }
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res5_1_branch2a_w"
+  name: ""
+  type: "XavierFill"
+  arg {
+    name: "shape"
+    ints: 512
+    ints: 2048
+    ints: 1
+    ints: 1
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res5_1_branch2a_bn_s"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "shape"
+    ints: 512
+  }
+  arg {
+    name: "value"
+    f: 1.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res5_1_branch2a_bn_b"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "shape"
+    ints: 512
+  }
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res5_1_branch2b_w"
+  name: ""
+  type: "XavierFill"
+  arg {
+    name: "shape"
+    ints: 512
+    ints: 512
+    ints: 3
+    ints: 3
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res5_1_branch2b_bn_s"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "shape"
+    ints: 512
+  }
+  arg {
+    name: "value"
+    f: 1.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res5_1_branch2b_bn_b"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "shape"
+    ints: 512
+  }
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res5_1_branch2c_w"
+  name: ""
+  type: "XavierFill"
+  arg {
+    name: "shape"
+    ints: 2048
+    ints: 512
+    ints: 1
+    ints: 1
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res5_1_branch2c_bn_s"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "shape"
+    ints: 2048
+  }
+  arg {
+    name: "value"
+    f: 1.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res5_1_branch2c_bn_b"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "shape"
+    ints: 2048
+  }
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res5_2_branch2a_w"
+  name: ""
+  type: "XavierFill"
+  arg {
+    name: "shape"
+    ints: 512
+    ints: 2048
+    ints: 1
+    ints: 1
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res5_2_branch2a_bn_s"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "shape"
+    ints: 512
+  }
+  arg {
+    name: "value"
+    f: 1.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res5_2_branch2a_bn_b"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "shape"
+    ints: 512
+  }
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res5_2_branch2b_w"
+  name: ""
+  type: "XavierFill"
+  arg {
+    name: "shape"
+    ints: 512
+    ints: 512
+    ints: 3
+    ints: 3
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res5_2_branch2b_bn_s"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "shape"
+    ints: 512
+  }
+  arg {
+    name: "value"
+    f: 1.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res5_2_branch2b_bn_b"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "shape"
+    ints: 512
+  }
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res5_2_branch2c_w"
+  name: ""
+  type: "XavierFill"
+  arg {
+    name: "shape"
+    ints: 2048
+    ints: 512
+    ints: 1
+    ints: 1
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res5_2_branch2c_bn_s"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "shape"
+    ints: 2048
+  }
+  arg {
+    name: "value"
+    f: 1.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/res5_2_branch2c_bn_b"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "shape"
+    ints: 2048
+  }
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/fpn_inner_res5_2_sum_w"
+  name: ""
+  type: "XavierFill"
+  arg {
+    name: "shape"
+    ints: 256
+    ints: 2048
+    ints: 1
+    ints: 1
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/fpn_inner_res5_2_sum_b"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "shape"
+    ints: 256
+  }
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/fpn_inner_res4_5_sum_lateral_w"
+  name: ""
+  type: "XavierFill"
+  arg {
+    name: "shape"
+    ints: 256
+    ints: 1024
+    ints: 1
+    ints: 1
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/fpn_inner_res4_5_sum_lateral_b"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "shape"
+    ints: 256
+  }
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/fpn_inner_res3_3_sum_lateral_w"
+  name: ""
+  type: "XavierFill"
+  arg {
+    name: "shape"
+    ints: 256
+    ints: 512
+    ints: 1
+    ints: 1
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/fpn_inner_res3_3_sum_lateral_b"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "shape"
+    ints: 256
+  }
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/fpn_inner_res2_2_sum_lateral_w"
+  name: ""
+  type: "XavierFill"
+  arg {
+    name: "shape"
+    ints: 256
+    ints: 256
+    ints: 1
+    ints: 1
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/fpn_inner_res2_2_sum_lateral_b"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "shape"
+    ints: 256
+  }
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/fpn_res5_2_sum_w"
+  name: ""
+  type: "XavierFill"
+  arg {
+    name: "shape"
+    ints: 256
+    ints: 256
+    ints: 3
+    ints: 3
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/fpn_res5_2_sum_b"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "shape"
+    ints: 256
+  }
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/fpn_res4_5_sum_w"
+  name: ""
+  type: "XavierFill"
+  arg {
+    name: "shape"
+    ints: 256
+    ints: 256
+    ints: 3
+    ints: 3
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/fpn_res4_5_sum_b"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "shape"
+    ints: 256
+  }
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/fpn_res3_3_sum_w"
+  name: ""
+  type: "XavierFill"
+  arg {
+    name: "shape"
+    ints: 256
+    ints: 256
+    ints: 3
+    ints: 3
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/fpn_res3_3_sum_b"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "shape"
+    ints: 256
+  }
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/fpn_res2_2_sum_w"
+  name: ""
+  type: "XavierFill"
+  arg {
+    name: "shape"
+    ints: 256
+    ints: 256
+    ints: 3
+    ints: 3
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/fpn_res2_2_sum_b"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "shape"
+    ints: 256
+  }
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/conv_rpn_fpn2_w"
+  name: ""
+  type: "GaussianFill"
+  arg {
+    name: "std"
+    f: 0.00999999977648
+  }
+  arg {
+    name: "shape"
+    ints: 256
+    ints: 256
+    ints: 3
+    ints: 3
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/conv_rpn_fpn2_b"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "shape"
+    ints: 256
+  }
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/rpn_cls_logits_fpn2_w"
+  name: ""
+  type: "GaussianFill"
+  arg {
+    name: "std"
+    f: 0.00999999977648
+  }
+  arg {
+    name: "shape"
+    ints: 3
+    ints: 256
+    ints: 1
+    ints: 1
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/rpn_cls_logits_fpn2_b"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "shape"
+    ints: 3
+  }
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/rpn_bbox_pred_fpn2_w"
+  name: ""
+  type: "GaussianFill"
+  arg {
+    name: "std"
+    f: 0.00999999977648
+  }
+  arg {
+    name: "shape"
+    ints: 12
+    ints: 256
+    ints: 1
+    ints: 1
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/rpn_bbox_pred_fpn2_b"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "shape"
+    ints: 12
+  }
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/fc6_w"
+  name: ""
+  type: "XavierFill"
+  arg {
+    name: "shape"
+    ints: 1024
+    ints: 12544
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/fc6_b"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "shape"
+    ints: 1024
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/fc7_w"
+  name: ""
+  type: "XavierFill"
+  arg {
+    name: "shape"
+    ints: 1024
+    ints: 1024
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/fc7_b"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "shape"
+    ints: 1024
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/cls_score_w"
+  name: ""
+  type: "GaussianFill"
+  arg {
+    name: "std"
+    f: 0.00999999977648
+  }
+  arg {
+    name: "shape"
+    ints: 4
+    ints: 1024
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/cls_score_b"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "shape"
+    ints: 4
+  }
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/bbox_pred_w"
+  name: ""
+  type: "GaussianFill"
+  arg {
+    name: "std"
+    f: 0.0010000000475
+  }
+  arg {
+    name: "shape"
+    ints: 16
+    ints: 1024
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/bbox_pred_b"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "shape"
+    ints: 16
+  }
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/lr"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "shape"
+    ints: 1
+  }
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/one"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "shape"
+    ints: 1
+  }
+  arg {
+    name: "value"
+    f: 1.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/wd"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "shape"
+    ints: 1
+  }
+  arg {
+    name: "value"
+    f: 0.000500000023749
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  output: "gpu_0/wd_gn"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "shape"
+    ints: 1
+  }
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  input: "gpu_0/res3_0_branch2a_w"
+  output: "gpu_0/res3_0_branch2a_w_momentum"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  input: "gpu_0/res3_0_branch2b_w"
+  output: "gpu_0/res3_0_branch2b_w_momentum"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  input: "gpu_0/res3_0_branch2c_w"
+  output: "gpu_0/res3_0_branch2c_w_momentum"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  input: "gpu_0/res3_0_branch1_w"
+  output: "gpu_0/res3_0_branch1_w_momentum"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  input: "gpu_0/res3_1_branch2a_w"
+  output: "gpu_0/res3_1_branch2a_w_momentum"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  input: "gpu_0/res3_1_branch2b_w"
+  output: "gpu_0/res3_1_branch2b_w_momentum"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  input: "gpu_0/res3_1_branch2c_w"
+  output: "gpu_0/res3_1_branch2c_w_momentum"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  input: "gpu_0/res3_2_branch2a_w"
+  output: "gpu_0/res3_2_branch2a_w_momentum"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  input: "gpu_0/res3_2_branch2b_w"
+  output: "gpu_0/res3_2_branch2b_w_momentum"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  input: "gpu_0/res3_2_branch2c_w"
+  output: "gpu_0/res3_2_branch2c_w_momentum"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  input: "gpu_0/res3_3_branch2a_w"
+  output: "gpu_0/res3_3_branch2a_w_momentum"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  input: "gpu_0/res3_3_branch2b_w"
+  output: "gpu_0/res3_3_branch2b_w_momentum"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  input: "gpu_0/res3_3_branch2c_w"
+  output: "gpu_0/res3_3_branch2c_w_momentum"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  input: "gpu_0/res4_0_branch2a_w"
+  output: "gpu_0/res4_0_branch2a_w_momentum"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  input: "gpu_0/res4_0_branch2b_w"
+  output: "gpu_0/res4_0_branch2b_w_momentum"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  input: "gpu_0/res4_0_branch2c_w"
+  output: "gpu_0/res4_0_branch2c_w_momentum"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  input: "gpu_0/res4_0_branch1_w"
+  output: "gpu_0/res4_0_branch1_w_momentum"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  input: "gpu_0/res4_1_branch2a_w"
+  output: "gpu_0/res4_1_branch2a_w_momentum"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  input: "gpu_0/res4_1_branch2b_w"
+  output: "gpu_0/res4_1_branch2b_w_momentum"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  input: "gpu_0/res4_1_branch2c_w"
+  output: "gpu_0/res4_1_branch2c_w_momentum"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  input: "gpu_0/res4_2_branch2a_w"
+  output: "gpu_0/res4_2_branch2a_w_momentum"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  input: "gpu_0/res4_2_branch2b_w"
+  output: "gpu_0/res4_2_branch2b_w_momentum"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  input: "gpu_0/res4_2_branch2c_w"
+  output: "gpu_0/res4_2_branch2c_w_momentum"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  input: "gpu_0/res4_3_branch2a_w"
+  output: "gpu_0/res4_3_branch2a_w_momentum"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  input: "gpu_0/res4_3_branch2b_w"
+  output: "gpu_0/res4_3_branch2b_w_momentum"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  input: "gpu_0/res4_3_branch2c_w"
+  output: "gpu_0/res4_3_branch2c_w_momentum"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  input: "gpu_0/res4_4_branch2a_w"
+  output: "gpu_0/res4_4_branch2a_w_momentum"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  input: "gpu_0/res4_4_branch2b_w"
+  output: "gpu_0/res4_4_branch2b_w_momentum"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  input: "gpu_0/res4_4_branch2c_w"
+  output: "gpu_0/res4_4_branch2c_w_momentum"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  input: "gpu_0/res4_5_branch2a_w"
+  output: "gpu_0/res4_5_branch2a_w_momentum"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  input: "gpu_0/res4_5_branch2b_w"
+  output: "gpu_0/res4_5_branch2b_w_momentum"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  input: "gpu_0/res4_5_branch2c_w"
+  output: "gpu_0/res4_5_branch2c_w_momentum"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  input: "gpu_0/res5_0_branch2a_w"
+  output: "gpu_0/res5_0_branch2a_w_momentum"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  input: "gpu_0/res5_0_branch2b_w"
+  output: "gpu_0/res5_0_branch2b_w_momentum"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  input: "gpu_0/res5_0_branch2c_w"
+  output: "gpu_0/res5_0_branch2c_w_momentum"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  input: "gpu_0/res5_0_branch1_w"
+  output: "gpu_0/res5_0_branch1_w_momentum"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  input: "gpu_0/res5_1_branch2a_w"
+  output: "gpu_0/res5_1_branch2a_w_momentum"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  input: "gpu_0/res5_1_branch2b_w"
+  output: "gpu_0/res5_1_branch2b_w_momentum"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  input: "gpu_0/res5_1_branch2c_w"
+  output: "gpu_0/res5_1_branch2c_w_momentum"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  input: "gpu_0/res5_2_branch2a_w"
+  output: "gpu_0/res5_2_branch2a_w_momentum"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  input: "gpu_0/res5_2_branch2b_w"
+  output: "gpu_0/res5_2_branch2b_w_momentum"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  input: "gpu_0/res5_2_branch2c_w"
+  output: "gpu_0/res5_2_branch2c_w_momentum"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  input: "gpu_0/fpn_inner_res5_2_sum_w"
+  output: "gpu_0/fpn_inner_res5_2_sum_w_momentum"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  input: "gpu_0/fpn_inner_res5_2_sum_b"
+  output: "gpu_0/fpn_inner_res5_2_sum_b_momentum"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  input: "gpu_0/fpn_inner_res4_5_sum_lateral_w"
+  output: "gpu_0/fpn_inner_res4_5_sum_lateral_w_momentum"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  input: "gpu_0/fpn_inner_res4_5_sum_lateral_b"
+  output: "gpu_0/fpn_inner_res4_5_sum_lateral_b_momentum"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  input: "gpu_0/fpn_inner_res3_3_sum_lateral_w"
+  output: "gpu_0/fpn_inner_res3_3_sum_lateral_w_momentum"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  input: "gpu_0/fpn_inner_res3_3_sum_lateral_b"
+  output: "gpu_0/fpn_inner_res3_3_sum_lateral_b_momentum"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  input: "gpu_0/fpn_inner_res2_2_sum_lateral_w"
+  output: "gpu_0/fpn_inner_res2_2_sum_lateral_w_momentum"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  input: "gpu_0/fpn_inner_res2_2_sum_lateral_b"
+  output: "gpu_0/fpn_inner_res2_2_sum_lateral_b_momentum"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  input: "gpu_0/fpn_res5_2_sum_w"
+  output: "gpu_0/fpn_res5_2_sum_w_momentum"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  input: "gpu_0/fpn_res5_2_sum_b"
+  output: "gpu_0/fpn_res5_2_sum_b_momentum"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  input: "gpu_0/fpn_res4_5_sum_w"
+  output: "gpu_0/fpn_res4_5_sum_w_momentum"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  input: "gpu_0/fpn_res4_5_sum_b"
+  output: "gpu_0/fpn_res4_5_sum_b_momentum"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  input: "gpu_0/fpn_res3_3_sum_w"
+  output: "gpu_0/fpn_res3_3_sum_w_momentum"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  input: "gpu_0/fpn_res3_3_sum_b"
+  output: "gpu_0/fpn_res3_3_sum_b_momentum"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  input: "gpu_0/fpn_res2_2_sum_w"
+  output: "gpu_0/fpn_res2_2_sum_w_momentum"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  input: "gpu_0/fpn_res2_2_sum_b"
+  output: "gpu_0/fpn_res2_2_sum_b_momentum"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  input: "gpu_0/conv_rpn_fpn2_w"
+  output: "gpu_0/conv_rpn_fpn2_w_momentum"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  input: "gpu_0/conv_rpn_fpn2_b"
+  output: "gpu_0/conv_rpn_fpn2_b_momentum"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  input: "gpu_0/rpn_cls_logits_fpn2_w"
+  output: "gpu_0/rpn_cls_logits_fpn2_w_momentum"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  input: "gpu_0/rpn_cls_logits_fpn2_b"
+  output: "gpu_0/rpn_cls_logits_fpn2_b_momentum"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  input: "gpu_0/rpn_bbox_pred_fpn2_w"
+  output: "gpu_0/rpn_bbox_pred_fpn2_w_momentum"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  input: "gpu_0/rpn_bbox_pred_fpn2_b"
+  output: "gpu_0/rpn_bbox_pred_fpn2_b_momentum"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  input: "gpu_0/fc6_w"
+  output: "gpu_0/fc6_w_momentum"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  input: "gpu_0/fc6_b"
+  output: "gpu_0/fc6_b_momentum"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  input: "gpu_0/fc7_w"
+  output: "gpu_0/fc7_w_momentum"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  input: "gpu_0/fc7_b"
+  output: "gpu_0/fc7_b_momentum"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  input: "gpu_0/cls_score_w"
+  output: "gpu_0/cls_score_w_momentum"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  input: "gpu_0/cls_score_b"
+  output: "gpu_0/cls_score_b_momentum"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  input: "gpu_0/bbox_pred_w"
+  output: "gpu_0/bbox_pred_w_momentum"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}
+op {
+  input: "gpu_0/bbox_pred_b"
+  output: "gpu_0/bbox_pred_b_momentum"
+  name: ""
+  type: "ConstantFill"
+  arg {
+    name: "value"
+    f: 0.0
+  }
+  device_option {
+    device_type: 1
+    device_id: 0
+  }
+}

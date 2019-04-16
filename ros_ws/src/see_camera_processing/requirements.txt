@@ -1,0 +1,5 @@
+opencv-python
+matplotlib
+tensorboardX
+pyyaml
+pycocotools
