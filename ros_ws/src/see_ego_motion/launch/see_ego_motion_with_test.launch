@@ -5,5 +5,5 @@
     <!-- <node pkg="see_ego_motion" type="see_ego_motion_test" name="see_ego_motion_test"/> -->
     <node pkg="see_ego_motion" type="bagTranslator.py" name="bagTranslator"/>
     <node pkg="rviz" type="rviz" name="rviz"/>
-    <node pkg="rosbag" type="play" name="amzDataPlayer" args="--clock $(find see_ego_motion)/../../../resources/amz-data.bag" />
+    <node pkg="rosbag" type="play" name="amzDataPlayer" args="--clock $(find see_ego_motion)/../../../data/amz-data.bag" />
 </launch>
