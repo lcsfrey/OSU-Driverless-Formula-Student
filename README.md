@@ -34,3 +34,7 @@ source <absolute path to the top level directory of this project>/ros_ws/devel/s
 ```
 Execute `source ~/.bashrc` for the current terminal. After later newly opened terminal, you don't have to do this.
 
+# Running & Grading Instruction
+
+We have seperated running & grading instruction of each component in each markdown file under the [Instructions](Instructions) directory
+Please see further instructions under the [Instructions](Instructions) directory
