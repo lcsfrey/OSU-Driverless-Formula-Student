@@ -20,7 +20,7 @@ We strongly reccommend install the full version, which is `ros-kinetic-desktop-f
 
 ## Compile
 
-Make sure you are standing at top level directory of this project
+Make sure you are standing at the `ros_ws` directory of this project
 
 ```
 catkin_make
