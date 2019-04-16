@@ -7,6 +7,7 @@ We require:
 - Ubuntu 16.04 LTS
 - ROS Kinetic
 - Bash shell
+- Python 2.7
 
 ROS Kinetic installation link:
 ```
