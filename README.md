@@ -9,7 +9,8 @@ We require:
 - Bash shell
 - Python 2.7.15
 - CUDA 9.0 compatible Nvidia GPU with at least 4GB of VRAM (tested on GTX 1080) (Note: You do not need to install cuda yourself. This will be handled by package that needs it.)
-- Anaconda
+- Anaconda (conda 4.6.12)
+- pip (18.1)
 
 ROS Kinetic installation link:
 ```
