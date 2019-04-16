@@ -40,14 +40,6 @@ class OdometryNode:
         self.odom_pub = rospy.Publisher("see_ego_motion/odom_filtered", see_ego_motion_interface, queue_size=10)
         self.rviz_particle_pub = rospy.Publisher("odometry_visualizer/particles", Marker, queue_size=1)
 
-        if rosbag:
-            rospy.Subscriber("gps", NavSatFix, self.sensor_gps_callback)
-            rospy.Subscriber("optical_speed_sensor", TwistStamped, self.sensor_odom_callback)
-        else:
-            #rospy.Subscriber("see_localization/vehicle_pose", vehicle_pose, self.slam_pose_callback)
-            rospy.Subscriber("vectornav/GPS", NavSatFix, self.sensor_gps_callback)
-            rospy.Subscriber("vectornav/Odom", Odometry, self.sensor_odom_callback)
-
         self.filter = ParticleFilter.ParticleFilter(ctrvModel, numParticles=20)
         self.filter.initParticles(particleMean, particleCov)
         self.sensorTimeLast = rospy.Time.now()
@@ -58,6 +50,14 @@ class OdometryNode:
         self.rviz_particle_pub = rospy.Publisher("see_ego_motion_test/odometry_visualization/particles", Marker, queue_size=1)
         self.rviz_odom_pub = rospy.Publisher("see_ego_motion_test/odometry_filtered", Marker, queue_size=1)
         self.rviz_gps_pub = rospy.Publisher("see_ego_motion_test/gps", Marker, queue_size=1)
+
+        if rosbag:
+            rospy.Subscriber("gps", NavSatFix, self.sensor_gps_callback)
+            rospy.Subscriber("optical_speed_sensor", TwistStamped, self.sensor_odom_callback)
+        else:
+            #rospy.Subscriber("see_localization/vehicle_pose", vehicle_pose, self.slam_pose_callback)
+            rospy.Subscriber("vectornav/GPS", NavSatFix, self.sensor_gps_callback)
+            rospy.Subscriber("vectornav/Odom", Odometry, self.sensor_odom_callback)
 
         #rospy.Subscriber("see_localization/vehicle_pose", vehicle_pose, self.slam_pose_callback)
         rospy.Subscriber("vectornav/GPS", NavSatFix, self.sensor_gps_callback)
