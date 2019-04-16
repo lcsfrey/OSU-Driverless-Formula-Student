@@ -1,2 +1,1 @@
-resources/amz-data.bag filter=lfs diff=lfs merge=lfs -text
 *.bag filter=lfs diff=lfs merge=lfs -text
