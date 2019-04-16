@@ -1,1309 +1,0 @@
-/home/gfr_admin/lucas/ssds.pytorch/lib/utils/config_parse.py:274: YAMLLoadWarning: calling yaml.load() without Loader=... is deprecated, as the default Loader is unsafe. Please read https://msg.pyyaml.org/load for full details.
-  yaml_cfg = AttrDict(yaml.load(f))
-/home/gfr_admin/anaconda2/envs/DV/lib/python2.7/site-packages/torch/nn/functional.py:2351: UserWarning: nn.functional.upsample is deprecated. Use nn.functional.interpolate instead.
-  warnings.warn("nn.functional.upsample is deprecated. Use nn.functional.interpolate instead.")
-/home/gfr_admin/anaconda2/envs/DV/lib/python2.7/site-packages/torch/nn/functional.py:2423: UserWarning: Default upsampling behavior when mode=bilinear is changed to align_corners=False since 0.4.0. Please specify align_corners=True if the old behavior is desired. See the documentation of nn.Upsample for details.
-  "See the documentation of nn.Upsample for details.".format(mode))
-/home/gfr_admin/lucas/ssds.pytorch/lib/ssds_validation.py:42: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
-  self.priors = torch.tensor(self.priorbox.forward())
-===> Loading data
-loading annotations into memory...
-Done (t=0.03s)
-creating index...
-index created!
-loading annotations into memory...
-Done (t=0.07s)
-creating index...
-index created!
-loading annotations into memory...
-Done (t=0.03s)
-creating index...
-index created!
-===> Building model
-==>Feature map size:
-[(38, 38), (19, 19), (10, 10), (5, 5), (3, 3), (1, 1)]
-Utilize GPUs for computation
-Number of GPU available 1
-Model architectures:
-FSSD(
-  (base): ModuleList(
-    (0): Conv2d(3, 64, kernel_size=(7, 7), stride=(2, 2), padding=(3, 3), bias=False)
-    (1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-    (2): ReLU(inplace)
-    (3): MaxPool2d(kernel_size=3, stride=2, padding=1, dilation=1, ceil_mode=False)
-    (4): _bottleneck(
-      (conv1): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
-      (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-      (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-      (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-      (conv3): Conv2d(64, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
-      (bn3): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-      (relu): ReLU(inplace)
-      (downsample): Sequential(
-        (0): Conv2d(64, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
-        (1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-      )
-    )
-    (5): _bottleneck(
-      (conv1): Conv2d(256, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
-      (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-      (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-      (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-      (conv3): Conv2d(64, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
-      (bn3): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-      (relu): ReLU(inplace)
-    )
-    (6): _bottleneck(
-      (conv1): Conv2d(256, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
-      (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-      (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-      (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-      (conv3): Conv2d(64, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
-      (bn3): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-      (relu): ReLU(inplace)
-    )
-    (7): _bottleneck(
-      (conv1): Conv2d(256, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
-      (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-      (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
-      (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-      (conv3): Conv2d(128, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
-      (bn3): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-      (relu): ReLU(inplace)
-      (downsample): Sequential(
-        (0): Conv2d(256, 512, kernel_size=(1, 1), stride=(2, 2), bias=False)
-        (1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-      )
-    )
-    (8): _bottleneck(
-      (conv1): Conv2d(512, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
-      (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-      (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-      (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-      (conv3): Conv2d(128, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
-      (bn3): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-      (relu): ReLU(inplace)
-    )
-    (9): _bottleneck(
-      (conv1): Conv2d(512, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
-      (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-      (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-      (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-      (conv3): Conv2d(128, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
-      (bn3): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-      (relu): ReLU(inplace)
-    )
-    (10): _bottleneck(
-      (conv1): Conv2d(512, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
-      (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-      (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-      (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-      (conv3): Conv2d(128, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
-      (bn3): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-      (relu): ReLU(inplace)
-    )
-    (11): _bottleneck(
-      (conv1): Conv2d(512, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
-      (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-      (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
-      (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-      (conv3): Conv2d(256, 1024, kernel_size=(1, 1), stride=(1, 1), bias=False)
-      (bn3): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-      (relu): ReLU(inplace)
-      (downsample): Sequential(
-        (0): Conv2d(512, 1024, kernel_size=(1, 1), stride=(2, 2), bias=False)
-        (1): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-      )
-    )
-    (12): _bottleneck(
-      (conv1): Conv2d(1024, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
-      (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-      (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-      (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-      (conv3): Conv2d(256, 1024, kernel_size=(1, 1), stride=(1, 1), bias=False)
-      (bn3): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-      (relu): ReLU(inplace)
-    )
-    (13): _bottleneck(
-      (conv1): Conv2d(1024, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
-      (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-      (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-      (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-      (conv3): Conv2d(256, 1024, kernel_size=(1, 1), stride=(1, 1), bias=False)
-      (bn3): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-      (relu): ReLU(inplace)
-    )
-    (14): _bottleneck(
-      (conv1): Conv2d(1024, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
-      (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-      (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-      (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-      (conv3): Conv2d(256, 1024, kernel_size=(1, 1), stride=(1, 1), bias=False)
-      (bn3): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-      (relu): ReLU(inplace)
-    )
-    (15): _bottleneck(
-      (conv1): Conv2d(1024, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
-      (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-      (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-      (bn2): BatchN/home/gfr_admin/lucas/ssds.pytorch/lib/ssds_validation.py:185: UserWarning: nn.init.kaiming_normal is now deprecated in favor of nn.init.kaiming_normal_.
-  init.kaiming_normal(m.state_dict()[key], mode='fan_out')
-orm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-      (conv3): Conv2d(256, 1024, kernel_size=(1, 1), stride=(1, 1), bias=False)
-      (bn3): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-      (relu): ReLU(inplace)
-    )
-    (16): _bottleneck(
-      (conv1): Conv2d(1024, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
-      (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-      (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-      (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-      (conv3): Conv2d(256, 1024, kernel_size=(1, 1), stride=(1, 1), bias=False)
-      (bn3): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-      (relu): ReLU(inplace)
-    )
-  )
-  (extras): ModuleList(
-    (0): Conv2d(1024, 256, kernel_size=(1, 1), stride=(1, 1))
-    (1): Conv2d(256, 512, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
-  )
-  (transforms): ModuleList(
-    (0): BasicConv(
-      (conv): Conv2d(512, 256, kernel_size=(1, 1), stride=(1, 1))
-      (relu): ReLU(inplace)
-    )
-    (1): BasicConv(
-      (conv): Conv2d(1024, 256, kernel_size=(1, 1), stride=(1, 1))
-      (relu): ReLU(inplace)
-    )
-    (2): BasicConv(
-      (conv): Conv2d(512, 256, kernel_size=(1, 1), stride=(1, 1))
-      (relu): ReLU(inplace)
-    )
-  )
-  (pyramids): ModuleList(
-    (0): BasicConv(
-      (conv): Conv2d(768, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
-      (relu): ReLU(inplace)
-    )
-    (1): BasicConv(
-      (conv): Conv2d(512, 512, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
-      (relu): ReLU(inplace)
-    )
-    (2): BasicConv(
-      (conv): Conv2d(512, 256, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
-      (relu): ReLU(inplace)
-    )
-    (3): BasicConv(
-      (conv): Conv2d(256, 256, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
-      (relu): ReLU(inplace)
-    )
-    (4): BasicConv(
-      (conv): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1))
-      (relu): ReLU(inplace)
-    )
-    (5): BasicConv(
-      (conv): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1))
-      (relu): ReLU(inplace)
-    )
-  )
-  (norm): BatchNorm2d(768, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-  (loc): ModuleList(
-    (0): Conv2d(512, 24, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
-    (1): Conv2d(512, 24, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
-    (2): Conv2d(256, 24, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
-    (3): Conv2d(256, 24, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
-    (4): Conv2d(256, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
-    (5): Conv2d(256, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
-  )
-  (conf): ModuleList(
-    (0): Conv2d(512, 24, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
-    (1): Conv2d(512, 24, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
-    (2): Conv2d(256, 24, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
-    (3): Conv2d(256, 24, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
-    (4): Conv2d(256, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
-    (5): Conv2d(256, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
-  )
-  (softmax): Softmax()
-)
-
-Trainable scope: base,norm,extras,transforms,pyramids,loc,conf
-Loading initial model weights from ./experiments/models/fssd_resnet50_cones/fssd_resnet_50_cones_epoch_150.pth
-=> no checkpoint found at './experiments/models/fssd_resnet50_cones/fssd_resnet_50_cones_epoch_150.pth'
-[0. 0. 0.]
-FOLD 0
-===> Loading data
-loading annotations into memory...
-Done (t=0.08s)
-creating index...
-index created!
-loading annotations into memory...
-Done (t=0.04s)
-creating index...
-index created!
-Using  [['cones_all', 'cones-2']] as validation set
-Loading initial model weights from ./experiments/models/fssd_resnet50_cones/fssd_resnet_50_cones_epoch_150.pth
-=> no checkpoint found at './experiments/models/fssd_resnet50_cones/fssd_resnet_50_cones_epoch_150.pth'
-Epoch 1/500:
-/home/gfr_admin/anaconda2/envs/DV/lib/python2.7/site-packages/torch/nn/_reduction.py:49: UserWarning: size_average and reduce args will be deprecated, please use reduction='sum' instead.
-  warnings.warn(warning.format(ret))
-==>Train: || Total_time: 9.846s || loc_loss: 8.6357 conf_loss: 7.3500 || lr: 0.001000
-Epoch 2/500:
-==>Train: || Total_time: 2.331s || loc_loss: 7.6229 conf_loss: 5.1625 || lr: 0.001000
-Epoch 3/500:
-==>Train: || Total_time: 2.363s || loc_loss: 6.6227 conf_loss: 4.4348 || lr: 0.001000
-Epoch 4/500:
-==>Train: || Total_time: 2.309s || loc_loss: 5.8315 conf_loss: 3.9021 || lr: 0.001000
-Epoch 5/500:
-==>Train: || Total_time: 2.287s || loc_loss: 5.3719 conf_loss: 3.7734 || lr: 0.001000
-Epoch 6/500:
-==>Train: || Total_time: 2.366s || loc_loss: 5.5511 conf_loss: 3.7021 || lr: 0.001000
-Epoch 7/500:
-==>Train: || Total_time: 2.336s || loc_loss: 5.1066 conf_loss: 3.6588 || lr: 0.001000
-Epoch 8/500:
-==>Train: || Total_time: 2.330s || loc_loss: 5.0870 conf_loss: 3.5438 || lr: 0.001000
-Epoch 9/500:
-==>Train: || Total_time: 2.383s || loc_loss: 4.7547 conf_loss: 3.4369 || lr: 0.001000
-Epoch 10/500:
-==>Train: || Total_time: 2.337s || loc_loss: 4.7842 conf_loss: 3.4481 || lr: 0.001000
-Wrote snapshot to: ./experiments/models/fssd_resnet50_cones/fssd_resnet_50_cones_epoch_10.pth
-Epoch 11/500:
-==>Train: || Total_time: 2.326s || loc_loss: 4.9709 conf_loss: 3.4416 || lr: 0.001000
-Epoch 12/500:
-==>Train: || Total_time: 2.339s || loc_loss: 4.6806 conf_loss: 3.4211 || lr: 0.001000
-Epoch 13/500:
-==>Train: || Total_time: 2.330s || loc_loss: 4.5831 conf_loss: 3.4575 || lr: 0.001000
-Epoch 14/500:
-==>Train: || Total_time: 2.333s || loc_loss: 4.3824 conf_loss: 3.3755 || lr: 0.001000
-Epoch 15/500:
-==>Train: || Total_time: 2.317s || loc_loss: 4.5446 conf_loss: 3.3663 || lr: 0.001000
-Epoch 16/500:
-==>Train: || Total_time: 2.309s || loc_loss: 4.5912 conf_loss: 3.3531 || lr: 0.001000
-Epoch 17/500:
-==>Train: || Total_time: 2.320s || loc_loss: 4.2435 conf_loss: 3.3050 || lr: 0.000999
-Epoch 18/500:
-==>Train: || Total_time: 2.314s || loc_loss: 3.9583 conf_loss: 3.2851 || lr: 0.000999
-Epoch 19/500:
-==>Train: || Total_time: 2.332s || loc_loss: 3.8229 conf_loss: 3.2562 || lr: 0.000999
-Epoch 20/500:
-==>Train: || Total_time: 2.312s || loc_loss: 4.0654 conf_loss: 3.2202 || lr: 0.000999
-Wrote snapshot to: ./experiments/models/fssd_resnet50_cones/fssd_resnet_50_cones_epoch_20.pth
-Epoch 21/500:
-==>Train: || Total_time: 2.329s || loc_loss: 3.6925 conf_loss: 3.2163 || lr: 0.000999
-Epoch 22/500:
-==>Train: || Total_time: 2.330s || loc_loss: 3.7340 conf_loss: 3.2510 || lr: 0.000999
-Epoch 23/500:
-==>Train: || Total_time: 2.366s || loc_loss: 3.6540 conf_loss: 3.2300 || lr: 0.000998
-Epoch 24/500:
-==>Train: || Total_time: 2.387s || loc_loss: 3.6210 conf_loss: 3.1255 || lr: 0.000998
-Epoch 25/500:
-==>Train: || Total_time: 2.364s || loc_loss: 3.7078 conf_loss: 3.1700 || lr: 0.000998
-Epoch 26/500:
-==>Train: || Total_time: 2.334s || loc_loss: 3.5027 conf_loss: 3.1237 || lr: 0.000997
-Epoch 27/500:
-==>Train: || Total_time: 2.369s || loc_loss: 3.3385 conf_loss: 3.0768 || lr: 0.000997
-Epoch 28/500:
-==>Train: || Total_time: 2.357s || loc_loss: 3.0928 conf_loss: 3.0362 || lr: 0.000997
-Epoch 29/500:
-==>Train: || Total_time: 2.353s || loc_loss: 3.3732 conf_loss: 3.0573 || lr: 0.000996
-Epoch 30/500:
-==>Train: || Total_time: 2.364s || loc_loss: 3.3836 conf_loss: 2.9946 || lr: 0.000996
-Wrote snapshot to: ./experiments/models/fssd_resnet50_cones/fssd_resnet_50_cones_epoch_30.pth
-Epoch 31/500:
-==>Train: || Total_time: 2.386s || loc_loss: 2.8737 conf_loss: 2.9610 || lr: 0.000995
-Epoch 32/500:
-==>Train: || Total_time: 2.411s || loc_loss: 3.0277 conf_loss: 3.0244 || lr: 0.000995
-Epoch 33/500:
-==>Train: || Total_time: 2.383s || loc_loss: 3.0847 conf_loss: 3.0179 || lr: 0.000995
-Epoch 34/500:
-==>Train: || Total_time: 2.365s || loc_loss: 3.0017 conf_loss: 3.0436 || lr: 0.000994
-Epoch 35/500:
-==>Train: || Total_time: 2.361s || loc_loss: 2.9193 conf_loss: 3.0082 || lr: 0.000994
-Epoch 36/500:
-==>Train: || Total_time: 2.381s || loc_loss: 2.9052 conf_loss: 3.0268 || lr: 0.000993
-Epoch 37/500:
-==>Train: || Total_time: 2.367s || loc_loss: 3.0351 conf_loss: 2.9767 || lr: 0.000993
-Epoch 38/500:
-==>Train: || Total_time: 2.356s || loc_loss: 2.8921 conf_loss: 2.9629 || lr: 0.000992
-Epoch 39/500:
-==>Train: || Total_time: 2.364s || loc_loss: 3.0328 conf_loss: 2.9322 || lr: 0.000991
-Epoch 40/500:
-==>Train: || Total_time: 2.370s || loc_loss: 2.8694 conf_loss: 2.9215 || lr: 0.000991
-Wrote snapshot to: ./experiments/models/fssd_resnet50_cones/fssd_resnet_50_cones_epoch_40.pth
-Epoch 41/500:
-==>Train: || Total_time: 2.323s || loc_loss: 2.8364 conf_loss: 2.9304 || lr: 0.000990
-Epoch 42/500:
-==>Train: || Total_time: 2.360s || loc_loss: 2.6328 conf_loss: 2.8803 || lr: 0.000990
-Epoch 43/500:
-==>Train: || Total_time: 2.367s || loc_loss: 2.6426 conf_loss: 2.8541 || lr: 0.000989
-Epoch 44/500:
-==>Train: || Total_time: 2.326s || loc_loss: 2.6283 conf_loss: 2.8140 || lr: 0.000988
-Epoch 45/500:
-==>Train: || Total_time: 2.328s || loc_loss: 2.7327 conf_loss: 2.8994 || lr: 0.000987
-Epoch 46/500:
-==>Train: || Total_time: 2.323s || loc_loss: 2.5073 conf_loss: 2.7881 || lr: 0.000987
-Epoch 47/500:
-==>Train: || Total_time: 2.369s || loc_loss: 2.4765 conf_loss: 2.7699 || lr: 0.000986
-Epoch 48/500:
-==>Train: || Total_time: 2.352s || loc_loss: 2.5083 conf_loss: 2.7909 || lr: 0.000985
-Epoch 49/500:
-==>Train: || Total_time: 2.332s || loc_loss: 2.5427 conf_loss: 2.7304 || lr: 0.000984
-Epoch 50/500:
-==>Train: || Total_time: 2.334s || loc_loss: 2.6702 conf_loss: 2.7561 || lr: 0.000984
-Wrote snapshot to: ./experiments/models/fssd_resnet50_cones/fssd_resnet_50_cones_epoch_50.pth
-Epoch 51/500:
-==>Train: || Total_time: 2.346s || loc_loss: 2.6092 conf_loss: 2.7549 || lr: 0.000983
-Epoch 52/500:
-==>Train: || Total_time: 2.358s || loc_loss: 2.5395 conf_loss: 2.7289 || lr: 0.000982
-Epoch 53/500:
-==>Train: || Total_time: 2.362s || loc_loss: 2.6405 conf_loss: 2.7817 || lr: 0.000981
-Epoch 54/500:
-==>Train: || Total_time: 2.328s || loc_loss: 2.4006 conf_loss: 2.7191 || lr: 0.000980
-Epoch 55/500:
-==>Train: || Total_time: 2.374s || loc_loss: 2.5687 conf_loss: 2.7686 || lr: 0.000979
-Epoch 56/500:
-==>Train: || Total_time: 2.368s || loc_loss: 2.3930 conf_loss: 2.7714 || lr: 0.000978
-Epoch 57/500:
-==>Train: || Total_time: 2.354s || loc_loss: 2.5566 conf_loss: 2.7566 || lr: 0.000977
-Epoch 58/500:
-==>Train: || Total_time: 2.361s || loc_loss: 2.2639 conf_loss: 2.6795 || lr: 0.000977
-Epoch 59/500:
-==>Train: || Total_time: 2.324s || loc_loss: 2.4141 conf_loss: 2.7332 || lr: 0.000976
-Epoch 60/500:
-==>Train: || Total_time: 2.305s || loc_loss: 2.3157 conf_loss: 2.6545 || lr: 0.000975
-Wrote snapshot to: ./experiments/models/fssd_resnet50_cones/fssd_resnet_50_cones_epoch_60.pth
-Epoch 61/500:
-==>Train: || Total_time: 2.328s || loc_loss: 2.7114 conf_loss: 2.7395 || lr: 0.000974
-Epoch 62/500:
-==>Train: || Total_time: 2.327s || loc_loss: 2.6950 conf_loss: 2.7416 || lr: 0.000972
-Epoch 63/500:
-==>Train: || Total_time: 2.337s || loc_loss: 2.5754 conf_loss: 2.7002 || lr: 0.000971
-Epoch 64/500:
-==>Train: || Total_time: 2.334s || loc_loss: 2.5336 conf_loss: 2.6855 || lr: 0.000970
-Epoch 65/500:
-==>Train: || Total_time: 2.371s || loc_loss: 2.4313 conf_loss: 2.6223 || lr: 0.000969
-Epoch 66/500:
-==>Train: || Total_time: 2.342s || loc_loss: 2.3843 conf_loss: 2.6653 || lr: 0.000968
-Epoch 67/500:
-==>Train: || Total_time: 2.347s || loc_loss: 2.3251 conf_loss: 2.6440 || lr: 0.000967
-Epoch 68/500:
-==>Train: || Total_time: 2.308s || loc_loss: 2.1360 conf_loss: 2.6561 || lr: 0.000966
-Epoch 69/500:
-==>Train: || Total_time: 2.364s || loc_loss: 2.3592 conf_loss: 2.6986 || lr: 0.000965
-Epoch 70/500:
-==>Train: || Total_time: 2.310s || loc_loss: 2.1869 conf_loss: 2.6307 || lr: 0.000963
-Wrote snapshot to: ./experiments/models/fssd_resnet50_cones/fssd_resnet_50_cones_epoch_70.pth
-Epoch 71/500:
-==>Train: || Total_time: 2.398s || loc_loss: 2.2205 conf_loss: 2.6382 || lr: 0.000962
-Epoch 72/500:
-==>Train: || Total_time: 2.325s || loc_loss: 2.2115 conf_loss: 2.5919 || lr: 0.000961
-Epoch 73/500:
-==>Train: || Total_time: 2.311s || loc_loss: 2.1847 conf_loss: 2.6334 || lr: 0.000960
-Epoch 74/500:
-==>Train: || Total_time: 2.368s || loc_loss: 2.1495 conf_loss: 2.5750 || lr: 0.000958
-Epoch 75/500:
-==>Train: || Total_time: 2.320s || loc_loss: 2.1966 conf_loss: 2.5616 || lr: 0.000957
-Epoch 76/500:
-==>Train: || Total_time: 2.324s || loc_loss: 2.1866 conf_loss: 2.5955 || lr: 0.000956
-Epoch 77/500:
-==>Train: || Total_time: 2.359s || loc_loss: 2.4196 conf_loss: 2.6180 || lr: 0.000955
-Epoch 78/500:
-==>Train: || Total_time: 2.328s || loc_loss: 2.0695 conf_loss: 2.5584 || lr: 0.000953
-Epoch 79/500:
-==>Train: || Total_time: 2.333s || loc_loss: 2.1040 conf_loss: 2.5716 || lr: 0.000952
-Epoch 80/500:
-==>Train: || Total_time: 2.327s || loc_loss: 2.2827 conf_loss: 2.5914 || lr: 0.000950
-Wrote snapshot to: ./experiments/models/fssd_resnet50_cones/fssd_resnet_50_cones_epoch_80.pth
-Epoch 81/500:
-==>Train: || Total_time: 2.367s || loc_loss: 2.3379 conf_loss: 2.6924 || lr: 0.000949
-Epoch 82/500:
-==>Train: || Total_time: 2.345s || loc_loss: 2.2902 conf_loss: 2.6144 || lr: 0.000948
-Epoch 83/500:
-==>Train: || Total_time: 2.353s || loc_loss: 2.3322 conf_loss: 2.6598 || lr: 0.000946
-Epoch 84/500:
-==>Train: || Total_time: 2.364s || loc_loss: 2.3323 conf_loss: 2.6943 || lr: 0.000945
-Epoch 85/500:
-==>Train: || Total_time: 2.334s || loc_loss: 2.1577 conf_loss: 2.6690 || lr: 0.000943
-Epoch 86/500:
-==>Train: || Total_time: 2.364s || loc_loss: 2.1795 conf_loss: 2.6205 || lr: 0.000942
-Epoch 87/500:
-==>Train: || Total_time: 2.328s || loc_loss: 2.0174 conf_loss: 2.5777 || lr: 0.000940
-Epoch 88/500:
-==>Train: || Total_time: 2.356s || loc_loss: 2.0847 conf_loss: 2.5756 || lr: 0.000939
-Epoch 89/500:
-==>Train: || Total_time: 2.340s || loc_loss: 2.1532 conf_loss: 2.5864 || lr: 0.000937
-Epoch 90/500:
-==>Train: || Total_time: 2.373s || loc_loss: 2.0107 conf_loss: 2.5967 || lr: 0.000936
-Wrote snapshot to: ./experiments/models/fssd_resnet50_cones/fssd_resnet_50_cones_epoch_90.pth
-Epoch 91/500:
-==>Train: || Total_time: 2.339s || loc_loss: 2.0060 conf_loss: 2.5256 || lr: 0.000934
-Epoch 92/500:
-==>Train: || Total_time: 2.342s || loc_loss: 2.0622 conf_loss: 2.5511 || lr: 0.000932
-Epoch 93/500:
-==>Train: || Total_time: 2.332s || loc_loss: 2.1307 conf_loss: 2.5606 || lr: 0.000931
-Epoch 94/500:
-==>Train: || Total_time: 2.340s || loc_loss: 2.1135 conf_loss: 2.5709 || lr: 0.000929
-Epoch 95/500:
-==>Train: || Total_time: 2.345s || loc_loss: 2.0408 conf_loss: 2.5742 || lr: 0.000928
-Epoch 96/500:
-==>Train: || Total_time: 2.337s || loc_loss: 1.9373 conf_loss: 2.5768 || lr: 0.000926
-Epoch 97/500:
-==>Train: || Total_time: 2.326s || loc_loss: 2.0494 conf_loss: 2.5121 || lr: 0.000924
-Epoch 98/500:
-==>Train: || Total_time: 2.341s || loc_loss: 2.0839 conf_loss: 2.5289 || lr: 0.000923
-Epoch 99/500:
-==>Train: || Total_time: 2.339s || loc_loss: 1.8851 conf_loss: 2.5088 || lr: 0.000921
-Epoch 100/500:
-==>Train: || Total_time: 2.331s || loc_loss: 2.0648 conf_loss: 2.7126 || lr: 0.000919
-Wrote snapshot to: ./experiments/models/fssd_resnet50_cones/fssd_resnet_50_cones_epoch_100.pth
-Epoch 101/500:
-==>Train: || Total_time: 2.364s || loc_loss: 1.8779 conf_loss: 2.4952 || lr: 0.000917
-Epoch 102/500:
-==>Train: || Total_time: 2.355s || loc_loss: 1.9281 conf_loss: 2.5528 || lr: 0.000916
-Epoch 103/500:
-==>Train: || Total_time: 2.388s || loc_loss: 2.0560 conf_loss: 2.4933 || lr: 0.000914
-Epoch 104/500:
-==>Train: || Total_time: 2.348s || loc_loss: 2.0657 conf_loss: 2.5421 || lr: 0.000912
-Epoch 105/500:
-==>Train: || Total_time: 2.369s || loc_loss: 2.1228 conf_loss: 2.5946 || lr: 0.000910
-Epoch 106/500:
-==>Train: || Total_time: 2.339s || loc_loss: 2.0413 conf_loss: 2.5025 || lr: 0.000908
-Epoch 107/500:
-==>Train: || Total_time: 2.356s || loc_loss: 2.1915 conf_loss: 2.5780 || lr: 0.000906
-Epoch 108/500:
-==>Train: || Total_time: 2.462s || loc_loss: 1.9230 conf_loss: 2.4833 || lr: 0.000905
-Epoch 109/500:
-==>Train: || Total_time: 2.369s || loc_loss: 2.1327 conf_loss: 2.5263 || lr: 0.000903
-Epoch 110/500:
-==>Train: || Total_time: 2.325s || loc_loss: 2.0030 conf_loss: 2.5303 || lr: 0.000901
-Wrote snapshot to: ./experiments/models/fssd_resnet50_cones/fssd_resnet_50_cones_epoch_110.pth
-Epoch 111/500:
-==>Train: || Total_time: 2.388s || loc_loss: 2.0179 conf_loss: 2.4963 || lr: 0.000899
-Epoch 112/500:
-==>Train: || Total_time: 2.350s || loc_loss: 2.0482 conf_loss: 2.4722 || lr: 0.000897
-Epoch 113/500:
-==>Train: || Total_time: 2.315s || loc_loss: 1.9860 conf_loss: 2.5320 || lr: 0.000895
-Epoch 114/500:
-==>Train: || Total_time: 2.326s || loc_loss: 1.9732 conf_loss: 2.5554 || lr: 0.000893
-Epoch 115/500:
-==>Train: || Total_time: 2.335s || loc_loss: 1.9341 conf_loss: 2.5320 || lr: 0.000891
-Epoch 116/500:
-==>Train: || Total_time: 2.349s || loc_loss: 1.9179 conf_loss: 2.5106 || lr: 0.000889
-Epoch 117/500:
-==>Train: || Total_time: 2.350s || loc_loss: 1.8731 conf_loss: 2.4797 || lr: 0.000887
-Epoch 118/500:
-==>Train: || Total_time: 2.325s || loc_loss: 1.8234 conf_loss: 2.4727 || lr: 0.000885
-Epoch 119/500:
-==>Train: || Total_time: 2.298s || loc_loss: 1.8734 conf_loss: 2.5009 || lr: 0.000883
-Epoch 120/500:
-==>Train: || Total_time: 2.393s || loc_loss: 1.9027 conf_loss: 2.4866 || lr: 0.000881
-Wrote snapshot to: ./experiments/models/fssd_resnet50_cones/fssd_resnet_50_cones_epoch_120.pth
-Epoch 121/500:
-==>Train: || Total_time: 2.311s || loc_loss: 1.7979 conf_loss: 2.4772 || lr: 0.000879
-Epoch 122/500:
-==>Train: || Total_time: 2.319s || loc_loss: 1.7535 conf_loss: 2.4606 || lr: 0.000877
-Epoch 123/500:
-==>Train: || Total_time: 2.313s || loc_loss: 1.9168 conf_loss: 2.4731 || lr: 0.000874
-Epoch 124/500:
-==>Train: || Total_time: 2.334s || loc_loss: 2.0953 conf_loss: 2.5376 || lr: 0.000872
-Epoch 125/500:
-==>Train: || Total_time: 2.384s || loc_loss: 1.8103 conf_loss: 2.4987 || lr: 0.000870
-Epoch 126/500:
-==>Train: || Total_time: 2.317s || loc_loss: 1.7990 conf_loss: 2.4933 || lr: 0.000868
-Epoch 127/500:
-==>Train: || Total_time: 2.351s || loc_loss: 1.8377 conf_loss: 2.5132 || lr: 0.000866
-Epoch 128/500:
-==>Train: || Total_time: 2.362s || loc_loss: 1.9438 conf_loss: 2.5074 || lr: 0.000864
-Epoch 129/500:
-==>Train: || Total_time: 2.377s || loc_loss: 1.9178 conf_loss: 2.4882 || lr: 0.000861
-Epoch 130/500:
-==>Train: || Total_time: 2.341s || loc_loss: 1.7523 conf_loss: 2.4899 || lr: 0.000859
-Wrote snapshot to: ./experiments/models/fssd_resnet50_cones/fssd_resnet_50_cones_epoch_130.pth
-Epoch 131/500:
-==>Train: || Total_time: 2.330s || loc_loss: 1.9558 conf_loss: 2.4904 || lr: 0.000857
-Epoch 132/500:
-==>Train: || Total_time: 2.337s || loc_loss: 1.7087 conf_loss: 2.4085 || lr: 0.000855
-Epoch 133/500:
-==>Train: || Total_time: 2.364s || loc_loss: 1.9779 conf_loss: 2.5193 || lr: 0.000852
-Epoch 134/500:
-==>Train: || Total_time: 2.349s || loc_loss: 1.7118 conf_loss: 2.4483 || lr: 0.000850
-Epoch 135/500:
-==>Train: || Total_time: 2.333s || loc_loss: 1.9922 conf_loss: 2.4762 || lr: 0.000848
-Epoch 136/500:
-==>Train: || Total_time: 2.365s || loc_loss: 1.9102 conf_loss: 2.4124 || lr: 0.000846
-Epoch 137/500:
-==>Train: || Total_time: 2.334s || loc_loss: 1.9417 conf_loss: 2.4690 || lr: 0.000843
-Epoch 138/500:
-==>Train: || Total_time: 2.337s || loc_loss: 1.8577 conf_loss: 2.4541 || lr: 0.000841
-Epoch 139/500:
-==>Train: || Total_time: 2.364s || loc_loss: 1.9467 conf_loss: 2.4458 || lr: 0.000839
-Epoch 140/500:
-==>Train: || Total_time: 2.344s || loc_loss: 1.7250 conf_loss: 2.4606 || lr: 0.000836
-Wrote snapshot to: ./experiments/models/fssd_resnet50_cones/fssd_resnet_50_cones_epoch_140.pth
-Epoch 141/500:
-==>Train: || Total_time: 2.379s || loc_loss: 1.7900 conf_loss: 2.4316 || lr: 0.000834
-Epoch 142/500:
-==>Train: || Total_time: 2.359s || loc_loss: 1.7089 conf_loss: 2.4224 || lr: 0.000831
-Epoch 143/500:
-==>Train: || Total_time: 2.424s || loc_loss: 1.8115 conf_loss: 2.4567 || lr: 0.000829
-Epoch 144/500:
-==>Train: || Total_time: 2.409s || loc_loss: 1.8002 conf_loss: 2.4328 || lr: 0.000827
-Epoch 145/500:
-==>Train: || Total_time: 2.378s || loc_loss: 1.7862 conf_loss: 2.4303 || lr: 0.000824
-Epoch 146/500:
-==>Train: || Total_time: 2.357s || loc_loss: 1.8695 conf_loss: 2.4174 || lr: 0.000822
-Epoch 147/500:
-==>Train: || Total_time: 2.332s || loc_loss: 1.7733 conf_loss: 2.4325 || lr: 0.000819
-Epoch 148/500:
-==>Train: || Total_time: 2.352s || loc_loss: 1.7142 conf_loss: 2.4474 || lr: 0.000817
-Epoch 149/500:
-==>Train: || Total_time: 2.340s || loc_loss: 1.6969 conf_loss: 2.3768 || lr: 0.000814
-Epoch 150/500:
-==>Train: || Total_time: 2.350s || loc_loss: 1.7302 conf_loss: 2.4306 || lr: 0.000812
-Wrote snapshot to: ./experiments/models/fssd_resnet50_cones/fssd_resnet_50_cones_epoch_150.pth
-Epoch 151/500:
-==>Train: || Total_time: 2.357s || loc_loss: 1.7874 conf_loss: 2.4349 || lr: 0.000809
-Epoch 152/500:
-==>Train: || Total_time: 2.348s || loc_loss: 1.7071 conf_loss: 2.4163 || lr: 0.000807
-Epoch 153/500:
-==>Train: || Total_time: 2.404s || loc_loss: 1.7757 conf_loss: 2.3922 || lr: 0.000804
-Epoch 154/500:
-==>Train: || Total_time: 2.337s || loc_loss: 1.7698 conf_loss: 2.4310 || lr: 0.000802
-Epoch 155/500:
-==>Train: || Total_time: 2.394s || loc_loss: 1.7392 conf_loss: 2.4336 || lr: 0.000799
-Epoch 156/500:
-==>Train: || Total_time: 2.358s || loc_loss: 1.8164 conf_loss: 2.4521 || lr: 0.000796
-Epoch 157/500:
-==>Train: || Total_time: 2.342s || loc_loss: 1.6888 conf_loss: 2.4438 || lr: 0.000794
-Epoch 158/500:
-==>Train: || Total_time: 2.366s || loc_loss: 1.7349 conf_loss: 2.4729 || lr: 0.000791
-Epoch 159/500:
-==>Train: || Total_time: 2.340s || loc_loss: 1.8207 conf_loss: 2.4383 || lr: 0.000789
-Epoch 160/500:
-==>Train: || Total_time: 2.332s || loc_loss: 1.7460 conf_loss: 2.4062 || lr: 0.000786
-Wrote snapshot to: ./experiments/models/fssd_resnet50_cones/fssd_resnet_50_cones_epoch_160.pth
-Epoch 161/500:
-==>Train: || Total_time: 2.384s || loc_loss: 1.7329 conf_loss: 2.4137 || lr: 0.000783
-Epoch 162/500:
-==>Train: || Total_time: 2.354s || loc_loss: 1.6318 conf_loss: 2.4251 || lr: 0.000781
-Epoch 163/500:
-==>Train: || Total_time: 2.369s || loc_loss: 1.6821 conf_loss: 2.3929 || lr: 0.000778
-Epoch 164/500:
-==>Train: || Total_time: 2.361s || loc_loss: 1.8659 conf_loss: 2.4163 || lr: 0.000775
-Epoch 165/500:
-==>Train: || Total_time: 2.325s || loc_loss: 1.6647 conf_loss: 2.4530 || lr: 0.000773
-Epoch 166/500:
-==>Train: || Total_time: 2.344s || loc_loss: 1.5946 conf_loss: 2.3653 || lr: 0.000770
-Epoch 167/500:
-==>Train: || Total_time: 2.337s || loc_loss: 1.6417 conf_loss: 2.3989 || lr: 0.000767
-Epoch 168/500:
-==>Train: || Total_time: 2.347s || loc_loss: 1.9424 conf_loss: 2.3781 || lr: 0.000765
-Epoch 169/500:
-==>Train: || Total_time: 2.306s || loc_loss: 1.8508 conf_loss: 2.4355 || lr: 0.000762
-Epoch 170/500:
-==>Train: || Total_time: 2.317s || loc_loss: 1.6440 conf_loss: 2.4111 || lr: 0.000759
-Wrote snapshot to: ./experiments/models/fssd_resnet50_cones/fssd_resnet_50_cones_epoch_170.pth
-Epoch 171/500:
-==>Train: || Total_time: 2.315s || loc_loss: 1.6005 conf_loss: 2.4170 || lr: 0.000756
-Epoch 172/500:
-==>Train: || Total_time: 2.413s || loc_loss: 1.6056 conf_loss: 2.4118 || lr: 0.000754
-Epoch 173/500:
-==>Train: || Total_time: 2.344s || loc_loss: 1.7317 conf_loss: 2.3548 || lr: 0.000751
-Epoch 174/500:
-==>Train: || Total_time: 2.328s || loc_loss: 1.6197 conf_loss: 2.4347 || lr: 0.000748
-Epoch 175/500:
-==>Train: || Total_time: 2.350s || loc_loss: 1.7326 conf_loss: 2.3882 || lr: 0.000745
-Epoch 176/500:
-==>Train: || Total_time: 2.346s || loc_loss: 1.6741 conf_loss: 2.4011 || lr: 0.000743
-Epoch 177/500:
-==>Train: || Total_time: 2.312s || loc_loss: 1.6783 conf_loss: 2.4590 || lr: 0.000740
-Epoch 178/500:
-==>Train: || Total_time: 2.336s || loc_loss: 1.6366 conf_loss: 2.3879 || lr: 0.000737
-Epoch 179/500:
-==>Train: || Total_time: 2.331s || loc_loss: 1.4875 conf_loss: 2.3315 || lr: 0.000734
-Epoch 180/500:
-==>Train: || Total_time: 2.333s || loc_loss: 1.6317 conf_loss: 2.3928 || lr: 0.000731
-Wrote snapshot to: ./experiments/models/fssd_resnet50_cones/fssd_resnet_50_cones_epoch_180.pth
-Epoch 181/500:
-==>Train: || Total_time: 2.315s || loc_loss: 1.8739 conf_loss: 2.4660 || lr: 0.000728
-Epoch 182/500:
-==>Train: || Total_time: 2.298s || loc_loss: 1.6109 conf_loss: 2.3723 || lr: 0.000726
-Epoch 183/500:
-==>Train: || Total_time: 2.307s || loc_loss: 1.8177 conf_loss: 2.4146 || lr: 0.000723
-Epoch 184/500:
-==>Train: || Total_time: 2.343s || loc_loss: 1.7584 conf_loss: 2.4254 || lr: 0.000720
-Epoch 185/500:
-==>Train: || Total_time: 2.283s || loc_loss: 1.6324 conf_loss: 2.3903 || lr: 0.000717
-Epoch 186/500:
-==>Train: || Total_time: 2.321s || loc_loss: 1.7333 conf_loss: 2.4341 || lr: 0.000714
-Epoch 187/500:
-==>Train: || Total_time: 2.335s || loc_loss: 1.5891 conf_loss: 2.4358 || lr: 0.000711
-Epoch 188/500:
-==>Train: || Total_time: 2.329s || loc_loss: 1.6652 conf_loss: 2.4273 || lr: 0.000708
-Epoch 189/500:
-==>Train: || Total_time: 2.345s || loc_loss: 1.5649 conf_loss: 2.3864 || lr: 0.000705
-Epoch 190/500:
-==>Train: || Total_time: 2.320s || loc_loss: 1.6490 conf_loss: 2.3275 || lr: 0.000702
-Wrote snapshot to: ./experiments/models/fssd_resnet50_cones/fssd_resnet_50_cones_epoch_190.pth
-Epoch 191/500:
-==>Train: || Total_time: 2.318s || loc_loss: 1.6080 conf_loss: 2.3878 || lr: 0.000699
-Epoch 192/500:
-
-==>Train: || Total_time: 2.329s || loc_loss: 1.5057 conf_loss: 2.3482 || lr: 0.000697
-Epoch 193/500:
-==>Train: || Total_time: 2.379s || loc_loss: 1.6212 conf_loss: 2.3922 || lr: 0.000694
-Epoch 194/500:
-==>Train: || Total_time: 2.350s || loc_loss: 1.7632 conf_loss: 2.4453 || lr: 0.000691
-Epoch 195/500:
-==>Train: || Total_time: 2.366s || loc_loss: 1.6397 conf_loss: 2.3813 || lr: 0.000688
-Epoch 196/500:
-==>Train: || Total_time: 2.363s || loc_loss: 1.6410 conf_loss: 2.4185 || lr: 0.000685
-Epoch 197/500:
-==>Train: || Total_time: 2.335s || loc_loss: 1.6779 conf_loss: 2.4018 || lr: 0.000682
-Epoch 198/500:
-==>Train: || Total_time: 2.338s || loc_loss: 1.6879 conf_loss: 2.3514 || lr: 0.000679
-Epoch 199/500:
-==>Train: || Total_time: 2.324s || loc_loss: 1.6414 conf_loss: 2.3455 || lr: 0.000676
-Epoch 200/500:
-==>Train: || Total_time: 2.416s || loc_loss: 1.5279 conf_loss: 2.3378 || lr: 0.000673
-Wrote snapshot to: ./experiments/models/fssd_resnet50_cones/fssd_resnet_50_cones_epoch_200.pth
-Epoch 201/500:
-==>Train: || Total_time: 2.322s || loc_loss: 1.5947 conf_loss: 2.3621 || lr: 0.000670
-Epoch 202/500:
-==>Train: || Total_time: 2.347s || loc_loss: 1.7323 conf_loss: 2.3269 || lr: 0.000667
-Epoch 203/500:
-==>Train: || Total_time: 2.329s || loc_loss: 1.5369 conf_loss: 2.3526 || lr: 0.000664
-Epoch 204/500:
-==>Train: || Total_time: 2.313s || loc_loss: 1.4963 conf_loss: 2.3906 || lr: 0.000661
-Epoch 205/500:
-==>Train: || Total_time: 2.397s || loc_loss: 1.4333 conf_loss: 2.3565 || lr: 0.000658
-Epoch 206/500:
-==>Train: || Total_time: 2.336s || loc_loss: 1.5436 conf_loss: 2.3348 || lr: 0.000655
-Epoch 207/500:
-==>Train: || Total_time: 2.360s || loc_loss: 1.6115 conf_loss: 2.3737 || lr: 0.000651
-Epoch 208/500:
-==>Train: || Total_time: 2.413s || loc_loss: 1.5462 conf_loss: 2.3383 || lr: 0.000648
-Epoch 209/500:
-==>Train: || Total_time: 2.347s || loc_loss: 1.6496 conf_loss: 2.3436 || lr: 0.000645
-Epoch 210/500:
-==>Train: || Total_time: 2.331s || loc_loss: 1.6377 conf_loss: 2.3365 || lr: 0.000642
-Wrote snapshot to: ./experiments/models/fssd_resnet50_cones/fssd_resnet_50_cones_epoch_210.pth
-Epoch 211/500:
-==>Train: || Total_time: 2.359s || loc_loss: 1.5298 conf_loss: 2.3257 || lr: 0.000639
-Epoch 212/500:
-==>Train: || Total_time: 2.335s || loc_loss: 1.5184 conf_loss: 2.3346 || lr: 0.000636
-Epoch 213/500:
-==>Train: || Total_time: 2.365s || loc_loss: 1.6146 conf_loss: 2.3817 || lr: 0.000633
-Epoch 214/500:
-==>Train: || Total_time: 2.326s || loc_loss: 1.5655 conf_loss: 2.3149 || lr: 0.000630
-Epoch 215/500:
-==>Train: || Total_time: 2.351s || loc_loss: 1.5145 conf_loss: 2.2865 || lr: 0.000627
-Epoch 216/500:
-==>Train: || Total_time: 2.370s || loc_loss: 1.6974 conf_loss: 2.4236 || lr: 0.000624
-Epoch 217/500:
-==>Train: || Total_time: 2.354s || loc_loss: 1.5761 conf_loss: 2.3728 || lr: 0.000621
-Epoch 218/500:
-==>Train: || Total_time: 2.342s || loc_loss: 1.4822 conf_loss: 2.3549 || lr: 0.000618
-Epoch 219/500:
-==>Train: || Total_time: 2.374s || loc_loss: 1.6310 conf_loss: 2.3433 || lr: 0.000614
-Epoch 220/500:
-==>Train: || Total_time: 2.351s || loc_loss: 1.6429 conf_loss: 2.3542 || lr: 0.000611
-Wrote snapshot to: ./experiments/models/fssd_resnet50_cones/fssd_resnet_50_cones_epoch_220.pth
-Epoch 221/500:
-==>Train: || Total_time: 2.311s || loc_loss: 1.6242 conf_loss: 2.3086 || lr: 0.000608
-Epoch 222/500:
-==>Train: || Total_time: 2.330s || loc_loss: 1.4539 conf_loss: 2.3098 || lr: 0.000605
-Epoch 223/500:
-==>Train: || Total_time: 2.406s || loc_loss: 1.4628 conf_loss: 2.3494 || lr: 0.000602
-Epoch 224/500:
-==>Train: || Total_time: 2.340s || loc_loss: 1.4896 conf_loss: 2.3603 || lr: 0.000599
-Epoch 225/500:
-==>Train: || Total_time: 2.342s || loc_loss: 1.4864 conf_loss: 2.3967 || lr: 0.000596
-Epoch 226/500:
-==>Train: || Total_time: 2.350s || loc_loss: 1.4455 conf_loss: 2.3416 || lr: 0.000592
-Epoch 227/500:
-==>Train: || Total_time: 2.389s || loc_loss: 1.5359 conf_loss: 2.2882 || lr: 0.000589
-Epoch 228/500:
-==>Train: || Total_time: 2.360s || loc_loss: 1.5145 conf_loss: 2.3072 || lr: 0.000586
-Epoch 229/500:
-==>Train: || Total_time: 2.348s || loc_loss: 1.3910 conf_loss: 2.2904 || lr: 0.000583
-Epoch 230/500:
-==>Train: || Total_time: 2.343s || loc_loss: 1.6336 conf_loss: 2.3454 || lr: 0.000580
-Wrote snapshot to: ./experiments/models/fssd_resnet50_cones/fssd_resnet_50_cones_epoch_230.pth
-Epoch 231/500:
-==>Train: || Total_time: 2.363s || loc_loss: 1.4853 conf_loss: 2.3312 || lr: 0.000577
-Epoch 232/500:
-==>Train: || Total_time: 2.351s || loc_loss: 1.3553 conf_loss: 2.3139 || lr: 0.000573
-Epoch 233/500:
-==>Train: || Total_time: 2.326s || loc_loss: 1.4777 conf_loss: 2.2873 || lr: 0.000570
-Epoch 234/500:
-==>Train: || Total_time: 2.355s || loc_loss: 1.4782 conf_loss: 2.3209 || lr: 0.000567
-Epoch 235/500:
-==>Train: || Total_time: 2.344s || loc_loss: 1.5931 conf_loss: 2.3786 || lr: 0.000564
-Epoch 236/500:
-==>Train: || Total_time: 2.362s || loc_loss: 1.5983 conf_loss: 2.3503 || lr: 0.000561
-Epoch 237/500:
-==>Train: || Total_time: 2.385s || loc_loss: 1.5740 conf_loss: 2.3721 || lr: 0.000558
-Epoch 238/500:
-==>Train: || Total_time: 2.334s || loc_loss: 1.5427 conf_loss: 2.3211 || lr: 0.000554
-Epoch 239/500:
-==>Train: || Total_time: 2.341s || loc_loss: 1.5101 conf_loss: 2.3559 || lr: 0.000551
-Epoch 240/500:
-==>Train: || Total_time: 2.352s || loc_loss: 1.6688 conf_loss: 2.3688 || lr: 0.000548
-Wrote snapshot to: ./experiments/models/fssd_resnet50_cones/fssd_resnet_50_cones_epoch_240.pth
-Epoch 241/500:
-==>Train: || Total_time: 2.375s || loc_loss: 1.5151 conf_loss: 2.3308 || lr: 0.000545
-Epoch 242/500:
-==>Train: || Total_time: 2.385s || loc_loss: 1.5639 conf_loss: 2.2842 || lr: 0.000542
-Epoch 243/500:
-==>Train: || Total_time: 2.361s || loc_loss: 1.4912 conf_loss: 2.3137 || lr: 0.000538
-Epoch 244/500:
-==>Train: || Total_time: 2.325s || loc_loss: 1.5860 conf_loss: 2.3760 || lr: 0.000535
-Epoch 245/500:
-==>Train: || Total_time: 2.305s || loc_loss: 1.5701 conf_loss: 2.3819 || lr: 0.000532
-Epoch 246/500:
-==>Train: || Total_time: 2.319s || loc_loss: 1.5037 conf_loss: 2.3466 || lr: 0.000529
-Epoch 247/500:
-==>Train: || Total_time: 2.342s || loc_loss: 1.5906 conf_loss: 2.3711 || lr: 0.000526
-Epoch 248/500:
-==>Train: || Total_time: 2.319s || loc_loss: 1.5964 conf_loss: 2.3519 || lr: 0.000522
-Epoch 249/500:
-==>Train: || Total_time: 2.304s || loc_loss: 1.4536 conf_loss: 2.3239 || lr: 0.000519
-Epoch 250/500:
-==>Train: || Total_time: 2.288s || loc_loss: 1.4852 conf_loss: 2.3284 || lr: 0.000516
-Wrote snapshot to: ./experiments/models/fssd_resnet50_cones/fssd_resnet_50_cones_epoch_250.pth
-Epoch 251/500:
-==>Train: || Total_time: 2.297s || loc_loss: 1.3511 conf_loss: 2.3256 || lr: 0.000513
-Epoch 252/500:
-==>Train: || Total_time: 2.370s || loc_loss: 1.4911 conf_loss: 2.3515 || lr: 0.000510
-Epoch 253/500:
-==>Train: || Total_time: 2.332s || loc_loss: 1.4174 conf_loss: 2.3036 || lr: 0.000506
-Epoch 254/500:
-==>Train: || Total_time: 2.340s || loc_loss: 1.4774 conf_loss: 2.2814 || lr: 0.000503
-Epoch 255/500:
-==>Train: || Total_time: 2.346s || loc_loss: 1.4673 conf_loss: 2.2900 || lr: 0.000500
-Epoch 256/500:
-==>Train: || Total_time: 2.349s || loc_loss: 1.5655 conf_loss: 2.3814 || lr: 0.000497
-Epoch 257/500:
-==>Train: || Total_time: 2.336s || loc_loss: 1.4216 conf_loss: 2.2914 || lr: 0.000494
-Epoch 258/500:
-==>Train: || Total_time: 2.362s || loc_loss: 1.4977 conf_loss: 2.2975 || lr: 0.000490
-Epoch 259/500:
-==>Train: || Total_time: 2.338s || loc_loss: 1.6637 conf_loss: 2.3509 || lr: 0.000487
-Epoch 260/500:
-==>Train: || Total_time: 2.360s || loc_loss: 1.4499 conf_loss: 2.3050 || lr: 0.000484
-Wrote snapshot to: ./experiments/models/fssd_resnet50_cones/fssd_resnet_50_cones_epoch_260.pth
-Epoch 261/500:
-==>Train: || Total_time: 2.358s || loc_loss: 1.4851 conf_loss: 2.2708 || lr: 0.000481
-Epoch 262/500:
-==>Train: || Total_time: 2.351s || loc_loss: 1.5859 conf_loss: 2.3589 || lr: 0.000478
-Epoch 263/500:
-==>Train: || Total_time: 2.329s || loc_loss: 1.3849 conf_loss: 2.3140 || lr: 0.000474
-Epoch 264/500:
-==>Train: || Total_time: 2.345s || loc_loss: 1.5531 conf_loss: 2.3145 || lr: 0.000471
-Epoch 265/500:
-==>Train: || Total_time: 2.347s || loc_loss: 1.4445 conf_loss: 2.3328 || lr: 0.000468
-Epoch 266/500:
-==>Train: || Total_time: 2.358s || loc_loss: 1.4729 conf_loss: 2.3319 || lr: 0.000465
-Epoch 267/500:
-==>Train: || Total_time: 2.328s || loc_loss: 1.4312 conf_loss: 2.3014 || lr: 0.000462
-Epoch 268/500:
-==>Train: || Total_time: 2.330s || loc_loss: 1.3940 conf_loss: 2.2614 || lr: 0.000458
-Epoch 269/500:
-==>Train: || Total_time: 2.346s || loc_loss: 1.5549 conf_loss: 2.3829 || lr: 0.000455
-Epoch 270/500:
-==>Train: || Total_time: 2.332s || loc_loss: 1.3818 conf_loss: 2.2906 || lr: 0.000452
-Wrote snapshot to: ./experiments/models/fssd_resnet50_cones/fssd_resnet_50_cones_epoch_270.pth
-Epoch 271/500:
-==>Train: || Total_time: 2.355s || loc_loss: 1.3752 conf_loss: 2.2877 || lr: 0.000449
-Epoch 272/500:
-==>Train: || Total_time: 2.318s || loc_loss: 1.3725 conf_loss: 2.2486 || lr: 0.000446
-Epoch 273/500:
-==>Train: || Total_time: 2.346s || loc_loss: 1.4540 conf_loss: 2.3022 || lr: 0.000442
-Epoch 274/500:
-==>Train: || Total_time: 2.333s || loc_loss: 1.4420 conf_loss: 2.3073 || lr: 0.000439
-Epoch 275/500:
-==>Train: || Total_time: 2.349s || loc_loss: 1.4020 conf_loss: 2.2989 || lr: 0.000436
-Epoch 276/500:
-==>Train: || Total_time: 2.341s || loc_loss: 1.4359 conf_loss: 2.3084 || lr: 0.000433
-Epoch 277/500:
-==>Train: || Total_time: 2.370s || loc_loss: 1.5125 conf_loss: 2.3037 || lr: 0.000430
-Epoch 278/500:
-==>Train: || Total_time: 2.342s || loc_loss: 1.4469 conf_loss: 2.2942 || lr: 0.000427
-Epoch 279/500:
-==>Train: || Total_time: 2.343s || loc_loss: 1.4434 conf_loss: 2.2717 || lr: 0.000423
-Epoch 280/500:
-==>Train: || Total_time: 2.349s || loc_loss: 1.3857 conf_loss: 2.2651 || lr: 0.000420
-Wrote snapshot to: ./experiments/models/fssd_resnet50_cones/fssd_resnet_50_cones_epoch_280.pth
-Epoch 281/500:
-==>Train: || Total_time: 2.327s || loc_loss: 1.3910 conf_loss: 2.3215 || lr: 0.000417
-Epoch 282/500:
-==>Train: || Total_time: 2.333s || loc_loss: 1.2917 conf_loss: 2.3189 || lr: 0.000414
-Epoch 283/500:
-==>Train: || Total_time: 2.372s || loc_loss: 1.3611 conf_loss: 2.2194 || lr: 0.000411
-Epoch 284/500:
-==>Train: || Total_time: 2.352s || loc_loss: 1.5852 conf_loss: 2.3256 || lr: 0.000408
-Epoch 285/500:
-==>Train: || Total_time: 2.328s || loc_loss: 1.4747 conf_loss: 2.2990 || lr: 0.000404
-Epoch 286/500:
-==>Train: || Total_time: 2.360s || loc_loss: 1.4077 conf_loss: 2.3074 || lr: 0.000401
-Epoch 287/500:
-==>Train: || Total_time: 2.313s || loc_loss: 1.4239 conf_loss: 2.3105 || lr: 0.000398
-Epoch 288/500:
-==>Train: || Total_time: 2.332s || loc_loss: 1.4925 conf_loss: 2.3305 || lr: 0.000395
-Epoch 289/500:
-==>Train: || Total_time: 2.311s || loc_loss: 1.3715 conf_loss: 2.2479 || lr: 0.000392
-Epoch 290/500:
-==>Train: || Total_time: 2.299s || loc_loss: 1.3578 conf_loss: 2.3227 || lr: 0.000389
-Wrote snapshot to: ./experiments/models/fssd_resnet50_cones/fssd_resnet_50_cones_epoch_290.pth
-Epoch 291/500:
-==>Train: || Total_time: 2.290s || loc_loss: 1.4662 conf_loss: 2.3031 || lr: 0.000386
-Epoch 292/500:
-==>Train: || Total_time: 2.298s || loc_loss: 1.3373 conf_loss: 2.2599 || lr: 0.000382
-Epoch 293/500:
-==>Train: || Total_time: 2.301s || loc_loss: 1.4959 conf_loss: 2.3599 || lr: 0.000379
-Epoch 294/500:
-==>Train: || Total_time: 2.298s || loc_loss: 1.3418 conf_loss: 2.2726 || lr: 0.000376
-Epoch 295/500:
-==>Train: || Total_time: 2.312s || loc_loss: 1.3351 conf_loss: 2.2983 || lr: 0.000373
-Epoch 296/500:
-==>Train: || Total_time: 2.383s || loc_loss: 1.4364 conf_loss: 2.2453 || lr: 0.000370
-Epoch 297/500:
-==>Train: || Total_time: 2.312s || loc_loss: 1.4448 conf_loss: 2.3657 || lr: 0.000367
-Epoch 298/500:
-==>Train: || Total_time: 2.296s || loc_loss: 1.4302 conf_loss: 2.2697 || lr: 0.000364
-Epoch 299/500:
-==>Train: || Total_time: 2.326s || loc_loss: 1.3679 conf_loss: 2.3017 || lr: 0.000361
-Epoch 300/500:
-==>Train: || Total_time: 2.298s || loc_loss: 1.4365 conf_loss: 2.3008 || lr: 0.000358
-Wrote snapshot to: ./experiments/models/fssd_resnet50_cones/fssd_resnet_50_cones_epoch_300.pth
-Epoch 301/500:
-==>Train: || Total_time: 2.316s || loc_loss: 1.3829 conf_loss: 2.2678 || lr: 0.000355
-Epoch 302/500:
-==>Train: || Total_time: 2.317s || loc_loss: 1.3676 conf_loss: 2.2822 || lr: 0.000352
-Epoch 303/500:
-==>Train: || Total_time: 2.313s || loc_loss: 1.4429 conf_loss: 2.3411 || lr: 0.000349
-Epoch 304/500:
-==>Train: || Total_time: 2.352s || loc_loss: 1.5091 conf_loss: 2.3404 || lr: 0.000345
-Epoch 305/500:
-==>Train: || Total_time: 2.335s || loc_loss: 1.3596 conf_loss: 2.2815 || lr: 0.000342
-Epoch 306/500:
-==>Train: || Total_time: 2.337s || loc_loss: 1.4635 conf_loss: 2.3381 || lr: 0.000339
-Epoch 307/500:
-==>Train: || Total_time: 2.408s || loc_loss: 1.3861 conf_loss: 2.3105 || lr: 0.000336
-Epoch 308/500:
-==>Train: || Total_time: 2.338s || loc_loss: 1.3590 conf_loss: 2.2941 || lr: 0.000333
-Epoch 309/500:
-==>Train: || Total_time: 2.334s || loc_loss: 1.3760 conf_loss: 2.3070 || lr: 0.000330
-Epoch 310/500:
-==>Train: || Total_time: 2.353s || loc_loss: 1.3332 conf_loss: 2.2488 || lr: 0.000327
-Wrote snapshot to: ./experiments/models/fssd_resnet50_cones/fssd_resnet_50_cones_epoch_310.pth
-Epoch 311/500:
-==>Train: || Total_time: 2.360s || loc_loss: 1.5015 conf_loss: 2.3247 || lr: 0.000324
-Epoch 312/500:
-==>Train: || Total_time: 2.339s || loc_loss: 1.3321 conf_loss: 2.2903 || lr: 0.000321
-Epoch 313/500:
-==>Train: || Total_time: 2.389s || loc_loss: 1.3840 conf_loss: 2.2902 || lr: 0.000318
-Epoch 314/500:
-==>Train: || Total_time: 2.353s || loc_loss: 1.4839 conf_loss: 2.2812 || lr: 0.000315
-Epoch 315/500:
-==>Train: || Total_time: 2.341s || loc_loss: 1.3653 conf_loss: 2.2952 || lr: 0.000312
-Epoch 316/500:
-==>Train: || Total_time: 2.318s || loc_loss: 1.3996 conf_loss: 2.3038 || lr: 0.000309
-Epoch 317/500:
-==>Train: || Total_time: 2.395s || loc_loss: 1.5266 conf_loss: 2.2952 || lr: 0.000306
-Epoch 318/500:
-==>Train: || Total_time: 2.331s || loc_loss: 1.4226 conf_loss: 2.2898 || lr: 0.000303
-Epoch 319/500:
-==>Train: || Total_time: 2.339s || loc_loss: 1.3142 conf_loss: 2.2492 || lr: 0.000301
-Epoch 320/500:
-==>Train: || Total_time: 2.339s || loc_loss: 1.3626 conf_loss: 2.2721 || lr: 0.000298
-Wrote snapshot to: ./experiments/models/fssd_resnet50_cones/fssd_resnet_50_cones_epoch_320.pth
-Epoch 321/500:
-==>Train: || Total_time: 2.310s || loc_loss: 1.4423 conf_loss: 2.3373 || lr: 0.000295
-Epoch 322/500:
-==>Train: || Total_time: 2.384s || loc_loss: 1.4054 conf_loss: 2.2695 || lr: 0.000292
-Epoch 323/500:
-==>Train: || Total_time: 2.351s || loc_loss: 1.3728 conf_loss: 2.2664 || lr: 0.000289
-Epoch 324/500:
-==>Train: || Total_time: 2.381s || loc_loss: 1.3093 conf_loss: 2.2968 || lr: 0.000286
-Epoch 325/500:
-==>Train: || Total_time: 2.441s || loc_loss: 1.3600 conf_loss: 2.2734 || lr: 0.000283
-Epoch 326/500:
-==>Train: || Total_time: 2.337s || loc_loss: 1.3911 conf_loss: 2.2972 || lr: 0.000280
-Epoch 327/500:
-==>Train: || Total_time: 2.347s || loc_loss: 1.3679 conf_loss: 2.2658 || lr: 0.000277
-Epoch 328/500:
-==>Train: || Total_time: 2.322s || loc_loss: 1.3222 conf_loss: 2.2836 || lr: 0.000274
-Epoch 329/500:
-==>Train: || Total_time: 2.337s || loc_loss: 1.3455 conf_loss: 2.2471 || lr: 0.000272
-Epoch 330/500:
-==>Train: || Total_time: 2.371s || loc_loss: 1.2774 conf_loss: 2.2153 || lr: 0.000269
-Wrote snapshot to: ./experiments/models/fssd_resnet50_cones/fssd_resnet_50_cones_epoch_330.pth
-Epoch 331/500:
-==>Train: || Total_time: 2.339s || loc_loss: 1.4417 conf_loss: 2.3354 || lr: 0.000266
-Epoch 332/500:
-==>Train: || Total_time: 2.325s || loc_loss: 1.4017 conf_loss: 2.3051 || lr: 0.000263
-Epoch 333/500:
-==>Train: || Total_time: 2.338s || loc_loss: 1.3103 conf_loss: 2.2446 || lr: 0.000260
-Epoch 334/500:
-==>Train: || Total_time: 2.350s || loc_loss: 1.3608 conf_loss: 2.2690 || lr: 0.000257
-Epoch 335/500:
-==>Train: || Total_time: 2.375s || loc_loss: 1.3558 conf_loss: 2.2828 || lr: 0.000255
-Epoch 336/500:
-==>Train: || Total_time: 2.327s || loc_loss: 1.4288 conf_loss: 2.2936 || lr: 0.000252
-Epoch 337/500:
-==>Train: || Total_time: 2.345s || loc_loss: 1.4989 conf_loss: 2.3508 || lr: 0.000249
-Epoch 338/500:
-==>Train: || Total_time: 2.332s || loc_loss: 1.3377 conf_loss: 2.2859 || lr: 0.000246
-Epoch 339/500:
-==>Train: || Total_time: 2.350s || loc_loss: 1.3177 conf_loss: 2.2630 || lr: 0.000244
-Epoch 340/500:
-==>Train: || Total_time: 2.364s || loc_loss: 1.4646 conf_loss: 2.3381 || lr: 0.000241
-Wrote snapshot to: ./experiments/models/fssd_resnet50_cones/fssd_resnet_50_cones_epoch_340.pth
-Epoch 341/500:
-==>Train: || Total_time: 2.392s || loc_loss: 1.3425 conf_loss: 2.2579 || lr: 0.000238
-Epoch 342/500:
-==>Train: || Total_time: 2.377s || loc_loss: 1.2803 conf_loss: 2.2544 || lr: 0.000235
-Epoch 343/500:
-==>Train: || Total_time: 2.334s || loc_loss: 1.3462 conf_loss: 2.2802 || lr: 0.000233
-Epoch 344/500:
-==>Train: || Total_time: 2.372s || loc_loss: 1.3391 conf_loss: 2.3089 || lr: 0.000230
-Epoch 345/500:
-==>Train: || Total_time: 2.406s || loc_loss: 1.2102 conf_loss: 2.2783 || lr: 0.000227
-Epoch 346/500:
-==>Train: || Total_time: 2.340s || loc_loss: 1.3541 conf_loss: 2.3377 || lr: 0.000225
-Epoch 347/500:
-==>Train: || Total_time: 2.332s || loc_loss: 1.2853 conf_loss: 2.2618 || lr: 0.000222
-Epoch 348/500:
-==>Train: || Total_time: 2.386s || loc_loss: 1.2896 conf_loss: 2.2610 || lr: 0.000219
-Epoch 349/500:
-==>Train: || Total_time: 2.370s || loc_loss: 1.2977 conf_loss: 2.2517 || lr: 0.000217
-Epoch 350/500:
-==>Train: || Total_time: 2.464s || loc_loss: 1.3717 conf_loss: 2.3087 || lr: 0.000214
-Wrote snapshot to: ./experiments/models/fssd_resnet50_cones/fssd_resnet_50_cones_epoch_350.pth
-Epoch 351/500:
-==>Train: || Total_time: 2.360s || loc_loss: 1.2478 conf_loss: 2.1894 || lr: 0.000211
-Epoch 352/500:
-==>Train: || Total_time: 2.366s || loc_loss: 1.3577 conf_loss: 2.2455 || lr: 0.000209
-Epoch 353/500:
-==>Train: || Total_time: 2.369s || loc_loss: 1.3406 conf_loss: 2.2800 || lr: 0.000206
-Epoch 354/500:
-==>Train: || Total_time: 2.370s || loc_loss: 1.2805 conf_loss: 2.2438 || lr: 0.000204
-Epoch 355/500:
-==>Train: || Total_time: 2.355s || loc_loss: 1.3756 conf_loss: 2.2231 || lr: 0.000201
-Epoch 356/500:
-==>Train: || Total_time: 2.333s || loc_loss: 1.3674 conf_loss: 2.2709 || lr: 0.000198
-Epoch 357/500:
-==>Train: || Total_time: 2.326s || loc_loss: 1.2832 conf_loss: 2.2342 || lr: 0.000196
-Epoch 358/500:
-==>Train: || Total_time: 2.391s || loc_loss: 1.4509 conf_loss: 2.2834 || lr: 0.000193
-Epoch 359/500:
-==>Train: || Total_time: 2.339s || loc_loss: 1.3139 conf_loss: 2.2544 || lr: 0.000191
-Epoch 360/500:
-==>Train: || Total_time: 2.352s || loc_loss: 1.4063 conf_loss: 2.2756 || lr: 0.000188
-Wrote snapshot to: ./experiments/models/fssd_resnet50_cones/fssd_resnet_50_cones_epoch_360.pth
-Epoch 361/500:
-==>Train: || Total_time: 2.374s || loc_loss: 1.2833 conf_loss: 2.2680 || lr: 0.000186
-Epoch 362/500:
-==>Train: || Total_time: 2.351s || loc_loss: 1.2122 conf_loss: 2.2532 || lr: 0.000183
-Epoch 363/500:
-==>Train: || Total_time: 2.372s || loc_loss: 1.3059 conf_loss: 2.3053 || lr: 0.000181
-Epoch 364/500:
-==>Train: || Total_time: 2.343s || loc_loss: 1.3010 conf_loss: 2.2560 || lr: 0.000178
-Epoch 365/500:
-==>Train: || Total_time: 2.373s || loc_loss: 1.3309 conf_loss: 2.2779 || lr: 0.000176
-Epoch 366/500:
-==>Train: || Total_time: 2.348s || loc_loss: 1.3374 conf_loss: 2.2505 || lr: 0.000173
-Epoch 367/500:
-==>Train: || Total_time: 2.330s || loc_loss: 1.4892 conf_loss: 2.2770 || lr: 0.000171
-Epoch 368/500:
-==>Train: || Total_time: 2.407s || loc_loss: 1.3911 conf_loss: 2.3108 || lr: 0.000169
-Epoch 369/500:
-==>Train: || Total_time: 2.349s || loc_loss: 1.2946 conf_loss: 2.2390 || lr: 0.000166
-Epoch 370/500:
-==>Train: || Total_time: 2.350s || loc_loss: 1.2985 conf_loss: 2.2299 || lr: 0.000164
-Wrote snapshot to: ./experiments/models/fssd_resnet50_cones/fssd_resnet_50_cones_epoch_370.pth
-Epoch 371/500:
-==>Train: || Total_time: 2.356s || loc_loss: 1.3449 conf_loss: 2.2723 || lr: 0.000161
-Epoch 372/500:
-==>Train: || Total_time: 2.347s || loc_loss: 1.2759 conf_loss: 2.2332 || lr: 0.000159
-Epoch 373/500:
-==>Train: || Total_time: 2.338s || loc_loss: 1.3539 conf_loss: 2.2854 || lr: 0.000157
-Epoch 374/500:
-==>Train: || Total_time: 2.322s || loc_loss: 1.2696 conf_loss: 2.2841 || lr: 0.000154
-Epoch 375/500:
-==>Train: || Total_time: 2.345s || loc_loss: 1.3444 conf_loss: 2.1889 || lr: 0.000152
-Epoch 376/500:
-==>Train: || Total_time: 2.400s || loc_loss: 1.3508 conf_loss: 2.3055 || lr: 0.000150
-Epoch 377/500:
-==>Train: || Total_time: 2.402s || loc_loss: 1.3256 conf_loss: 2.2778 || lr: 0.000148
-Epoch 378/500:
-==>Train: || Total_time: 2.395s || loc_loss: 1.2969 conf_loss: 2.2257 || lr: 0.000145
-Epoch 379/500:
-==>Train: || Total_time: 2.364s || loc_loss: 1.2860 conf_loss: 2.2207 || lr: 0.000143
-Epoch 380/500:
-==>Train: || Total_time: 2.356s || loc_loss: 1.3030 conf_loss: 2.2691 || lr: 0.000141
-Wrote snapshot to: ./experiments/models/fssd_resnet50_cones/fssd_resnet_50_cones_epoch_380.pth
-Epoch 381/500:
-==>Train: || Total_time: 2.306s || loc_loss: 1.4271 conf_loss: 2.2675 || lr: 0.000139
-Epoch 382/500:
-==>Train: || Total_time: 2.338s || loc_loss: 1.3391 conf_loss: 2.2453 || lr: 0.000136
-Epoch 383/500:
-==>Train: || Total_time: 2.327s || loc_loss: 1.2042 conf_loss: 2.2071 || lr: 0.000134
-Epoch 384/500:
-==>Train: || Total_time: 2.310s || loc_loss: 1.2657 conf_loss: 2.3242 || lr: 0.000132
-Epoch 385/500:
-==>Train: || Total_time: 2.345s || loc_loss: 1.3922 conf_loss: 2.2621 || lr: 0.000130
-Epoch 386/500:
-==>Train: || Total_time: 2.348s || loc_loss: 1.1953 conf_loss: 2.1878 || lr: 0.000128
-Epoch 387/500:
-==>Train: || Total_time: 2.337s || loc_loss: 1.3491 conf_loss: 2.2593 || lr: 0.000126
-Epoch 388/500:
-==>Train: || Total_time: 2.354s || loc_loss: 1.2604 conf_loss: 2.1986 || lr: 0.000123
-Epoch 389/500:
-==>Train: || Total_time: 2.331s || loc_loss: 1.2876 conf_loss: 2.2435 || lr: 0.000121
-Epoch 390/500:
-==>Train: || Total_time: 2.331s || loc_loss: 1.3814 conf_loss: 2.3318 || lr: 0.000119
-Wrote snapshot to: ./experiments/models/fssd_resnet50_cones/fssd_resnet_50_cones_epoch_390.pth
-Epoch 391/500:
-==>Train: || Total_time: 2.321s || loc_loss: 1.2896 conf_loss: 2.2076 || lr: 0.000117
-Epoch 392/500:
-==>Train: || Total_time: 2.333s || loc_loss: 1.3527 conf_loss: 2.2829 || lr: 0.000115
-Epoch 393/500:
-==>Train: || Total_time: 2.399s || loc_loss: 1.2577 conf_loss: 2.2481 || lr: 0.000113
-Epoch 394/500:
-==>Train: || Total_time: 2.320s || loc_loss: 1.4511 conf_loss: 2.3327 || lr: 0.000111
-Epoch 395/500:
-==>Train: || Total_time: 2.327s || loc_loss: 1.3953 conf_loss: 2.2679 || lr: 0.000109
-Epoch 396/500:
-==>Train: || Total_time: 2.321s || loc_loss: 1.3877 conf_loss: 2.2720 || lr: 0.000107
-Epoch 397/500:
-==>Train: || Total_time: 2.349s || loc_loss: 1.3329 conf_loss: 2.2582 || lr: 0.000105
-Epoch 398/500:
-==>Train: || Total_time: 2.357s || loc_loss: 1.2936 conf_loss: 2.2642 || lr: 0.000103
-Epoch 399/500:
-==>Train: || Total_time: 2.349s || loc_loss: 1.3324 conf_loss: 2.3286 || lr: 0.000101
-Epoch 400/500:
-==>Train: || Total_time: 2.340s || loc_loss: 1.2960 conf_loss: 2.2470 || lr: 0.000099
-Wrote snapshot to: ./experiments/models/fssd_resnet50_cones/fssd_resnet_50_cones_epoch_400.pth
-Epoch 401/500:
-==>Train: || Total_time: 2.335s || loc_loss: 1.3272 conf_loss: 2.2237 || lr: 0.000097
-Epoch 402/500:
-==>Train: || Total_time: 2.346s || loc_loss: 1.2074 conf_loss: 2.1875 || lr: 0.000095
-Epoch 403/500:
-==>Train: || Total_time: 2.347s || loc_loss: 1.3149 conf_loss: 2.2614 || lr: 0.000094
-Epoch 404/500:
-==>Train: || Total_time: 2.358s || loc_loss: 1.2069 conf_loss: 2.2249 || lr: 0.000092
-Epoch 405/500:
-==>Train: || Total_time: 2.376s || loc_loss: 1.4647 conf_loss: 2.3251 || lr: 0.000090
-Epoch 406/500:
-==>Train: || Total_time: 2.342s || loc_loss: 1.2373 conf_loss: 2.2444 || lr: 0.000088
-Epoch 407/500:
-==>Train: || Total_time: 2.326s || loc_loss: 1.3442 conf_loss: 2.2580 || lr: 0.000086
-Epoch 408/500:
-==>Train: || Total_time: 2.327s || loc_loss: 1.3315 conf_loss: 2.2900 || lr: 0.000084
-Epoch 409/500:
-==>Train: || Total_time: 2.329s || loc_loss: 1.4091 conf_loss: 2.2435 || lr: 0.000083
-Epoch 410/500:
-==>Train: || Total_time: 2.376s || loc_loss: 1.2066 conf_loss: 2.2297 || lr: 0.000081
-Wrote snapshot to: ./experiments/models/fssd_resnet50_cones/fssd_resnet_50_cones_epoch_410.pth
-Epoch 411/500:
-==>Train: || Total_time: 2.351s || loc_loss: 1.2466 conf_loss: 2.2639 || lr: 0.000079
-Epoch 412/500:
-==>Train: || Total_time: 2.353s || loc_loss: 1.1315 conf_loss: 2.2262 || lr: 0.000077
-Epoch 413/500:
-==>Train: || Total_time: 2.322s || loc_loss: 1.3494 conf_loss: 2.2304 || lr: 0.000076
-Epoch 414/500:
-==>Train: || Total_time: 2.347s || loc_loss: 1.2500 conf_loss: 2.2180 || lr: 0.000074
-Epoch 415/500:
-==>Train: || Total_time: 2.330s || loc_loss: 1.3119 conf_loss: 2.2285 || lr: 0.000072
-Epoch 416/500:
-==>Train: || Total_time: 2.321s || loc_loss: 1.1668 conf_loss: 2.2069 || lr: 0.000071
-Epoch 417/500:
-==>Train: || Total_time: 2.336s || loc_loss: 1.4114 conf_loss: 2.2823 || lr: 0.000069
-Epoch 418/500:
-==>Train: || Total_time: 2.330s || loc_loss: 1.2187 conf_loss: 2.1892 || lr: 0.000068
-Epoch 419/500:
-==>Train: || Total_time: 2.354s || loc_loss: 1.3237 conf_loss: 2.2837 || lr: 0.000066
-Epoch 420/500:
-==>Train: || Total_time: 2.327s || loc_loss: 1.3157 conf_loss: 2.2514 || lr: 0.000064
-Wrote snapshot to: ./experiments/models/fssd_resnet50_cones/fssd_resnet_50_cones_epoch_420.pth
-Epoch 421/500:
-==>Train: || Total_time: 2.384s || loc_loss: 1.2590 conf_loss: 2.2415 || lr: 0.000063
-Epoch 422/500:
-==>Train: || Total_time: 2.344s || loc_loss: 1.2607 conf_loss: 2.2425 || lr: 0.000061
-Epoch 423/500:
-==>Train: || Total_time: 2.333s || loc_loss: 1.3523 conf_loss: 2.2509 || lr: 0.000060
-Epoch 424/500:
-==>Train: || Total_time: 2.332s || loc_loss: 1.2757 conf_loss: 2.2605 || lr: 0.000058
-Epoch 425/500:
-==>Train: || Total_time: 2.409s || loc_loss: 1.2907 conf_loss: 2.2759 || lr: 0.000057
-Epoch 426/500:
-==>Train: || Total_time: 2.348s || loc_loss: 1.1672 conf_loss: 2.2154 || lr: 0.000055
-Epoch 427/500:
-==>Train: || Total_time: 2.335s || loc_loss: 1.1426 conf_loss: 2.1957 || lr: 0.000054
-Epoch 428/500:
-==>Train: || Total_time: 2.338s || loc_loss: 1.2668 conf_loss: 2.2297 || lr: 0.000052
-Epoch 429/500:
-==>Train: || Total_time: 2.382s || loc_loss: 1.3020 conf_loss: 2.3045 || lr: 0.000051
-Epoch 430/500:
-==>Train: || Total_time: 2.333s || loc_loss: 1.3131 conf_loss: 2.2785 || lr: 0.000050
-Wrote snapshot to: ./experiments/models/fssd_resnet50_cones/fssd_resnet_50_cones_epoch_430.pth
-Epoch 431/500:
-==>Train: || Total_time: 2.391s || loc_loss: 1.3797 conf_loss: 2.2815 || lr: 0.000048
-Epoch 432/500:
-==>Train: || Total_time: 2.325s || loc_loss: 1.3266 conf_loss: 2.3233 || lr: 0.000047
-Epoch 433/500:
-==>Train: || Total_time: 2.343s || loc_loss: 1.3679 conf_loss: 2.2640 || lr: 0.000045
-Epoch 434/500:
-==>Train: || Total_time: 2.333s || loc_loss: 1.2823 conf_loss: 2.2890 || lr: 0.000044
-Epoch 435/500:
-==>Train: || Total_time: 2.356s || loc_loss: 1.2109 conf_loss: 2.2480 || lr: 0.000043
-Epoch 436/500:
-==>Train: || Total_time: 2.333s || loc_loss: 1.2770 conf_loss: 2.2552 || lr: 0.000042
-Epoch 437/500:
-==>Train: || Total_time: 2.385s || loc_loss: 1.2268 conf_loss: 2.2260 || lr: 0.000040
-Epoch 438/500:
-==>Train: || Total_time: 2.369s || loc_loss: 1.1603 conf_loss: 2.2040 || lr: 0.000039
-Epoch 439/500:
-==>Train: || Total_time: 2.345s || loc_loss: 1.3134 conf_loss: 2.2290 || lr: 0.000038
-Epoch 440/500:
-==>Train: || Total_time: 2.355s || loc_loss: 1.3239 conf_loss: 2.3010 || lr: 0.000037
-Wrote snapshot to: ./experiments/models/fssd_resnet50_cones/fssd_resnet_50_cones_epoch_440.pth
-Epoch 441/500:
-==>Train: || Total_time: 2.329s || loc_loss: 1.2095 conf_loss: 2.2163 || lr: 0.000035
-Epoch 442/500:
-==>Train: || Total_time: 2.352s || loc_loss: 1.3057 conf_loss: 2.2333 || lr: 0.000034
-Epoch 443/500:
-==>Train: || Total_time: 2.347s || loc_loss: 1.3705 conf_loss: 2.2808 || lr: 0.000033
-Epoch 444/500:
-==>Train: || Total_time: 2.345s || loc_loss: 1.3667 conf_loss: 2.2483 || lr: 0.000032
-Epoch 445/500:
-==>Train: || Total_time: 2.398s || loc_loss: 1.4266 conf_loss: 2.2541 || lr: 0.000031
-Epoch 446/500:
-==>Train: || Total_time: 2.327s || loc_loss: 1.3690 conf_loss: 2.2311 || lr: 0.000030
-Epoch 447/500:
-==>Train: || Total_time: 2.343s || loc_loss: 1.2457 conf_loss: 2.2310 || lr: 0.000029
-Epoch 448/500:
-==>Train: || Total_time: 2.315s || loc_loss: 1.2846 conf_loss: 2.2437 || lr: 0.000028
-Epoch 449/500:
-==>Train: || Total_time: 2.319s || loc_loss: 1.2530 conf_loss: 2.2316 || lr: 0.000026
-Epoch 450/500:
-==>Train: || Total_time: 2.351s || loc_loss: 1.2341 conf_loss: 2.2321 || lr: 0.000025
-Wrote snapshot to: ./experiments/models/fssd_resnet50_cones/fssd_resnet_50_cones_epoch_450.pth
-Epoch 451/500:
-==>Train: || Total_time: 2.335s || loc_loss: 1.2409 conf_loss: 2.2676 || lr: 0.000024
-Epoch 452/500:
-==>Train: || Total_time: 2.337s || loc_loss: 1.3073 conf_loss: 2.2806 || lr: 0.000023
-Epoch 453/500:
-==>Train: || Total_time: 2.384s || loc_loss: 1.3340 conf_loss: 2.2578 || lr: 0.000023
-Epoch 454/500:
-==>Train: || Total_time: 2.349s || loc_loss: 1.4961 conf_loss: 2.3163 || lr: 0.000022
-Epoch 455/500:
-==>Train: || Total_time: 2.349s || loc_loss: 1.3263 conf_loss: 2.2512 || lr: 0.000021
-Epoch 456/500:
-==>Train: || Total_time: 2.335s || loc_loss: 1.3207 conf_loss: 2.2362 || lr: 0.000020
-Epoch 457/500:
-==>Train: || Total_time: 2.385s || loc_loss: 1.2270 conf_loss: 2.1996 || lr: 0.000019
-Epoch 458/500:
-==>Train: || Total_time: 2.341s || loc_loss: 1.3697 conf_loss: 2.2887 || lr: 0.000018
-Epoch 459/500:
-==>Train: || Total_time: 2.362s || loc_loss: 1.2349 conf_loss: 2.2547 || lr: 0.000017
-Epoch 460/500:
-==>Train: || Total_time: 2.327s || loc_loss: 1.2611 conf_loss: 2.2525 || lr: 0.000016
-Wrote snapshot to: ./experiments/models/fssd_resnet50_cones/fssd_resnet_50_cones_epoch_460.pth
-Epoch 461/500:
-==>Train: || Total_time: 2.327s || loc_loss: 1.2256 conf_loss: 2.2441 || lr: 0.000016
-Epoch 462/500:
-==>Train: || Total_time: 2.311s || loc_loss: 1.2122 conf_loss: 2.2042 || lr: 0.000015
-Epoch 463/500:
-==>Train: || Total_time: 2.320s || loc_loss: 1.4006 conf_loss: 2.3201 || lr: 0.000014
-Epoch 464/500:
-==>Train: || Total_time: 2.342s || loc_loss: 1.3534 conf_loss: 2.2449 || lr: 0.000013
-Epoch 465/500:
-==>Train: || Total_time: 2.365s || loc_loss: 1.2480 conf_loss: 2.2487 || lr: 0.000013
-Epoch 466/500:
-==>Train: || Total_time: 2.346s || loc_loss: 1.3440 conf_loss: 2.2414 || lr: 0.000012
-Epoch 467/500:
-==>Train: || Total_time: 2.352s || loc_loss: 1.2647 conf_loss: 2.2000 || lr: 0.000011
-Epoch 468/500:
-==>Train: || Total_time: 2.369s || loc_loss: 1.2258 conf_loss: 2.2173 || lr: 0.000010
-Epoch 469/500:
-==>Train: || Total_time: 2.340s || loc_loss: 1.3364 conf_loss: 2.3202 || lr: 0.000010
-Epoch 470/500:
-==>Train: || Total_time: 2.336s || loc_loss: 1.3135 conf_loss: 2.2239 || lr: 0.000009
-Wrote snapshot to: ./experiments/models/fssd_resnet50_cones/fssd_resnet_50_cones_epoch_470.pth
-Epoch 471/500:
-==>Train: || Total_time: 2.325s || loc_loss: 1.4154 conf_loss: 2.3071 || lr: 0.000009
-Epoch 472/500:
-==>Train: || Total_time: 2.325s || loc_loss: 1.2369 conf_loss: 2.2063 || lr: 0.000008
-Epoch 473/500:
-==>Train: || Total_time: 2.317s || loc_loss: 1.3830 conf_loss: 2.2594 || lr: 0.000007
-Epoch 474/500:
-==>Train: || Total_time: 2.345s || loc_loss: 1.2812 conf_loss: 2.2309 || lr: 0.000007
-Epoch 475/500:
-==>Train: || Total_time: 2.322s || loc_loss: 1.2427 conf_loss: 2.1910 || lr: 0.000006
-Epoch 476/500:
-==>Train: || Total_time: 2.324s || loc_loss: 1.2171 conf_loss: 2.2327 || lr: 0.000006
-Epoch 477/500:
-==>Train: || Total_time: 2.341s || loc_loss: 1.2346 conf_loss: 2.2644 || lr: 0.000005
-Epoch 478/500:
-==>Train: || Total_time: 2.337s || loc_loss: 1.4633 conf_loss: 2.2818 || lr: 0.000005
-Epoch 479/500:
-==>Train: || Total_time: 2.323s || loc_loss: 1.2640 conf_loss: 2.2408 || lr: 0.000005
-Epoch 480/500:
-==>Train: || Total_time: 2.337s || loc_loss: 1.2888 conf_loss: 2.2417 || lr: 0.000004
-Wrote snapshot to: ./experiments/models/fssd_resnet50_cones/fssd_resnet_50_cones_epoch_480.pth
-Epoch 481/500:
-==>Train: || Total_time: 2.349s || loc_loss: 1.2467 conf_loss: 2.2240 || lr: 0.000004
-Epoch 482/500:
-==>Train: || Total_time: 2.337s || loc_loss: 1.3596 conf_loss: 2.2135 || lr: 0.000003
-Epoch 483/500:
-==>Train: || Total_time: 2.322s || loc_loss: 1.3558 conf_loss: 2.2095 || lr: 0.000003
-Epoch 484/500:
-==>Train: || Total_time: 2.325s || loc_loss: 1.2118 conf_loss: 2.2532 || lr: 0.000003
-Epoch 485/500:
-==>Train: || Total_time: 2.342s || loc_loss: 1.1962 conf_loss: 2.2663 || lr: 0.000002
-Epoch 486/500:
-==>Train: || Total_time: 2.342s || loc_loss: 1.1775 conf_loss: 2.2060 || lr: 0.000002
-Epoch 487/500:
-==>Train: || Total_time: 2.375s || loc_loss: 1.2243 conf_loss: 2.1499 || lr: 0.000002
-Epoch 488/500:
-==>Train: || Total_time: 2.362s || loc_loss: 1.2924 conf_loss: 2.2065 || lr: 0.000001
-Epoch 489/500:
-==>Train: || Total_time: 2.340s || loc_loss: 1.2653 conf_loss: 2.2336 || lr: 0.000001
-Epoch 490/500:
-==>Train: || Total_time: 2.294s || loc_loss: 1.2891 conf_loss: 2.2415 || lr: 0.000001
-Wrote snapshot to: ./experiments/models/fssd_resnet50_cones/fssd_resnet_50_cones_epoch_490.pth
-Epoch 491/500:
-==>Train: || Total_time: 2.293s || loc_loss: 1.3913 conf_loss: 2.2832 || lr: 0.000001
-Epoch 492/500:
-==>Train: || Total_time: 2.318s || loc_loss: 1.1164 conf_loss: 2.2182 || lr: 0.000001
-Epoch 493/500:
-==>Train: || Total_time: 2.313s || loc_loss: 1.1297 conf_loss: 2.1896 || lr: 0.000001
-Epoch 494/500:
-==>Train: || Total_time: 2.293s || loc_loss: 1.2697 conf_loss: 2.2670 || lr: 0.000000
-Epoch 495/500:
-==>Train: || Total_time: 2.288s || loc_loss: 1.2691 conf_loss: 2.2332 || lr: 0.000000
-Epoch 496/500:
-==>Train: || Total_time: 2.304s || loc_loss: 1.3225 conf_loss: 2.2676 || lr: 0.000000
-Epoch 497/500:
-==>Train: || Total_time: 2.295s || loc_loss: 1.2924 conf_loss: 2.2621 || lr: 0.000000
-Epoch 498/500:
-==>Train: || Total_time: 2.298s || loc_loss: 1.3002 conf_loss: 2.2533 || lr: 0.000000
-Epoch 499/500:
-==>Train: || Total_time: 2.313s || loc_loss: 1.4362 conf_loss: 2.2912 || lr: 0.000000
-Epoch 500/500:
-==>Train: || Total_time: 2.300s || loc_loss: 1.2496 conf_loss: 2.2723 || lr: 0.000000
-Wrote snapshot to: ./experiments/models/fssd_resnet50_cones/fssd_resnet_50_cones_epoch_500.pth
-Traceback (most recent call last):
-  File "validate.py", line 46, in <module>
-    validate()
-  File "validate.py", line 43, in validate
-    validate_model()
-  File "/home/gfr_admin/lucas/ssds.pytorch/lib/ssds_validation.py", line 677, in validate_model
-    s.validate_model()
-  File "/home/gfr_admin/lucas/ssds.pytorch/lib/ssds_validation.py", line 290, in validate_model
-    prec, rec, ap = self.eval_epoch(self.model, self.eval_loader, self.detector, self.criterion, self.writer, epoch, self.use_gpu)
-NameError: global name 'epoch' is not defined
