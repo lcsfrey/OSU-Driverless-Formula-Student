@@ -12,7 +12,10 @@ Change the Fixed Frame setting to "map"
 Below the panel on the left side, click "Add"
 Change to the "By Topic" panel
 Add the "see_ego_motion_test/odometry_filtered" marker
-Add the "see_ego_motion_test/odometry_visualization/particles" marker
+Add the "see_ego_motion_test/odometry_visualization/particles" marker   
+Add the "see_ego_motion_test/gps" marker
+
+The blue square is the position of the car in the test data, and the orange arrow is where the odometry system thinks it is
 
 To run the core of the odometry system for use as a part of the larger perception system, use `roslaunch see_ego_motion/see_ego_motion.launch`
 
