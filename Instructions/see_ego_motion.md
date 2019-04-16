@@ -2,19 +2,19 @@
 
 This node keeps track of the location and velocity of the car using non-vision sensor data. 
 
+# Install instructions
+Run ros_ws/src/see_ego_motion/src/install.bash
+
 # Prerequisite Packages
 
 message_generation
 message_runtime
 visualization_messages
+utm
 
 # Other prerequisites
 
 AMZ example bag data
-
-# Installation Instructions
-
-Run the main installation script (INSTALL.bash)
 
 # Use
 
