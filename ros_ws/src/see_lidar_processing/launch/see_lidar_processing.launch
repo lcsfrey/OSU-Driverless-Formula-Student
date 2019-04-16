@@ -1,0 +1,32 @@
+<launch>
+  <!--<node pkg="see_lidar_processing" type="see_lidar_processing" name="see_lidar_processing" output="screen"></node>-->
+  <rosparam
+  	command="load"
+  	file="$(find see_lidar_processing)/config/config.yaml"
+  	ns="see_lidar">
+  </rosparam>
+  <node
+  	name="see_lidar_pointcloud_prefilter"
+  	pkg="see_lidar_processing"
+  	type="see_lidar_pointcloud_prefilter"
+  	output="screen">
+  </node>
+  <node
+  	name="see_lidar_pointcloud_clusterer"
+  	pkg="see_lidar_processing"
+  	type="see_lidar_pointcloud_clusterer"
+  	output="screen">
+  </node>
+  <node
+  	name="see_lidar_cone_detector"
+  	pkg="see_lidar_processing"
+  	type="see_lidar_cone_detector"
+  	output="screen">
+  </node>
+  <node
+  	name="see_lidar_cone_identificator"
+  	pkg="see_lidar_processing"
+  	type="see_lidar_cone_identificator"
+  	output="screen">
+  </node>
+</launch>
