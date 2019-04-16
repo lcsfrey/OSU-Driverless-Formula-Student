@@ -8,9 +8,12 @@ We require:
 - ROS Kinetic
 - Bash shell
 - Python 2.7.15
+- Git (at least version 2.7)
+- Git LFS (latest version). Download it [here](https://git-lfs.github.com/) and follow [this instruction](https://help.github.com/en/articles/installing-git-large-file-storage) to install it **before cloning this repository**
 - CUDA 9.0 compatible Nvidia GPU with at least 4GB of VRAM (tested on GTX 1080) (Note: You do not need to install cuda yourself. This will be handled by package that needs it.)
 - Anaconda (conda 4.6.12)
 - pip (18.1)
+
 
 ROS Kinetic installation link:
 ```
@@ -21,7 +24,7 @@ We strongly reccommend install the full version, which is `ros-kinetic-desktop-f
 
 ## Compile
 
-Make sure you are standing at top level directory of this project
+Make sure you are standing at the `ros_ws` directory of this project
 
 ```
 catkin_make

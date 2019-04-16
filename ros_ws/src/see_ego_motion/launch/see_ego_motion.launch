@@ -1,0 +1,3 @@
+<launch>
+  <node pkg="see_ego_motion" type="OdometryNode.py" name="OdometryNode" output="screen"></node>
+</launch>
