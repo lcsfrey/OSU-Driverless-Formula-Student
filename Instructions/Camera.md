@@ -1,24 +1,5 @@
-# OSU-Driverless-Formula-Student
-Repository of code used by senior design team for driverless formula student race car
 
-## Prerequises
-
-We require:
-- Ubuntu 16.04 LTS
-- ROS Kinetic
-- Bash shell
-- Python 2.7.15
-- CUDA 9.0 compatible Nvidia GPU with at least 4GB of VRAM (tested on GTX 1080) (Note: You do not need to install cuda yourself. This will be handled by package that needs it.)
-- Anaconda
-
-ROS Kinetic installation link:
-```
-http://wiki.ros.org/kinetic/Installation/Ubuntu
-```
-We strongly reccommend install the full version, which is `ros-kinetic-desktop-full` 
-(please see the link above for more details)
-
-## How to run the camera component
+# How to run the camera component
 
 1. Install prerequisites
 In the top level directory run
