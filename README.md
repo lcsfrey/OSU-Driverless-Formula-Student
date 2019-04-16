@@ -23,7 +23,7 @@ Make sure you are standing at top level directory of this project
 ```
 catkin_make
 ```
-This command will generate `build` and `devel` at the top level directory
+This command will generate `build` and `devel` directories under the `ros_ws` directory
 
 ## Setup environment
 
