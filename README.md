@@ -7,7 +7,9 @@ We require:
 - Ubuntu 16.04 LTS
 - ROS Kinetic
 - Bash shell
-- Python 2.7
+- Python 2.7.15
+- CUDA 9.0 compatible Nvidia GPU with at least 4GB of VRAM (tested on GTX 1080) (Note: You do not need to install cuda yourself. This will be handled by package that needs it.)
+- Anaconda
 
 ROS Kinetic installation link:
 ```
@@ -16,25 +18,41 @@ http://wiki.ros.org/kinetic/Installation/Ubuntu
 We strongly reccommend install the full version, which is `ros-kinetic-desktop-full` 
 (please see the link above for more details)
 
+
 ## Compile
 
 Make sure you are standing at top level directory of this project
 
 ```
+cd ros_ws
 catkin_make
 ```
 This command will generate `build` and `devel` at the top level directory
 
 ## Setup environment
 
-At these two lines into your `~/.bashrc` 
+1. Install an anaconda environement and activate it
+
+```
+conda create -n DV python=2.7.15
+conda activate DV
+```
+
+2. Install shared python dependences. 
+At the top level directory, run:
+
+```
+pip install -r requirements.txt
+```
+
+3. At these two lines into your `~/.bashrc` 
 ```
 source /opt/ros/kinetic/setup.bash
 source <absolute path to the top level directory of this project>/ros_ws/devel/setup.bash
 ```
 Execute `source ~/.bashrc` for the current terminal. After later newly opened terminal, you don't have to do this.
 
-## How to run lidar component
+## How to run the lidar component
 
 Note for **each** of these following steps below:
 - **We assume you are standing at top level directory of this project. (the directory you cd into after you clone this repository)**
@@ -88,3 +106,28 @@ What Rviz does is listening to the topic that our lidar processing ROS node publ
 In the driverless system as a whole, the SLAM component subscribes (listens) to this ROS topic and use our output as their input. 
 Through the visualization of the centers of the detected cone as you can see in Rviz, 
 we demonstrate that our lidar processing component works as expected in the requirements.
+
+## How to run the camera component
+
+1. Install prerequisites
+In the top level directory run
+```
+cd ros_ws/src/see_camera_processing
+conda install pytorch torchvision cudatoolkit=9.0 -c pytorch
+pip install -r requirements.txt
+```
+
+2. Run the component
+```
+roslaunch launch/see_camera_processing_debug_test.launch
+```
+This will open four ROS nodes:
+- see_camera_processing_image_generator
+- see_camera_processing_image_correction
+- see_camera_processing_cone_detection (the work done by our team)
+- see_camera_processing_coordinate_extraction
+
+A debugging window will appear. After a few seconds, test images will start to appear
+which were read in from see_camera_processing/testdata. (During the competition,
+this node will be replaced by a node which reads in images from the camera. For now, the see_camera_processing_image_generator node is just to demonstrate the capability of the cone detection node.)
+
