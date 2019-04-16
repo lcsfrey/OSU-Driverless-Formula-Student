@@ -18,6 +18,15 @@ http://wiki.ros.org/kinetic/Installation/Ubuntu
 We strongly reccommend install the full version, which is `ros-kinetic-desktop-full` 
 (please see the link above for more details)
 
+## Compile
+
+Make sure you are standing at top level directory of this project
+
+```
+catkin_make
+```
+This command will generate `build` and `devel` directories under the `ros_ws` directory
+
 ## Setup environment
 
 1. Install an anaconda environement and activate it
