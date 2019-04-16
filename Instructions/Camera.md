@@ -7,7 +7,7 @@ In the top level directory run
 cd ros_ws/src/see_camera_processing
 conda install pytorch torchvision cudatoolkit=9.0 -c pytorch
 pip install -r requirements.txt
-echo "export PYTHONPATH=$PYTHONPATH:$PWD" >> ~/.bashrc
+echo "export PYTHONPATH=$PYTHONPATH:$PWD/src/ssds/" >> ~/.bashrc
 source ~/.bashrc
 conda activate DV
 ```
