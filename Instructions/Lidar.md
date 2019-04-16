@@ -46,7 +46,7 @@ for the original raw data from the lidar, `/see_lidar/see_lidar_points_of_intere
 and `/see_lidar/see_lidar_clustered_point_clouds` for the data clustered into groups of potential cones. 
 
 You can see around by using your mouse: Drag mouse to move your camera, scroll mouse to zoom in and out. Here is a sample screenshot:
-![RViz UI](images/lidar/lidar_rviz_ui.png?raw=true "RViz UI")
+![RViz UI](../images/lidar/lidar_rviz_ui.png?raw=true "RViz UI")
 
 What Rviz does is listening to the topic that our lidar processing ROS node publish to, and then use that data to visualize our output.
 In the driverless system as a whole, the SLAM component subscribes (listens) to this ROS topic and use our output as their input. 
