@@ -1,0 +1,9 @@
+<launch>
+    <include file="$(find see_ego_motion)/launch/see_ego_motion.launch"/>
+    <!-- <include file="$(find eufs_gazebo)/launch/small_track.launch"/> -->
+    <!-- <include file="$(find robot_control)/launch/rqt_robot_control.launch"/> -->
+    <!-- <node pkg="see_ego_motion" type="see_ego_motion_test" name="see_ego_motion_test"/> -->
+    <node pkg="see_ego_motion" type="bagTranslator.py" name="bagTranslator"/>
+    <node pkg="rviz" type="rviz" name="rviz"/>
+    <node pkg="rosbag" type="play" name="amzDataPlayer" args="--clock $(find see_ego_motion)/../../../resources/amz-data.bag" />
+</launch>
