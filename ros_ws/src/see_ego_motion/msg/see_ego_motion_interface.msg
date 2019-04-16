@@ -1,0 +1,10 @@
+Header header
+duration delta_time
+float32 x_global
+float32 y_global
+float32 theta_global
+float32 velocity_longtitudonal
+float32 velocity_lateral
+float32 yaw_rate
+float32[4] pos_covariance
+float32 theta_variance

@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>see_ego_motion</name>
+  <version>0.1.0</version>
+  <description>GFR driverless see_ego_motion</description>
+  <maintainer email="lukas.wippermann@global-formula-racing.com">Lukas Wippermann</maintainer>
+  <license>todo</license>
+  <author email="lukas.wippermann@global-formula-racing.com">Lukas Wippermann</author>
+  <buildtool_depend>catkin</buildtool_depend>
+  <depend>roscpp</depend>
+
+  <!-- message definitions -->
+  <build_depend>message_generation</build_depend>
+  <build_depend>visualization_msgs</build_depend>
+  <exec_depend>message_generation</exec_depend>
+  <exec_depend>message_runtime</exec_depend>
+</package>
